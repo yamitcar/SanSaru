@@ -1,0 +1,22 @@
+<%= form_with(model: agile, local: true) do |form| %>
+  <% if agile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(agile.errors.count, "error") %> prohibited this agile from being saved:</h2>
+
+      <ul>
+      <% agile.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :agile_name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

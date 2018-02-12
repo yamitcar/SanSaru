@@ -1,0 +1,92 @@
+<%= form_with(model: profile, local: true) do |form| %>
+  <% if profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+      <% profile.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :profile_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :lastname %>
+    <%= form.text_field :lastname, id: :profile_lastname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email, id: :profile_email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :residence %>
+    <%= form.text_field :residence, id: :profile_residence %>
+  </div>
+
+  <div class="field">
+    <%= form.label :first_time %>
+    <%= form.check_box :first_time, id: :profile_first_time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :expectancy %>
+    <%= form.text_field :expectancy, id: :profile_expectancy %>
+  </div>
+
+  <div class="field">
+    <%= form.label :agile_id %>
+    <%= form.number_field :agile_id, id: :profile_agile_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :agile_description %>
+    <%= form.text_field :agile_description, id: :profile_agile_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hobbies %>
+    <%= form.text_field :hobbies, id: :profile_hobbies %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bring %>
+    <%= form.text_field :bring, id: :profile_bring %>
+  </div>
+
+  <div class="field">
+    <%= form.label :proposal %>
+    <%= form.text_field :proposal, id: :profile_proposal %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bio %>
+    <%= form.text_field :bio, id: :profile_bio %>
+  </div>
+
+  <div class="field">
+    <%= form.label :agileRelation_id %>
+    <%= form.number_field :agileRelation_id, id: :profile_agileRelation_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :gender_id %>
+    <%= form.number_field :gender_id, id: :profile_gender_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :size_id %>
+    <%= form.number_field :size_id, id: :profile_size_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

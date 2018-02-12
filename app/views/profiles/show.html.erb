@@ -1,0 +1,79 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @profile.name %>
+</p>
+
+<p>
+  <strong>Lastname:</strong>
+  <%= @profile.lastname %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @profile.email %>
+</p>
+
+<p>
+  <strong>Residence:</strong>
+  <%= @profile.residence %>
+</p>
+
+<p>
+  <strong>First time:</strong>
+  <%= @profile.first_time %>
+</p>
+
+<p>
+  <strong>Expectancy:</strong>
+  <%= @profile.expectancy %>
+</p>
+
+<p>
+  <strong>Agile:</strong>
+  <%= @profile.agile_id %>
+</p>
+
+<p>
+  <strong>Agile description:</strong>
+  <%= @profile.agile_description %>
+</p>
+
+<p>
+  <strong>Hobbies:</strong>
+  <%= @profile.hobbies %>
+</p>
+
+<p>
+  <strong>Bring:</strong>
+  <%= @profile.bring %>
+</p>
+
+<p>
+  <strong>Proposal:</strong>
+  <%= @profile.proposal %>
+</p>
+
+<p>
+  <strong>Bio:</strong>
+  <%= @profile.bio %>
+</p>
+
+<p>
+  <strong>Agilerelation:</strong>
+  <%= @profile.agileRelation_id %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @profile.gender_id %>
+</p>
+
+<p>
+  <strong>Size:</strong>
+  <%= @profile.size_id %>
+</p>
+
+<%= link_to 'Edit', edit_profile_path(@profile) %> |
+<%= link_to 'Back', profiles_path %>

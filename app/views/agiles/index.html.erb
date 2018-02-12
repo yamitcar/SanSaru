@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Agiles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @agiles.each do |agile| %>
+      <tr>
+        <td><%= agile.name %></td>
+        <td><%= link_to 'Show', agile %></td>
+        <td><%= link_to 'Edit', edit_agile_path(agile) %></td>
+        <td><%= link_to 'Destroy', agile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Agile', new_agile_path %>
