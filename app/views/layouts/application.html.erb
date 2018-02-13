@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>AoC - Sansaru</title>
-    <%= csrf_meta_tags %>
+
+<head>
+  <title>AoC - Sansaru</title>
+  <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <%= render 'layouts/header' %>
-     <div class="container">
-        <% flash.each do |name, msg| %>
-            <%= content_tag(:div, msg, class: "alert alert-info") %>
+<body>
+  <%= render 'layouts/header' %>
+    <div class="container">
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>">
+          <%= message %>
+        </div>
         <% end %>
         <%= yield %>
+        <%= debug(params) if Rails.env.development? %>
     </div>
-  </body>
+</body>
+
 </html>
