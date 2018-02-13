@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'pages/index'
+
   resources :profiles
   resources :agile_relations
   resources :agiles

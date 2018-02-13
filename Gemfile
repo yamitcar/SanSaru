@@ -14,6 +14,7 @@ gem 'jquery-rails', '4.3.1'
 gem 'turbolinks',   '5.0.1'
 gem 'jbuilder',     '2.7.0'
 gem 'bootstrap',    '4.0.0'
+gem 'bootswatch'
 gem 'validates_email_format_of', '1.6.3'
 
 group :development, :test do
