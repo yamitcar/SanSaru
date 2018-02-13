@@ -43,6 +43,7 @@ GEM
     arel (8.0.0)
     autoprefixer-rails (8.0.0)
       execjs
+    bcrypt (3.1.11)
     bindex (0.5.0)
     bootstrap (4.0.0)
       autoprefixer-rails (>= 6.0.3)
@@ -192,6 +193,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt (= 3.1.11)
   bootstrap (= 4.0.0)
   bootswatch
   byebug (= 9.0.6)

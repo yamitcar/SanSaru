@@ -16,6 +16,7 @@ gem 'jbuilder',     '2.7.0'
 gem 'bootstrap',    '4.0.0'
 gem 'bootswatch'
 gem 'validates_email_format_of', '1.6.3'
+gem 'bcrypt',         '3.1.11'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'
