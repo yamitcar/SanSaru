@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'pages/index'
+  get 'static_pages/home'
+  get 'static_pages/help'
 
   resources :profiles
   resources :agile_relations
@@ -7,5 +8,5 @@ Rails.application.routes.draw do
   resources :genders
   resources :sizes
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'profiles#index'
+  root 'static_pages#home'
 end
