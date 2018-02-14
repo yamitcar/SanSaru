@@ -18,6 +18,7 @@ gem 'bootswatch'
 gem 'validates_email_format_of', '1.6.3'
 gem 'bcrypt',         '3.1.11'
 gem 'rails_admin', '~> 1.2'
+gem 'devise'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'
