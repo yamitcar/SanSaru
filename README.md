@@ -14,6 +14,8 @@ Next, migrate the database:
 $ rails db:migrate
 ```
 
+#### IMPORTANT: you need to create and admin user!
+
 Finally, run the test suite to verify that everything is working correctly:
 
 ```
