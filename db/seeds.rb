@@ -5,3 +5,26 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Agile.create(name:"Individuos e interacciones sobre procesos y herramientas")
+Agile.create(name:"Software funcionando sobre documentación extensiva")
+Agile.create(name:"Colaboración con el cliente sobre negociación contractual")
+Agile.create(name:"Respuesta ante el cambio sobre seguir un plan")
+
+AgileRelation.create(name: "Como hermanos")
+AgileRelation.create(name: "Mejores amigos")
+AgileRelation.create(name: "Buenos amigos")
+AgileRelation.create(name: "Conocidos personalmente")
+AgileRelation.create(name: "Nos conocemos de nombre")
+AgileRelation.create(name: "No nos conocemos")
+
+Gender.create(name: "Hombre")
+Gender.create(name: "Mujer")
+
+Size.create(name:"XS")
+Size.create(name:"S")
+Size.create(name:"M")
+Size.create(name:"L")
+Size.create(name:"XL")
+Size.create(name:"XXL")
+
+
