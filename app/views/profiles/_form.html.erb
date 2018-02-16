@@ -11,67 +11,144 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :residence %>
-    <%= form.text_field :residence, id: :profile_residence %>
-  </div>
+  <fieldset>
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textinput">
+        <%= form.label :residence, "¿Dónde resides actualmente?" %>
+        <small>(Ciudad, Provincia o Región, País.)</small>
+      </label>
+      <div class="col-md-4">
+        <%= form.text_field :residence, id: :profile_residence, class: 'form-control input-md' %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :first_time %>
-    <%= form.check_box :first_time, id: :profile_first_time %>
-  </div>
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textinput">
+        <%= form.label :first_time, "¿Es la primera vez que participas en un AOC?" %>
+      </label>
+      <%= form.check_box :first_time, id: :profile_first_time %>
+    </div>
 
-  <div class="field">
-    <%= form.label :expectancy %>
-    <%= form.text_field :expectancy, id: :profile_expectancy %>
-  </div>
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textinput">
+        <%= form.label :expectancy, "¿Qué esperas del evento? ¿En qué consideras que te puede ayudar?" %>
+      </label>
+      <div class="col-md-4">
+        <%= form.text_field :expectancy, id: :profile_expectancy, class: 'form-control input-md' %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :agile_id %>
-    <%= form.number_field :agile_id, id: :profile_agile_id %>
-  </div>
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textinput">
+        <%= form.label :agileRelation_id, "Si tu relación con la agilidad fuera de una amistad dirías que son:" %>
+      </label>
+      <div class="col-md-4">
+        <%= form.select(:agileRelation_id, AgileRelation.all.collect {|a| [a.name, a.id]},{},{id: :profile_agileRelation_id, class: 'custom-select'}) -%>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :agile_description %>
-    <%= form.text_field :agile_description, id: :profile_agile_description %>
-  </div>
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textinput">
+        <%= form.label :agile_id, "Entendiendo que los cuatro valores del manifiesto son importantes, valiosos
+         y ninguno lo es más que el otro, ¿Cual tomarías si tuvieses que elegir sólo uno?" %>
+      </label>
+      <div class="col-md-4">
+        <%= form.select(:agile_id, Agile.all.collect {|a| [a.name, a.id]},{},{id: :profile_agile_id, class: 'custom-select'}) -%>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :hobbies %>
-    <%= form.text_field :hobbies, id: :profile_hobbies %>
-  </div>
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textinput">
+        <%= form.label :agile_description, "Por qué elegiste este valor?" %><br>
+        <small>Cuéntanos qué más hay en tu cabeza</small>
+      </label>
+      <div class="col-md-4">
+        <%= form.text_area :agile_description, id: :profile_agile_description, class: 'form-control input-md' %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :bring %>
-    <%= form.text_field :bring, id: :profile_bring %>
-  </div>
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textinput">
+        <%= form.label :hobbies, "¿Cuáles son tus intereses? ¿Tocas instrumentos?
+         ¿Haces deporte? ¿Tienes algún hobby?" %><br>
+        <small>En general, menciona aquello que te interesa. No necesariamente tiene que
+          estar relacionado al AOC. Queremos saber cuáles son las cosas que te encantan, además de la agilidad.</small>
+      </label>
+      <div class="col-md-4">
+        <%= form.text_area :hobbies, id: :profile_hobbies, class: 'form-control input-md' %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :proposal %>
-    <%= form.text_field :proposal, id: :profile_proposal %>
-  </div>
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textinput">
+        <%= form.label :bring, 'Cuéntanos qué "cosas" podrías traer al evento:' %><br>
+        <small>Instrumentos, parlantes, juegos, pelotas... ¡lo que sea!</small>
+      </label>
+      <div class="col-md-4">
+        <%= form.text_area :bring, id: :profile_bring, class: 'form-control input-md' %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :bio %>
-    <%= form.text_field :bio, id: :profile_bio %>
-  </div>
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textinput">
+        <%= form.label :proposal, '¿Te gustaría hacer alguna propuesta que
+        quieras llevar adelante para que éste sea un gran evento?' %><br>
+        <small>No es obligación y no hay límites. Te invitamos a escribir
+          una propuesta para hacer del evento un momento inolvidable.
+          También podés escribir una idea inicial para que pienses en ello
+          y elabores algo para realizar durante el evento.</small>
+      </label>
+      <div class="col-md-4">
+        <%= form.text_area :proposal, id: :profile_proposal, class: 'form-control input-md' %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :agileRelation_id %>
-    <%= form.number_field :agileRelation_id, id: :profile_agileRelation_id %>
-  </div>
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textinput">
+        <%= form.label :bio, 'Cuéntanos más sobre ti:' %><br>
+        <small>Cualquier cosa que ayude a que te conozcamos mejor y
+          que sientas que no pudiste contar con las respuestas anteriores.
+          Formación, qué objetivo persigues diariamente con tu trabajo, familia,
+          algo que creas que puedes brindar al evento, etc.</small>
+      </label>
+      <div class="col-md-4">
+        <%= form.text_area :bio, id: :profile_bio, class: 'form-control input-md' %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :gender_id %>
-    <%= form.number_field :gender_id, id: :profile_gender_id %>
-  </div>
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textinput">
+        <%= form.label :gender_id, "¿Qué corte de camiseta prefieres?" %>
+      </label>
+      <div class="col-md-4">
+        <%= form.select(:gender_id, Gender.all.collect {|a| [a.name, a.id]},{},{id: :profile_gender_id, class: 'custom-select'}) -%>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :size_id %>
-    <%= form.number_field :size_id, id: :profile_size_id %>
-  </div>
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textinput">
+        <%= form.label :size_id, "¿Qué talla de camiseta prefieres?" %>
+      </label>
+      <div class="col-md-4">
+        <%= form.select(:size_id, Size.all.collect {|a| [a.name, a.id]},{},{id: :profile_size_id, class: 'custom-select'}) -%>
+      </div>
+    </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <p class="col-md-4">¡Gracias por tu interés en AOC Colombia 2018 ! </p>
+    <p class="col-md-4">
+      No olvides hacer clic en
+      "¡Quiero postularme para asistir al Agile Open Camp!"
+      para terminar el proceso.
+    </p>
+    <p class="col-md-4">
+      Estaremos en contacto contigo vía email y mediante nuestras redes sociales. Encuéntranos en:
+      Facebook: https://www.facebook.com/AgileOpenCamp/
+      Twitter: @AgileOpenCamp</p>
+
+    <div class="form-group">
+      <div class="col-md-4">
+        <%= form.submit "¡Quiero postularme para asistir al Agile Open Camp!", class: "btn btn-primary" %>
+      </div>
+    </div>
+  </fieldset>
 <% end %>

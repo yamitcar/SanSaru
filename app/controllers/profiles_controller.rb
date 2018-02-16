@@ -1,7 +1,8 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
+  before_action :require_login
 
-  # GET /profiles
+    # GET /profiles
   # GET /profiles.json
   def index
     @profiles = Profile.all
@@ -14,12 +15,9 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/new
   def new
-    @profile = Profile.new
+    @profile = current_user.profile || Profile.new
   end
 
-  # GET /profiles/1/edit
-  def edit
-  end
 
   # POST /profiles
   # POST /profiles.json
@@ -28,6 +26,8 @@ class ProfilesController < ApplicationController
 
     respond_to do |format|
       if @profile.save
+        current_user.profile = @profile
+        current_user.save!
         format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
         format.json { render :show, status: :created, location: @profile }
       else
@@ -65,6 +65,14 @@ class ProfilesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_profile
       @profile = Profile.find(params[:id])
+    end
+
+    def require_login
+      unless user_signed_in?
+        #TODO flash doesnt work
+        flash[:error] = "debes estar logueado para ver esto"
+        redirect_to new_user_session_path
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
