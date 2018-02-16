@@ -8,11 +8,6 @@ class ProfilesController < ApplicationController
     @profiles = Profile.all
   end
 
-  # GET /profiles/1
-  # GET /profiles/1.json
-  def show
-  end
-
   # GET /profiles/new
   def new
     @profile = current_user.profile || Profile.new
@@ -28,8 +23,8 @@ class ProfilesController < ApplicationController
       if @profile.save
         current_user.profile = @profile
         current_user.save!
-        format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
-        format.json { render :show, status: :created, location: @profile }
+        format.html { redirect_to '/home', notice: 'Profile was successfully created.' }
+        format.json { render '/home', status: :created, location: @profile }
       else
         format.html { render :new }
         format.json { render json: @profile.errors, status: :unprocessable_entity }
@@ -42,8 +37,8 @@ class ProfilesController < ApplicationController
   def update
     respond_to do |format|
       if @profile.update(profile_params)
-        format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
-        format.json { render :show, status: :ok, location: @profile }
+        format.html { redirect_to '/home', notice: 'Profile was successfully updated.' }
+        format.json { render '/home', status: :ok, location: @profile }
       else
         format.html { render :edit }
         format.json { render json: @profile.errors, status: :unprocessable_entity }

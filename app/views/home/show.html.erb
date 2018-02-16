@@ -8,15 +8,91 @@
     </h1>
   </div>
 </div>
-
 <div class="row">
   <div class="col-md-4 offset-md-4">
-    <%= form_tag("/profiles/new", method: "get") do %>
-      <%= submit_tag("Completar postulación", class: "btn btn-primary") %>
-    <% end %>
-  </div>
+<% if @user.profile %>
+  <% @profile = @user.profile %>
+      <p id="notice"><%= notice %></p>
 
+      <p>
+        <strong>Recides en:</strong>
+        <%= @profile.residence %>
+      </p>
+
+      <p>
+        <strong>primera vez en el AoC:</strong>
+        <%= @profile.first_time %>
+      </p>
+
+      <p>
+        <strong>Expectativas:</strong>
+        <%= @profile.expectancy %>
+      </p>
+
+      <p>
+        <strong>Tu valor preferido:</strong>
+        <%= Agile.find(@profile.agile_id).name %>
+      </p>
+
+      <p>
+        <strong>por que lo elejiste:</strong>
+        <%= @profile.agile_description %>
+      </p>
+
+      <p>
+        <strong>Hobbies:</strong>
+        <%= @profile.hobbies %>
+      </p>
+
+      <p>
+        <strong>lo que traes:</strong>
+        <%= @profile.bring %>
+      </p>
+
+      <p>
+        <strong>alguna propuesta?:</strong>
+        <%= @profile.proposal %>
+      </p>
+
+      <p>
+        <strong>Bio:</strong>
+        <%= @profile.bio %>
+      </p>
+
+      <p>
+        <strong>Relacion con la agilidad:</strong>
+        <%= AgileRelation.find(@profile.agileRelation_id).name %>
+      </p>
+
+      <p>
+        <strong>Camiseta de:</strong>
+        <%= Gender.find(@profile.gender_id).name %>
+      </p>
+
+      <p>
+        <strong>Talla:</strong>
+        <%= Size.find(@profile.size_id).name %>
+      </p>
+
+      <%= link_to 'Edit', edit_profile_path(@profile) %>
+
+      <% else %>
+      <div class="row">
+        <p> Recuerda que debes completar tu postulación para tener la posibilidad de asistir al AoC -Colombia</p>
+        <div class="col-md-4 offset-md-4">
+          <%= form_tag("/profiles/new", method: "get") do %>
+            <%= submit_tag("Completar postulación", class: "btn btn-primary") %>
+          <% end %>
+        </div>
+      </div>
+
+  <% end %>
+
+
+  </div>
 </div>
+
+
 
 <br>
 
