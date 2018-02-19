@@ -1,14 +1,52 @@
-<div class="row">
-  <div class="col-md-4">
-       <%= gravatar_for @user %>
+  <div class="row panel">
+    <div class="col-md-2">
+      <%= gravatar_for @user %>
+      <br>
+    </div>
+    <div class="col-md-8  col-xs-12">
+      <div class="header">
+        <h1><%= @user.name %> <%= @user.lastname %></h1>
+        <% if @user.profile %>
+          <h4>Biografía</h4>
+          <span><%= @user.profile.bio %></span>
+        <% end %>
+      </div>
+    </div>
+
   </div>
-  <div class="col-md-8">
-    <h1>
-      <%= @user.name %> <%= @user.lastname %>
-    </h1>
+
+  <div class="container">
+    <div class="row">
+      <nav class="col-sm-3">
+        <ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="205">
+          <li class="active"><a href="#section1">Section 1</a></li>
+          <li><a href="#section2">Section 2</a></li>
+          <li><a href="#section3">Section 3</a></li>
+        </ul>
+      </nav>
+      <div class="col-sm-9">
+        <h1>Some text to enable scrolling</h1>
+        <h1>Some text to enable scrolling</h1>
+        <h1>Some text to enable scrolling</h1>
+        <h1>Some text to enable scrolling</h1>
+        <h1>Some text to enable scrolling</h1>
+        <h1>Some text to enable scrolling</h1>
+        <h1>Some text to enable scrolling</h1>
+        <h1>Some text to enable scrolling</h1>
+        <h1>Some text to enable scrolling</h1>
+        <h1>Some text to enable scrolling</h1>
+        <h1>Some text to enable scrolling</h1>
+        <h1>Some text to enable scrolling</h1>
+        <h1>Some text to enable scrolling</h1>
+        <h1>Some text to enable scrolling</h1>
+      </div>
+    </div>
   </div>
-</div>
-<div class="row">
+
+
+
+
+  <div class="row">
   <div class="col-md-4 offset-md-4">
 <% if @user.profile %>
   <% @profile = @user.profile %>
@@ -52,11 +90,6 @@
       <p>
         <strong>alguna propuesta?:</strong>
         <%= @profile.proposal %>
-      </p>
-
-      <p>
-        <strong>Bio:</strong>
-        <%= @profile.bio %>
       </p>
 
       <p>
