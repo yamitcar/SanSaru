@@ -50,9 +50,7 @@
   </div>
   <div class="col-sm-9 mx-auto">
     <% if @user.profile %>
-      <div class="row align-self-center">
-        <p id="notice"><%= notice %></p>
-
+      <br>
         <h3 id="bio">Biografía</h3>
         <p>
           <%= @user.profile.bio %>
@@ -67,7 +65,6 @@
         <p>
           <%= @profile.expectancy %>
         </p>
-
         <h3 id="agile">Relacion con la agilidad </h3>
         <p>
           <%= AgileRelation.find(@profile.agileRelation_id).name %>
@@ -82,7 +79,6 @@
           <strong>Elejido por:</strong>
           <%= @profile.agile_description %>
         </p>
-
         <h3 id="traes">Trae al evento</h3>
         <p>
           <%= @profile.bring %>
@@ -92,7 +88,7 @@
           <strong>alguna propuesta?:</strong>
           <%= @profile.proposal %>
         </p>
-      </div>
+
       <% else %>
         <div class="row">
           <p> Recuerda que debes completar tu postulación para tener la posibilidad de asistir al AoC -Colombia</p>
@@ -103,6 +99,6 @@
           </div>
         </div>
       <% end %>
-    </div>
+  </div>
 </div>
 
