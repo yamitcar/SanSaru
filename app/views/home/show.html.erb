@@ -1,131 +1,108 @@
-  <div class="row panel">
-    <div class="col-md-2">
+<div class="row">
+  <div class="col-sm-3">
+    <br>
+    <div class="row justify-content-md-center">
       <%= gravatar_for @user %>
+    </div>
+    <div class="row justify-content-md-center">
+      <h1><%= @user.name %> <%= @user.lastname %></h1>
+    </div>
+    <% if @user.profile %>
+      <% @profile = @user.profile %>
+      <div class="row justify-content-md-center">
+        <h4> <%= @profile.residence %> </h4>
+      </div>
+      <div class="row justify-content-md-center">
+        <h4>Primera vez en un AoC:
+          <% if @profile.first_time %>
+            Si
+            <% else %>
+            No
+            <% end %>
+        </h4>
+      </div>
+      <div class="row justify-content-md-center">
+        <h6>Camiseta de <%= Gender.find(@profile.gender_id).name %></h6>
+      </div>
+      <div class="row justify-content-md-center">
+        <h6>Talla <%= Size.find(@profile.size_id).name %></h6>
+      </div>
       <br>
-    </div>
-    <div class="col-md-8  col-xs-12">
-      <div class="header">
-        <h1><%= @user.name %> <%= @user.lastname %></h1>
-        <% if @user.profile %>
-          <h4>Biografía</h4>
-          <span><%= @user.profile.bio %></span>
-        <% end %>
+      <div class="row justify-content-md-center">
+        <a class="btn btn-link" href="#bio">Biografía</a>
       </div>
-    </div>
-
-  </div>
-
-  <div class="container">
-    <div class="row">
-      <nav class="col-sm-3">
-        <ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="205">
-          <li class="active"><a href="#section1">Section 1</a></li>
-          <li><a href="#section2">Section 2</a></li>
-          <li><a href="#section3">Section 3</a></li>
-        </ul>
-      </nav>
-      <div class="col-sm-9">
-        <h1>Some text to enable scrolling</h1>
-        <h1>Some text to enable scrolling</h1>
-        <h1>Some text to enable scrolling</h1>
-        <h1>Some text to enable scrolling</h1>
-        <h1>Some text to enable scrolling</h1>
-        <h1>Some text to enable scrolling</h1>
-        <h1>Some text to enable scrolling</h1>
-        <h1>Some text to enable scrolling</h1>
-        <h1>Some text to enable scrolling</h1>
-        <h1>Some text to enable scrolling</h1>
-        <h1>Some text to enable scrolling</h1>
-        <h1>Some text to enable scrolling</h1>
-        <h1>Some text to enable scrolling</h1>
-        <h1>Some text to enable scrolling</h1>
+      <div class="row justify-content-md-center">
+        <a class="btn btn-link" href="#expectativas">Expectativas</a>
       </div>
-    </div>
-  </div>
-
-
-
-
-  <div class="row">
-  <div class="col-md-4 offset-md-4">
-<% if @user.profile %>
-  <% @profile = @user.profile %>
-      <p id="notice"><%= notice %></p>
-
-      <p>
-        <strong>Recides en:</strong>
-        <%= @profile.residence %>
-      </p>
-
-      <p>
-        <strong>primera vez en el AoC:</strong>
-        <%= @profile.first_time %>
-      </p>
-
-      <p>
-        <strong>Expectativas:</strong>
-        <%= @profile.expectancy %>
-      </p>
-
-      <p>
-        <strong>Tu valor preferido:</strong>
-        <%= Agile.find(@profile.agile_id).name %>
-      </p>
-
-      <p>
-        <strong>por que lo elejiste:</strong>
-        <%= @profile.agile_description %>
-      </p>
-
-      <p>
-        <strong>Hobbies:</strong>
-        <%= @profile.hobbies %>
-      </p>
-
-      <p>
-        <strong>lo que traes:</strong>
-        <%= @profile.bring %>
-      </p>
-
-      <p>
-        <strong>alguna propuesta?:</strong>
-        <%= @profile.proposal %>
-      </p>
-
-      <p>
-        <strong>Relacion con la agilidad:</strong>
-        <%= AgileRelation.find(@profile.agileRelation_id).name %>
-      </p>
-
-      <p>
-        <strong>Camiseta de:</strong>
-        <%= Gender.find(@profile.gender_id).name %>
-      </p>
-
-      <p>
-        <strong>Talla:</strong>
-        <%= Size.find(@profile.size_id).name %>
-      </p>
-
+      <div class="row justify-content-md-center">
+        <a class="btn btn-link" href="#agile">Relacion con la agilidad</a>
+      </div>
+      <div class="row justify-content-md-center">
+        <a class="btn btn-link" href="#traes">Trae al evento</a>
+      </div>
+      <br>
+      <br>
+      <br>
+      <div class="row justify-content-md-center">
       <%= link_to 'Edit', edit_profile_path(@profile) %>
-
-      <% else %>
-      <div class="row">
-        <p> Recuerda que debes completar tu postulación para tener la posibilidad de asistir al AoC -Colombia</p>
-        <div class="col-md-4 offset-md-4">
-          <%= form_tag("/profiles/new", method: "get") do %>
-            <%= submit_tag("Completar postulación", class: "btn btn-primary") %>
-          <% end %>
-        </div>
-      </div>
-
-  <% end %>
-
-
+    </div>
+    <% end %>
   </div>
+  <div class="col-sm-9 mx-auto">
+    <% if @user.profile %>
+      <div class="row align-self-center">
+        <p id="notice"><%= notice %></p>
+
+        <h3 id="bio">Biografía</h3>
+        <p>
+          <%= @user.profile.bio %>
+        </p>
+
+        <p>
+          <strong>Hobbies</strong>
+          <%= @profile.hobbies %>
+        </p>
+
+        <h3 id="expectativas">Expectativas del evento </h3>
+        <p>
+          <%= @profile.expectancy %>
+        </p>
+
+        <h3 id="agile">Relacion con la agilidad </h3>
+        <p>
+          <%= AgileRelation.find(@profile.agileRelation_id).name %>
+        </p>
+
+        <p>
+          <strong>Valor preferido:</strong>
+          <%= Agile.find(@profile.agile_id).name %>
+        </p>
+
+        <p>
+          <strong>Elejido por:</strong>
+          <%= @profile.agile_description %>
+        </p>
+
+        <h3 id="traes">Trae al evento</h3>
+        <p>
+          <%= @profile.bring %>
+        </p>
+
+        <p>
+          <strong>alguna propuesta?:</strong>
+          <%= @profile.proposal %>
+        </p>
+      </div>
+      <% else %>
+        <div class="row">
+          <p> Recuerda que debes completar tu postulación para tener la posibilidad de asistir al AoC -Colombia</p>
+          <div class="col-md-4 offset-md-4">
+            <%= form_tag("/profiles/new", method: "get") do %>
+              <%= submit_tag("Completar postulación", class: "btn btn-primary") %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
 </div>
-
-
-
-<br>
 
