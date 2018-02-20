@@ -26,7 +26,7 @@
       <label class="col-md-4 control-label" for="textinput">
         <%= form.label :first_time, "¿Es la primera vez que participas en un AOC?" %>
       </label>
-      <%= form.check_box :first_time, id: :profile_first_time %>
+      <%= form.select :first_time, [['Si', true], ['No', false]],id: :profile_first_time  %>
     </div>
 
     <div class="form-group">
@@ -34,10 +34,9 @@
         <%= form.label :expectancy, "¿Qué esperas del evento? ¿En qué consideras que te puede ayudar?" %>
       </label>
       <div class="col-md-4">
-        <%= form.text_field :expectancy, id: :profile_expectancy, class: 'form-control input-md' %>
+        <%= form.text_area :expectancy, id: :profile_expectancy, class: 'form-control input-md' %>
       </div>
     </div>
-
     <div class="form-group">
       <label class="col-md-4 control-label" for="textinput">
         <%= form.label :agileRelation_id, "Si tu relación con la agilidad fuera de una amistad dirías que son:" %>
@@ -59,7 +58,7 @@
 
     <div class="form-group">
       <label class="col-md-4 control-label" for="textinput">
-        <%= form.label :agile_description, "Por qué elegiste este valor?" %><br>
+        <%= form.label :agile_description, "¿Por qué elegiste este valor?" %><br>
         <small>Cuéntanos qué más hay en tu cabeza</small>
       </label>
       <div class="col-md-4">
