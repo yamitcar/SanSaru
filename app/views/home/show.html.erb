@@ -5,7 +5,7 @@
       <%= gravatar_for @user %>
     </div>
     <div class="row justify-content-md-center">
-      <h1><%= @user.name %> <%= @user.lastname %></h1>
+      <h2><%= @user.name %> <%= @user.lastname %></h2>
     </div>
     <% if @user.profile %>
       <% @profile = @user.profile %>
@@ -44,7 +44,7 @@
       <br>
       <br>
       <div class="row justify-content-md-center">
-      <%= link_to 'Edit', edit_profile_path(@profile) %>
+      <%= link_to 'Editar postulación', home_edit_path %>
     </div>
     <% end %>
   </div>
@@ -91,9 +91,9 @@
 
       <% else %>
         <div class="row">
-          <p> Recuerda que debes completar tu postulación para tener la posibilidad de asistir al AoC -Colombia</p>
+          <p> Recuerda que debes completar tu postulación para tener la posibilidad de asistir al AoC-Colombia</p>
           <div class="col-md-4 offset-md-4">
-            <%= form_tag("/profiles/new", method: "get") do %>
+            <%= form_tag(home_new_path, method: "get") do %>
               <%= submit_tag("Completar postulación", class: "btn btn-primary") %>
             <% end %>
           </div>

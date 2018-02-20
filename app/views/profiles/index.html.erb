@@ -37,7 +37,6 @@
         <td><%= profile.gender_id %></td>
         <td><%= profile.size_id %></td>
         <td><%= link_to 'Show', profile %></td>
-        <td><%= link_to 'Edit', edit_profile_path(profile) %></td>
         <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -45,5 +44,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Profile', new_profile_path %>
