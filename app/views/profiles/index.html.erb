@@ -1,46 +1,44 @@
-<p id="notice"><%= notice %></p>
+<div class="row align-items-center">
+  <div class="col-md-12">
+    <h1 class="text-center">Postulados</h1>
+    <p id="notice"><%= notice %></p>
+  </div>
+</div>
 
-<h1>Profiles</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Residence</th>
-      <th>First time</th>
-      <th>Expectancy</th>
-      <th>Agile</th>
-      <th>Agile description</th>
-      <th>Hobbies</th>
-      <th>Bring</th>
-      <th>Proposal</th>
-      <th>Bio</th>
-      <th>Agilerelation</th>
-      <th>Gender</th>
-      <th>Size</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @profiles.each do |profile| %>
+<div class="row align-items-center">
+  <div class="col-md-12">
+    <table class="table table-hover">
+      <thead>
       <tr>
-        <td><%= profile.residence %></td>
-        <td><%= profile.first_time %></td>
-        <td><%= profile.expectancy %></td>
-        <td><%= profile.agile_id %></td>
-        <td><%= profile.agile_description %></td>
-        <td><%= profile.hobbies %></td>
-        <td><%= profile.bring %></td>
-        <td><%= profile.proposal %></td>
-        <td><%= profile.bio %></td>
-        <td><%= profile.agileRelation_id %></td>
-        <td><%= profile.gender_id %></td>
-        <td><%= profile.size_id %></td>
-        <td><%= link_to 'Show', profile %></td>
-        <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th scope="col">Nombre</th>
+        <th scope="col">Vive en</th>
+        <th scope="col">Primera vez en el AoC</th>
+        <th scope="col">Biografia</th>
+        <th scope="col" colspan="1"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      </thead>
+
+      <tbody>
+      <% @postulados.each do |postulado| %>
+        <tr>
+          <td><%= postulado.name %> <%= postulado.lastname %> </td>
+          <td><%= postulado.profile.residence %></td>
+          <td><%= postulado.profile.first_time %></td>
+          <td><%= postulado.profile.bio %></td>
+          <td>'Ver detalles'</td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <div class="row align-items-center">
+      <div class="col-md-12 text-center">
+        <%= will_paginate @postulados %>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
 
 <br>

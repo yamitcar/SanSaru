@@ -2,10 +2,9 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: [:destroy]
   before_action :require_login
 
-    # GET /profiles
-  # GET /profiles.json
+
   def index
-    @profiles = Profile.all
+    @postulados = User.where.not(profile_id: [nil]).paginate(:page => params[:page], :per_page => 1)
   end
 
   # DELETE /profiles/1
