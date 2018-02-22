@@ -2,9 +2,12 @@ class HomeController < ApplicationController
 
   before_action :require_login
 
-
   def show
-    @user = current_user
+    if params[:postulado]
+      @user =  User.find(params[:postulado])
+    else
+      @user = current_user
+    end
   end
 
   def edit

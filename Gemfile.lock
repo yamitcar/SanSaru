@@ -245,6 +245,7 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
+    will_paginate (3.1.6)
     xpath (3.0.0)
       nokogiri (~> 1.8)
 
@@ -253,7 +254,7 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
-  bcrypt (= 3.1.11)
+  bcrypt
   bootstrap (= 4.0.0)
   bootswatch
   byebug (= 9.0.6)
@@ -278,6 +279,7 @@ DEPENDENCIES
   validates_email_format_of (= 1.6.3)
   wdm (>= 0.1.0)
   web-console (= 3.5.1)
+  will_paginate
 
 BUNDLED WITH
    1.16.0

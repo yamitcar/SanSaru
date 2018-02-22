@@ -44,7 +44,12 @@
       <br>
       <br>
       <div class="row justify-content-md-center">
-      <%= link_to 'Editar postulación', home_edit_path %>
+
+        <% if params[:postulado] %>
+          <%= link_to 'Atras', profiles_path %>
+        <% else %>
+          <%= link_to 'Editar postulación', home_edit_path %>
+        <% end %>
     </div>
     <% end %>
   </div>
