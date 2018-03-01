@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  #  :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
     before_save { self.email = email.downcase }
     validates :name, presence: true, length: { maximum: 50 }
@@ -13,3 +13,4 @@ class User < ApplicationRecord
 
     belongs_to :profile, required: false
 end
+# TODO poner textos en español y plantillas de email

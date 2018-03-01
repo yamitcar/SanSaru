@@ -20,16 +20,11 @@ on heroku:
     
 #### IMPORTANT: you need to create and admin user!
 
-Finally, run the test suite to verify that everything is working correctly:
-
-```
-$ rails test
-```
 
 If the test suite passes, you'll be ready to run the app in a local server:
 
 ```
-$ rails server
+$ foreman start
 ```
 
 to drop heroku db:
@@ -38,4 +33,4 @@ to drop heroku db:
 
 config on heroku:
 
-heroku config:add GMAIL_PASSWORD=password12345 GMAIL_USERNAME=support@yoururl.com GMAIL_DOMAIN=yoururl.com
+    heroku config:add GMAIL_PASSWORD=password12345 GMAIL_USERNAME=support@yoururl.com GMAIL_DOMAIN=gmail.com
