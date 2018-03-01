@@ -35,3 +35,7 @@ $ rails server
 to drop heroku db:
     
     heroku pg:reset DATABASE_URL
+
+config on heroku:
+
+heroku config:add GMAIL_PASSWORD=password12345 GMAIL_USERNAME=support@yoururl.com GMAIL_DOMAIN=yoururl.com
