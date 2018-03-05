@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180301173849) do
+ActiveRecord::Schema.define(version: 20180305202805) do
 
   create_table "agile_relations", force: :cascade do |t|
     t.string "name", null: false
@@ -24,10 +24,30 @@ ActiveRecord::Schema.define(version: 20180301173849) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "configs", force: :cascade do |t|
+    t.text "name"
+    t.text "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "genders", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "invitations", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "invited_one_id"
+    t.integer "invited_two_id"
+    t.datetime "one_on"
+    t.datetime "two_on"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["invited_one_id"], name: "index_invitations_on_invited_one_id"
+    t.index ["invited_two_id"], name: "index_invitations_on_invited_two_id"
+    t.index ["user_id"], name: "index_invitations_on_user_id", unique: true
   end
 
   create_table "profiles", force: :cascade do |t|

@@ -12,5 +12,7 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
 
     belongs_to :profile, required: false
+    has_one :invitation
 end
 # TODO poner textos en español y plantillas de email
+# #TODO no permitir borrar cuenta
