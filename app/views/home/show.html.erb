@@ -46,14 +46,26 @@
       <br>
       <br>
       <br>
-      <div class="row justify-content-md-center">
+
 
         <% if params[:postulado] %>
-          <%= link_to 'Atrás', profiles_path %>
+          <% if has_invitation? current_user.id %>
+            <div class="row justify-content-md-center">
+              <%= form_tag("/home/invite/#{params[:postulado]}", method: "post") do %>
+              <%= submit_tag("Invitar al evento", class: "btn btn-primary") %>
+            <% end %>
+            </div>
+            <% end %>
+        <br>
+        <div class="row justify-content-md-center">
+            <%= link_to 'Atrás', profiles_path %>
+          </div>
         <% else %>
-          <%= link_to 'Editar postulación', home_edit_path %>
+          <div class="row justify-content-md-center">
+            <%= link_to 'Editar postulación', home_edit_path %>
+          </div>
         <% end %>
-    </div>
+
     <% end %>
   </div>
   <div class="col-sm-9 mx-auto">

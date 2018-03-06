@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   post '/home', to: 'home#create'
   patch '/home', to: 'home#update'
   put '/home/:id', to: 'home#update'
+  post '/home/invite/:invited', to: 'home#invite'
 end

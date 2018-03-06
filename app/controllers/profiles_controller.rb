@@ -4,7 +4,8 @@ class ProfilesController < ApplicationController
 
 
   def index
-    @postulados = User.where.not(profile_id: [nil]).paginate(:page => params[:page], :per_page => 10)
+    @postulados = User.where.not(profile_id: [nil]).where.not(id: current_user.id).
+        where.not('id IN (?)',Invitation.all.map(&:user_id)).paginate(:page => params[:page], :per_page => 10)
   end
 
   # DELETE /profiles/1
