@@ -5,7 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
 Agile.create(name:"Individuos e interacciones sobre procesos y herramientas")
 Agile.create(name:"Software funcionando sobre documentación extensiva")
 Agile.create(name:"Colaboración con el cliente sobre negociación contractual")
@@ -28,7 +27,7 @@ Size.create(name:"L")
 Size.create(name:"XL")
 Size.create(name:"XXL")
 
-Config.create(name: :cupos, value: 80)
+Config.create(name: :invitaciones, value: 80)
 Config.create(name: :eleccion,value: false)
 
 :

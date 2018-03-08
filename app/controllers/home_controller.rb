@@ -16,50 +16,17 @@ class HomeController < ApplicationController
   end
 
   def invite
-    invitation = Invitation.find_by(user_id: current_user.id)
-    if invitation
-      invited = User.find(params[:invited])
-      if invitation.invited_one == nil
-        invitation.invited_one = invited
-        invitation.one_on = Time.now
-      elsif invitation.invited_two == nil
-        invitation.invited_two = invited
-        invitation.two_on = Time.now
-      else
-        error = "Ya invitaste a dos personas"
-      end
-      if invitation.save
-        cupos = Config.find_by(name: :cupos)
-        value = cupos.value.to_i
-        if value.to_i > 0
-          Invitation.create!(user_id: invited.id)
-          value -= 1
-          cupos.value = value.to_s
-          cupos.save!
-        else
-          "Lo sentimos, ya no tenemos cupos disponibles :'("
-        end
-      else
-        error = "Algo malio sal, intentalo de nuevo"
-      end
-    else
-      error = "No tienes permitido invitar a nadie aún"
-    end
-
+    invited = User.find(params[:invited])
+    error = current_user.invite invited
     #TODO mostrar cantidad de invitaciones restantes
-    #TODO validar que se muestr el boton si hay invitaciones, si no, no
-    # TODO arreglar este spagueti
-
+    #TODO solo debe funcionar si esta activo el periodo de inscripciones
     respond_to do |format|
       if error
-        format.html { redirect_to "/home?postulado=#{params[:invited]}", notice: error }
+        format.html { redirect_to "/home?postulado=#{invited.id}", notice: error }
       else
-        format.html { redirect_to '/profiles', notice: "Has invitado correctamente a #{invitation.invited_one.name} #{invitation.invited_one.lastname}." }
+        format.html { redirect_to '/profiles', notice: "Has invitado correctamente a #{invited.name} #{invited.lastname}." }
       end
-
     end
-
-
   end
 
   # GET /profiles/new
