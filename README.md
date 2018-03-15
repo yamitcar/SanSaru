@@ -33,4 +33,4 @@ to drop heroku db:
 
 config on heroku:
 
-    heroku config:add GMAIL_PASSWORD=password12345 GMAIL_USERNAME=support@yoururl.com GMAIL_DOMAIN=gmail.com
+    heroku config:add MAIL_PASSWORD=password12345 MAIL_USERNAME=support@yoururl.com MAIL_DOMAIN=gmail.com SMTP_ADDR=smtp.gmail.com

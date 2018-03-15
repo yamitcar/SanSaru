@@ -24,6 +24,8 @@ class HomeController < ApplicationController
       if error
         format.html { redirect_to "/home?postulado=#{invited.id}", notice: error }
       else
+        # Tell the AocMailer to send a welcome email after save
+        AocMailer.notify_invitation(invited, current_user).deliver_later
         format.html { redirect_to '/profiles', notice: "Has invitado correctamente a #{invited.name} #{invited.lastname}." }
       end
     end
