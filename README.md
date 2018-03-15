@@ -34,3 +34,8 @@ to drop heroku db:
 config on heroku:
 
     heroku config:add MAIL_PASSWORD=password12345 MAIL_USERNAME=support@yoururl.com MAIL_DOMAIN=gmail.com SMTP_ADDR=smtp.gmail.com
+    
+Las invitaciones solo se podran activar si desde la interfaz administrativa se crean:
+
+    las 3 invitaciones iniciales
+    se activa el perido de invitaciones en las configuraciones. 
