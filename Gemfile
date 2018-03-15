@@ -17,7 +17,7 @@ gem 'bootstrap',    '4.0.0'
 gem 'bootswatch'
 gem 'validates_email_format_of', '1.6.3'
 gem 'bcrypt', platforms: :ruby
-gem 'rails_admin', '~> 1.2'
+gem 'rails_admin', '~> 1.3.0'
 gem 'devise'
 gem 'will_paginate'
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
