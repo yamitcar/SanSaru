@@ -11,9 +11,20 @@
           <div class='nav-link'>
           <strong>Bienvenido: <%= current_user.name %>  <%= current_user.lastname %></strong>
           </div>
-        </li> 
+        </li>
     <% end %>
-    </ul>    
+    </ul>
+
+    <% if Config.is_invitation_period_open? %>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <div class='nav-link'>
+            <strong class="text-white">El periodo de invitaciones está abierto y aun contamos con invitaciones: <%= Config.count_invitations %> invitaciones!</strong>
+          </div>
+        </li>
+      </ul>
+    <% end %>
+
     <ul class="navbar-nav navbar-right">
       <% if user_signed_in? %>
         <li class="nav-item">

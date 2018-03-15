@@ -49,18 +49,25 @@
 
 
       <% if params[:postulado] %>
-        <% if has_invitation? current_user.id %>
-          <% if Config.has_invitations? %>
-            <div class="row justify-content-md-center">
-              <%= form_tag("/home/invite/#{params[:postulado]}", method: "post") do %>
-              <%= submit_tag("Invitar al evento", class: "btn btn-primary") %>
-              <% end %>
-            </div>
-          <% else %>
+        <% if current_user.has_invitation? %>
+          <% if Config.is_invitation_period_open? %>
+            <% if Config.has_invitations? %>
               <div class="row justify-content-md-center">
-                <h3>Lo sentimos, ya no tenemos invitaciones disponibles :(</h3>
+                <%= form_tag("/home/invite/#{params[:postulado]}", method: "post") do %>
+                  <%= submit_tag("Invitar al evento", class: "btn btn-primary") %>
+                <% end %>
               </div>
+            <% else %>
+              <div class="row justify-content-md-center">
+                <p class="alert alert-danger">Lo sentimos, ya no tenemos invitaciones disponibles :(</p>
+              </div>
+            <% end %>
+          <% else %>
+            <div class="row justify-content-md-center">
+              <p class="alert alert-danger" role="alert">Lo sentimos, el periodo de invitaciones ya cerro</p>
+            </div>
           <% end %>
+
         <% end %>
       <br>
       <div class="row justify-content-md-center">

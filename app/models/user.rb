@@ -34,6 +34,14 @@ class User < ApplicationRecord
     return error
   end
 
+  def has_invitation?
+    invitation = Invitation.find_by(user_id: self.id)
+    if invitation
+      return (invitation.invited_one==nil or invitation.invited_two == nil)
+    end
+    return false
+  end
+
   private
 
   def formalize_invitation invitation, invited

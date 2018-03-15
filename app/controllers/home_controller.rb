@@ -18,8 +18,6 @@ class HomeController < ApplicationController
   def invite
     invited = User.find(params[:invited])
     error = current_user.invite invited
-    #TODO mostrar cantidad de invitaciones restantes
-    #TODO solo debe funcionar si esta activo el periodo de inscripciones
     respond_to do |format|
       if error
         format.html { redirect_to "/home?postulado=#{invited.id}", notice: error }
@@ -64,15 +62,10 @@ class HomeController < ApplicationController
     end
   end
 
-  def has_invitation? user_id
-    invitation = Invitation.find_by(user_id: user_id)
-    if invitation
-      return (invitation.invited_one==nil or invitation.invited_two == nil)
-    end
-    return false
-  end
+#  def has_invitation? user_id
+# end
 
-  helper_method :has_invitation?
+  #helper_method :has_invitation?
 
   private
 
