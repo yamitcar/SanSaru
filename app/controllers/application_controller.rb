@@ -12,4 +12,12 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(user)
     '/home'
   end
+
+  def require_login
+    unless user_signed_in?
+      #TODO flash doesnt work
+      flash[:error] = "debes estar logueado para ver esto"
+      redirect_to new_user_session_path
+    end
+  end
 end

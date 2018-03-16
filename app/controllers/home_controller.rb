@@ -69,14 +69,6 @@ class HomeController < ApplicationController
 
   private
 
-  def require_login
-    unless user_signed_in?
-      #TODO flash doesnt work
-      flash[:error] = "debes estar logueado para ver esto"
-      redirect_to new_user_session_path
-    end
-  end
-
   # Never trust parameters from the scary internet, only allow the white list through.
   def profile_params
     params.require(:profile).permit(:residence, :first_time, :expectancy, :agile_id, :agile_description, :hobbies, :bring, :proposal, :bio, :agileRelation_id, :gender_id, :size_id)

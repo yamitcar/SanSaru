@@ -221,9 +221,9 @@ var treeData = [
         url: 'data',
         dataType: 'json',
         success: function (data) {
-            draw(data,'.treeOne',treeOne);
-            draw(data,'.treeTwo',treeTwo);
-            draw(data,'.treeThree',treeThree);
+            draw(data.treeOne,'.treeOne',treeOne);
+            draw(treeData[0],'.treeTwo',treeTwo);
+            draw(treeData[0],'.treeThree',treeThree);
         },
         error: function (result) {
             error(result);
@@ -272,7 +272,7 @@ function draw(data,div,treeObj) {
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    treeObj.root = treeData[0];
+    treeObj.root = data;
     treeObj.root.x0 = height / 2;
     treeObj.root.y0 = 0;
 
@@ -375,7 +375,6 @@ function update(source,treeObj) {
 
 // Toggle children on click.
 function click(d,treeObj) {
-    console.log(d)
     if (d.children) {
         d._children = d.children;
         d.children = null;
