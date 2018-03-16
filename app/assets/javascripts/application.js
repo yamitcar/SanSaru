@@ -16,32 +16,5 @@
 //= require bootstrap-sprockets
 //= require rails-ujs
 //= require turbolinks
-//= require d3
 //= require_tree .
 
-$.ajax({
-    type: "GET",
-    contentType: "application/json; charset=utf-8",
-    url: 'data',
-    dataType: 'json',
-    success: function (data) {
-        draw(data);
-    },
-    error: function (result) {
-        error(result);
-    }
-});
-
-function draw(data) {
-    d3.select(".chart")
-        .selectAll("div")
-        .data(data)
-        .enter()
-        .append("div")
-        .style("width", function(d) { return d + "px"; })
-        .text(function(d) { return d; });
-}
-
-function error(result) {
-    console.log(result)
-}

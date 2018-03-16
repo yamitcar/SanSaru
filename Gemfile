@@ -21,7 +21,6 @@ gem 'rails_admin', '~> 1.3.0'
 gem 'devise'
 gem 'will_paginate'
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
-gem 'd3-rails'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'
