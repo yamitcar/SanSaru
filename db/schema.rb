@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180305202805) do
+ActiveRecord::Schema.define(version: 20180319162907) do
 
   create_table "agile_relations", force: :cascade do |t|
     t.string "name", null: false
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20180305202805) do
     t.datetime "two_on"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "monkey", default: false
     t.index ["invited_one_id"], name: "index_invitations_on_invited_one_id"
     t.index ["invited_two_id"], name: "index_invitations_on_invited_two_id"
     t.index ["user_id"], name: "index_invitations_on_user_id", unique: true

@@ -19,7 +19,8 @@
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
           <div class='nav-link'>
-            <strong class="text-white">El periodo de invitaciones está abierto y aun contamos con invitaciones: <%= Config.count_invitations %> invitaciones!</strong>
+            <%= link_to "El periodo de invitaciones está abierto y contamos con invitaciones: #{Config.count_invitations} invitaciones!",
+                        '/graph/index', :class => 'nav-link', method: :get %>
           </div>
         </li>
       </ul>

@@ -1,234 +1,24 @@
-var treeData = [
-    {
-        "name": "Camilo Velasquez",
-        "parent": "null",
-        "children": [
-            {
-                "name": "Yamit Cardenas",
-                "parent": "Camilo Velasquez",
-                "children": [
-                    {
-                        "name": "Ali Cate",
-                        "parent": "Yamit Cardenas",
-                        "children": [
-                            {
-                              "name": "A1",
-                                "parent": "Ali Cate",
-                                "children": [
-                                    {
-                                        "name": "B1",
-                                        "parent": "A1",
-                                        "children": [
-                                            {
-                                                "name": "C1",
-                                                "parent": "B1",
-                                                "children": [
-                                                    {
-                                                        "name": "D1",
-                                                        "parent": "C1"
-                                                    },
-                                                    {
-                                                        "name": "D2",
-                                                        "parent": "C2"
-                                                    }
-                                                ]
-                                            },
-                                            {
-                                                "name": "C2",
-                                                "parent": "B1"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "name": "B2",
-                                        "parent": "A1"
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "A2",
-                                "parent": "Ali Cate",
-                                "children": [
-                                    {
-                                        "name": "B1",
-                                        "parent": "A1",
-                                        "children": [
-                                            {
-                                                "name": "C1",
-                                                "parent": "B1",
-                                                "children": [
-                                                    {
-                                                        "name": "D1",
-                                                        "parent": "C1"
-                                                    },
-                                                    {
-                                                        "name": "D2",
-                                                        "parent": "C2"
-                                                    }
-                                                ]
-                                            },
-                                            {
-                                                "name": "C2",
-                                                "parent": "B1"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "name": "B2",
-                                        "parent": "A1"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "name": "Alan Brito",
-                        "parent": "Yamit Cardenas"
-                    }
-                ]
-            },
-            {
-                "name": "Jose Jose",
-                "parent": "Camilo Velasquez",
-                "children": [
-                    {
-                        "name": "B1",
-                        "parent": "A1",
-                        "children": [
-                            {
-                                "name": "C1",
-                                "parent": "B1",
-                                "children": [
-                                    {
-                                        "name": "D1",
-                                        "parent": "C1",
-                                        "children": [
-                                            {
-                                                "name": "B1",
-                                                "parent": "A1",
-                                                "children": [
-                                                    {
-                                                        "name": "C1",
-                                                        "parent": "B1",
-                                                        "children": [
-                                                            {
-                                                                "name": "D1",
-                                                                "parent": "C1"
-                                                            },
-                                                            {
-                                                                "name": "D2",
-                                                                "parent": "C2"
-                                                            }
-                                                        ]
-                                                    },
-                                                    {
-                                                        "name": "C2",
-                                                        "parent": "B1"
-                                                    }
-                                                ]
-                                            },
-                                            {
-                                                "name": "B2",
-                                                "parent": "A1"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "name": "D2",
-                                        "parent": "C2"
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "C2",
-                                "parent": "B1"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "B2",
-                        "parent": "A1",
-                        "children": [
-                            {
-                                "name": "B1",
-                                "parent": "A1",
-                                "children": [
-                                    {
-                                        "name": "C1",
-                                        "parent": "B1",
-                                        "children": [
-                                            {
-                                                "name": "D1",
-                                                "parent": "C1"
-                                            },
-                                            {
-                                                "name": "D2",
-                                                "parent": "C2"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "name": "C2",
-                                        "parent": "B1"
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "B2",
-                                "parent": "A1",
-                                "children": [
-                                    {
-                                        "name": "B1",
-                                        "parent": "A1",
-                                        "children": [
-                                            {
-                                                "name": "C1",
-                                                "parent": "B1",
-                                                "children": [
-                                                    {
-                                                        "name": "D1",
-                                                        "parent": "C1"
-                                                    },
-                                                    {
-                                                        "name": "D2",
-                                                        "parent": "C2"
-                                                    }
-                                                ]
-                                            },
-                                            {
-                                                "name": "C2",
-                                                "parent": "B1"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "name": "B2",
-                                        "parent": "A1"
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    }
-];
-
+function populate_trees(){
     $.ajax({
         type: "GET",
         contentType: "application/json; charset=utf-8",
         url: 'data',
         dataType: 'json',
         success: function (data) {
-            draw(data.treeOne,'.treeOne',treeOne);
-            draw(treeData[0],'.treeTwo',treeTwo);
-            draw(treeData[0],'.treeThree',treeThree);
+            console.log('called ajax');
+            draw(data[0],'.treeOne',treeOne);
+            draw(data[1],'.treeTwo',treeTwo);
+            draw(data[2],'.treeThree',treeThree);
         },
         error: function (result) {
             error(result);
         }
     });
+}
+
+function error(result) {
+    console.log(result)
+}
 
 var margin = {top: 20, right: 150, bottom: 20, left: 150},
     width = 1100 - margin.right - margin.left,
@@ -255,6 +45,8 @@ var treeThree = {
     svg:null
 }
 
+
+
 function draw(data,div,treeObj) {
 
 // ************** Generate the tree diagram	 *****************
@@ -280,9 +72,7 @@ function draw(data,div,treeObj) {
 
 }
 
-function error(result) {
-    console.log(result)
-}
+
 
 function update(source,treeObj) {
 
