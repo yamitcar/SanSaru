@@ -29,4 +29,4 @@ Size.create(name:"XL")
 Size.create(name:"XXL")
 
 Config.create(name: :invitaciones, value: 80)
-Config.create(name: :eleccion,value: false)
+Config.create(name: :eleccion,value: 'false')
