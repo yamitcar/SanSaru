@@ -42,6 +42,14 @@ class User < ApplicationRecord
     return false
   end
 
+  def was_pay?
+    Invitation.find_by(user_id: self.id).payed
+  end
+
+  def was_invite?
+    Invitation.all.map(&:user_id).index self.id
+  end
+
   private
 
   def formalize_invitation invitation, invited
@@ -58,6 +66,8 @@ class User < ApplicationRecord
       Invitation.create!(user_id: invited.id)
   end
 
+
+
 end
 # TODO poner textos en español y plantillas de email
-# #TODO no permitir borrar cuenta
+# TODO no permitir borrar cuenta

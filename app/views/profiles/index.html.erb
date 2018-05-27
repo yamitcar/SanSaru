@@ -20,7 +20,9 @@
 
       <tbody>
       <% @postulados.each do |postulado| %>
-        <tr>
+        <%  invitados = Invitation.all.map(&:user_id) %>
+        <tr style="
+        background-color: <%= invitados.index(postulado.id) ? 'lightcyan;' : 'white;' %>">
           <td><%= postulado.name %> <%= postulado.lastname %> </td>
           <td><%= postulado.profile.residence %></td>
           <td> <% if postulado.profile.first_time %>
