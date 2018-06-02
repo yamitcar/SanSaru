@@ -47,44 +47,24 @@
       <br>
       <br>
 
-
       <% if params[:postulado] %>
-        <% if current_user.has_invitation? %>
-          <% if Config.is_invitation_period_open? %>
-            <% if Config.has_invitations? %>
-              <% if current_user.was_pay? %>
-                <% if !@user.was_invite? %>
-                  <div class="row justify-content-md-center">
-                    <%= form_tag("/home/invite/#{params[:postulado]}", method: "post") do %>
-                      <%= submit_tag("Seleccionar", class: "btn btn-primary") %>
-                    <% end %>
-                  </div>
-                <% else %>
-                  <div class="row justify-content-md-center">
-                    <p class="alert alert-warning">Esta persona ya fue seleccionada</p>
-                  </div>
-                <% end %>
-              <% else %>
-                <div class="row justify-content-md-center">
-                  <p class="alert alert-warning">Debes pagar tu entrada antes de poder seleccionar a otras personas.</p>
-                </div>
-              <% end %>
-            <% else %>
-              <div class="row justify-content-md-center">
-                <p class="alert alert-danger">Lo sentimos, ya no tenemos invitaciones disponibles :(</p>
-              </div>
+        <% result,message = can_invite? current_user %>
+        <% if result %>
+          <div class="row justify-content-md-center">
+            <%= form_tag("/home/invite/#{params[:postulado]}", method: "post") do %>
+            <%= submit_tag("Seleccionar", class: "btn btn-primary") %>
             <% end %>
-          <% else %>
-            <div class="row justify-content-md-center">
-              <p class="alert alert-danger" role="alert">Lo sentimos, el periodo de seleccion esta cerrado</p>
-            </div>
-          <% end %>
-
+          </div>
+        <% else %>
+          <div class="row justify-content-md-center">
+            <p class="alert alert-warning"><%= message %></p>
+          </div>
+        <br>
+        <div class="row justify-content-md-center">
+            <%= link_to 'Atrás', profiles_path %>
+          </div>
         <% end %>
-      <br>
-      <div class="row justify-content-md-center">
-          <%= link_to 'Atrás', profiles_path %>
-        </div>
+
       <% else %>
         <div class="row justify-content-md-center">
           <%= link_to 'Editar postulación', home_edit_path %>

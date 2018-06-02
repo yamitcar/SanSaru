@@ -1,6 +1,34 @@
 class HomeController < ApplicationController
 
   before_action :require_login
+  helper_method :can_invite?
+
+  def can_invite? current_user
+
+    if !Config.is_invitation_period_open?
+      return false,"El periodo de seleccion esta cerrado"
+    end
+
+    if !Config.has_invitations?
+      return false,"Lo sentimos, ya no tenemos invitaciones disponibles :("
+    end
+
+    if !current_user.was_pay?
+      return false,"Debes pagar tu entrada antes de poder seleccionar a otras personas."
+    end
+
+    if @user.was_invite?
+      return false,"Esta persona ya fue invitada"
+    end
+
+    if !current_user.has_invitation?
+      return false,"No tienes invitaciones disponibles"
+    end
+
+    return true,""
+
+
+end
 
   def show
     if params[:postulado]
