@@ -9,4 +9,5 @@ class Profile < ApplicationRecord
     validates :expectancy, presence: true
     validates :agile_description, presence: true
     validates :bio, presence: true
+    validates :phonenumber, presence: true
 end

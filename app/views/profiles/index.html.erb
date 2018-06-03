@@ -10,6 +10,7 @@
     <table class="table table-hover">
       <thead>
       <tr>
+        <th scope="col">Organizador</th>
         <th scope="col">Nombre</th>
         <th scope="col">Vive en</th>
         <th scope="col">Primera vez en el AoC?</th>
@@ -23,6 +24,11 @@
         <%  invitados = Invitation.all.map(&:user_id) %>
         <tr style="
         background-color: <%= invitados.index(postulado.id) ? 'lightcyan;' : 'white;' %>">
+          <td>
+            <% if postulado.organizer %>
+              &#9889;
+            <% end %>
+          </td>
           <td><%= postulado.name %> <%= postulado.lastname %> </td>
           <td><%= CS.get[postulado.profile.country.to_sym ]%>,
             <%= CS.get(postulado.profile.country)[postulado.profile.state.to_sym]%>,

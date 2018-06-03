@@ -192,6 +192,26 @@
         <%= form.select(:size_id, Size.all.collect {|a| [a.name, a.id]},{},{id: :profile_size_id, class: 'custom-select'}) -%>
       </div>
     </div>
+
+    <div class="form-group row">
+      <label class="col-md-5 control-label" for="textinput">
+        <%= form.label :phonenumber, 'Dejanos tu numero de telefono' %><br>
+        </label>
+        <div class="col-md-7">
+          <%= form.text_field :phonenumber, id: :profile_phonenumber, class: 'form-control input-md' %>
+        </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-md-5 control-label" for="textinput">
+        <%= form.label :telegram, 'id de telegram:' %><br>
+        <small>Solemos usar Telegram para comunicarnos, si no lo tienes, es una buena idea instalarlo en tu movil.</small>
+      </label>
+      <div class="col-md-7">
+        <%= form.text_field :telegram, id: :profile_telegram, class: 'form-control input-md' %>
+      </div>
+    </div>
+
     <div class="row align-items-center">
       <p class="col-md-12 text-center">¡Gracias por tu interés en AOC Colombia 2018 ! </p>
     </div>
