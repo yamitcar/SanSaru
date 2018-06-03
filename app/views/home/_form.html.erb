@@ -16,13 +16,69 @@
   <fieldset>
     <div class="form-group row">
       <label class="col-md-5 control-label" for="textinput">
-        <%= form.label :residence, "¿Dónde resides actualmente?" %>
+        <%= form.label :country, "¿Dónde resides actualmente?" %>
         <small>(Ciudad, Provincia o Región, País.)</small>
       </label>
       <div class="col-md-7">
-        <%= form.text_field :residence, id: :profile_residence, class: 'form-control input-md' %>
+        <% countries = CS.get.collect {|a| [a[1], a[0]]} %>
+        <% countries.unshift ['Selecciona tu País',''] %>
+        <%= form.select(:country, countries,{},{id: :countries, class: 'custom-select'}) -%>
+
+        <% states = CS.get(profile.country).collect {|a| [a[1], a[0]]} %>
+        <% states.unshift ['Selecciona tu Región',''] %>
+        <%= form.select(:state, states,{},{id: :states, class: 'custom-select'}) -%>
+
+        <% cities = [] %>
+        <%  CS.get(profile.country,profile.state).each_with_index do |val,index| %>
+          <% cities.push [val,index] %>
+        <% end %>
+        <% cities.unshift ['Selecciona tu ciudad',''] %>
+        <%= form.select(:city, cities,{},{id: :cities, class: 'custom-select'}) -%>
+
       </div>
     </div>
+
+    <script>
+        var country = null
+        $('#countries').change(function () {
+            country = $(this).val();
+            var states = $("#states");
+            if($(this).val() == "") {
+                states.append("");
+            } else {
+                $.getJSON('/cities/' + country, function (data) {
+                    var opt = '<option value="" selected="">Selecciona tu región</option>';
+                    if(data.length == 0){
+                      console.log('ups... consultando region...' + data);
+                    } else {
+                        $.each(data, function(i) {
+                            opt += '<option value='+ i +'>' + data[i] + '</option>';
+                            states.html(opt);
+                        });
+                    }
+                });
+            }
+        });
+
+        $('#states').change(function () {
+            var cities = $("#cities");
+            if($(this).val() == "") {
+                cities.html("");
+            } else {
+                $.getJSON('/cities/' + country + '/' + $(this).val(), function (data) {
+                    var opt = '<option value="" selected="">Selecciona tu ciudad</option>';
+                    if(data.length == 0){
+                        console.log('ups... consultando ciudad...')
+                    } else {
+                        $.each(data, function(i) {
+                            opt += '<option value='+ i +'>' + data[i] + '</option>';
+                            cities.html(opt);
+                        });
+                    }
+                });
+            }
+        });
+    </script>
 
     <div class="form-group row">
       <label class="col-md-5 control-label" for="textinput">

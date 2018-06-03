@@ -14,4 +14,7 @@ Rails.application.routes.draw do
   post '/home/invite/:invited', to: 'home#invite'
   get 'graph/index'
   get 'graph/data', :defaults => { :format => 'json' }
+
+  get 'cities/:country', to: 'divipola#states'
+  get 'cities/:country/:state', to: 'divipola#cities'
 end

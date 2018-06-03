@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180526162907) do
+ActiveRecord::Schema.define(version: 20180603120000) do
 
   create_table "agile_relations", force: :cascade do |t|
     t.string "name", null: false
@@ -53,7 +53,6 @@ ActiveRecord::Schema.define(version: 20180526162907) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.string "residence", null: false
     t.boolean "first_time", null: false
     t.string "expectancy", null: false
     t.integer "agile_id"
@@ -67,6 +66,9 @@ ActiveRecord::Schema.define(version: 20180526162907) do
     t.integer "size_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "country", default: "", null: false
+    t.string "state", default: "", null: false
+    t.string "city", default: "", null: false
     t.index ["agileRelation_id"], name: "index_profiles_on_agileRelation_id"
     t.index ["agile_id"], name: "index_profiles_on_agile_id"
     t.index ["gender_id"], name: "index_profiles_on_gender_id"

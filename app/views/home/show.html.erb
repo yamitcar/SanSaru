@@ -10,7 +10,10 @@
     <% if @user.profile %>
       <% @profile = @user.profile %>
       <div class="row justify-content-md-center">
-        <h4> <%= @profile.residence %> </h4>
+        <h6> <%= CS.get[@profile.country.to_sym ]%>,
+             <%= CS.get(@profile.country)[@profile.state.to_sym]%>,
+             <%= CS.get(@profile.country,@profile.state)[@profile.city.to_i] %>
+        </h6>
       </div>
       <div class="row justify-content-md-center">
         <h4>Primera vez en un AoC:
