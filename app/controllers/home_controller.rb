@@ -13,16 +13,16 @@ class HomeController < ApplicationController
       return false,"Lo sentimos, ya no tenemos invitaciones disponibles :("
     end
 
-    if !current_user.was_pay?
-      return false,"Debes pagar tu entrada antes de poder seleccionar a otras personas."
+    if !current_user.has_invitation?
+      return false,"No tienes invitaciones disponibles"
     end
 
     if @user.was_invite?
       return false,"Esta persona ya fue invitada"
     end
 
-    if !current_user.has_invitation?
-      return false,"No tienes invitaciones disponibles"
+    if !current_user.was_pay?
+      return false,"Debes pagar tu entrada antes de poder seleccionar a otras personas."
     end
 
     return true,""

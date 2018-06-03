@@ -43,7 +43,11 @@ class User < ApplicationRecord
   end
 
   def was_pay?
-    Invitation.find_by(user_id: self.id).payed
+    if has_invitation?
+      Invitation.find_by(user_id: self.id).payed
+    else
+      false
+    end
   end
 
   def was_invite?
