@@ -16,7 +16,7 @@
         </h6>
       </div>
       <div class="row justify-content-md-center">
-        <h4>Primera vez en un AoC:
+        <h4>Primera vez en un AOC:
           <% if @profile.first_time %>
             Si
             <% else %>
@@ -119,7 +119,7 @@
 
       <% else %>
         <div class="row">
-          <p> Recuerda que debes completar tu postulación para tener la posibilidad de asistir al AoC-Colombia</p>
+          <p> Recuerda que debes completar tu postulación para tener la posibilidad de asistir al AOC-Colombia</p>
           <div class="col-md-4 offset-md-4">
             <%= form_tag(home_new_path, method: "get") do %>
               <%= submit_tag("Completar postulación", class: "btn btn-primary") %>
