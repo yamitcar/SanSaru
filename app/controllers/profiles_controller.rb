@@ -5,7 +5,7 @@ class ProfilesController < ApplicationController
 
   def index
     @postulados = User.where.not(profile_id: [nil]).where.not(id: current_user.id).
-        order("organizer DESC").paginate(:page => params[:page], :per_page => 10)
+        order("organizer DESC, created_at ASC").paginate(:page => params[:page], :per_page => 10)
   end
 
   # DELETE /profiles/1
