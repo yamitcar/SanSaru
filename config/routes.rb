@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { confirmations: 'confirmations' }
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'static_pages/home'
-  resources :profiles, :except => [:edit,:new,:create,:update,:show]
+  resources :profiles, :except => [:edit,:new,:create,:update,:show,:destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'static_pages#home'
   get '/home', to: 'home#show'
@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'graph/data', :defaults => { :format => 'json' }
   post '/favorite/add', to: 'favorite#add_favorite'
   post '/favorite/remove', to: 'favorite#remove_favorite'
+  get '/favorite', to: 'profiles#favorites'
 
   get 'cities/:country', to: 'divipola#states'
   get 'cities/:country/:state', to: 'divipola#cities'

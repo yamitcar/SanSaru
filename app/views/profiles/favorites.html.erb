@@ -1,0 +1,66 @@
+<div class="row align-items-center">
+  <div class="col-md-12">
+    <h1 class="text-center">Tus perfiles favoritos</h1>
+    <p id="notice"><%= notice %></p>
+  </div>
+</div>
+
+<div class="row align-items-center">
+  <div class="col-md-12">
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th scope="col">Organizador</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Vive en</th>
+        <th scope="col">Primera vez en el AOC?</th>
+        <th scope="col">Biografia</th>
+        <th scope="col" colspan="1"></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @postulados.each do |postulado| %>
+        <%  invitados = Invitation.all.map(&:user_id) %>
+        <tr style="
+        background-color: <%= invitados.index(postulado.id) ? 'lightcyan;' : 'white;' %>">
+          <td>
+            <% if postulado.organizer %>
+              &#9889;
+            <% end %>
+          </td>
+          <td><%= postulado.name %> <%= postulado.lastname %> </td>
+          <td><%= CS.get[postulado.profile.country.to_sym ]%>,
+            <%= CS.get(postulado.profile.country)[postulado.profile.state.to_sym]%>,
+            <%= CS.get(postulado.profile.country,postulado.profile.state)[postulado.profile.city.to_i] %></td>
+          <td> <% if postulado.profile.first_time %>
+              Si
+            <% else %>
+              No
+            <% end %>
+          </td>
+          <td><%= postulado.profile.bio %></td>
+          <td>
+            <%= link_to "Ver perfil completo", {:controller => "home", :action => "show", :postulado => postulado }%>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <div class="row align-items-center">
+      <div class="col-md-4 offset-md-4 text-center">
+        <%= will_paginate @postulados %>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<style type="text/css">
+  .pagination a, .current, .disabled{
+    font-size: 150%;
+    padding: 2px;
+  }
+</style>
+
+<br>

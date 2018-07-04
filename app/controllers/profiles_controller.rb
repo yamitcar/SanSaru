@@ -8,6 +8,10 @@ class ProfilesController < ApplicationController
         order("organizer DESC, created_at ASC").paginate(:page => params[:page], :per_page => 10)
   end
 
+  def favorites
+    @postulados = current_user.favorites.paginate(:page => params[:page], :per_page => 10)
+  end
+
   # DELETE /profiles/1
   # DELETE /profiles/1.json
   def destroy
