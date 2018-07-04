@@ -13,6 +13,11 @@ class User < ApplicationRecord
 
     belongs_to :profile, required: false
     has_one :invitation
+    has_and_belongs_to_many :favorites,
+                          class_name: "User",
+                          join_table:  :favorites,
+                          foreign_key: :user_id,
+                          association_foreign_key: :favorite_user_id
 
 
   def invite invited
@@ -52,6 +57,10 @@ class User < ApplicationRecord
 
   def was_invite?
     Invitation.all.map(&:user_id).index self.id
+  end
+
+  def is_favorite? user
+    self.favorites.include?(user)
   end
 
   private

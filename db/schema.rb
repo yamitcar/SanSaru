@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180603150000) do
+ActiveRecord::Schema.define(version: 20180704010410) do
 
   create_table "agile_relations", force: :cascade do |t|
     t.string "name", null: false
@@ -29,6 +29,13 @@ ActiveRecord::Schema.define(version: 20180603150000) do
     t.text "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "favorites", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "favorite_user_id"
+    t.index ["favorite_user_id", "user_id"], name: "index_favorites_on_favorite_user_id_and_user_id", unique: true
+    t.index ["user_id", "favorite_user_id"], name: "index_favorites_on_user_id_and_favorite_user_id", unique: true
   end
 
   create_table "genders", force: :cascade do |t|
