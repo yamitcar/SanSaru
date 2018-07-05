@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { confirmations: 'confirmations' }
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'static_pages/home'
+  get '/terms', to: 'static_pages#terms'
+  get '/privacidad', to: 'static_pages#privacidad'
   resources :profiles, :except => [:edit,:new,:create,:update,:show,:destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'static_pages#home'

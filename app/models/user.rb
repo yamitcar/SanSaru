@@ -19,6 +19,8 @@ class User < ApplicationRecord
                           foreign_key: :user_id,
                           association_foreign_key: :favorite_user_id
 
+  attr_accessor :user_ids
+
 
   def invite invited
     invitation = Invitation.find_by(user_id: self.id)
