@@ -5,7 +5,7 @@ function populate_trees(){
         url: 'data',
         dataType: 'json',
         success: function (data) {
-            console.log('called ajax');
+            console.log(treeOne);
             draw(data[0],'.treeOne',treeOne);
             draw(data[1],'.treeTwo',treeTwo);
             draw(data[2],'.treeThree',treeThree);
@@ -97,7 +97,10 @@ function update(source,treeObj) {
 
     nodeEnter.append("circle")
         .attr("r", 1e-6)
-        .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+        .style("fill", function(d) {
+            var color = d.payed ? "#00A354" : "#EC0404"
+            return d._children ? "lightsteelblue" : color;
+        });
 
     nodeEnter.append("text")
         .attr("x", function(d) { return d.children || d._children ? -13 : 13; })
@@ -113,7 +116,10 @@ function update(source,treeObj) {
 
     nodeUpdate.select("circle")
         .attr("r", 10)
-        .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+        .style("fill", function(d) {
+            var color = d.payed ? "#00A354" : "#EC0404"
+            return d._children ? "lightsteelblue" : color;
+        });
 
     nodeUpdate.select("text")
         .style("fill-opacity", 1);
