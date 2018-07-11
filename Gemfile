@@ -18,10 +18,12 @@ gem 'bootswatch'
 gem 'validates_email_format_of', '1.6.3'
 gem 'bcrypt', platforms: :ruby
 gem 'rails_admin', '~> 1.3.0'
+gem 'rails_admin_history_rollback'
 gem 'devise'
 gem 'will_paginate'
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 gem 'city-state'
+gem 'paper_trail'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'
