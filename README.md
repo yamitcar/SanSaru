@@ -1,5 +1,7 @@
 # San-Saru AoC Co 2018
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/e7b16647550a48e4c9a3/maintainability)](https://codeclimate.com/github/yamitcar/SanSaru/maintainability) <a href="https://codeclimate.com/github/yamitcar/SanSaru/test_coverage"><img src="https://api.codeclimate.com/v1/badges/e7b16647550a48e4c9a3/test_coverage" /></a>
+
 ## Getting started
 
 To get started with the app, clone the repo and then install the needed gems:
