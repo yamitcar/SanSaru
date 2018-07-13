@@ -4,11 +4,11 @@ class Config < ApplicationRecord
   validates :value, presence: true
 
   def self.has_invitations?
-    return Config.find_by(name: :invitaciones).value.to_i > 0
+    Config.find_by(name: :invitaciones).value.to_i > 0
   end
 
   def self.count_invitations
-    return Config.find_by(name: :invitaciones).value.to_i
+    Config.find_by(name: :invitaciones).value.to_i
   end
 
   def self.discount_invitation
@@ -19,9 +19,7 @@ class Config < ApplicationRecord
       cupos.value = value.to_s
       cupos.save!
 
-      if value == 0
-        close_invitation_period()
-      end
+      close_invitation_period if value == 0
     else
       raise "Lo sentimos, ya no tenemos cupos disponibles :'("
     end
@@ -34,6 +32,6 @@ class Config < ApplicationRecord
   end
 
   def self.is_invitation_period_open?
-    return Config.find_by(name: :eleccion).value == 'true'
+    Config.find_by(name: :eleccion).value == 'true'
   end
 end

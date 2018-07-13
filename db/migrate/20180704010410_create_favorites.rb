@@ -5,7 +5,7 @@ class CreateFavorites < ActiveRecord::Migration[5.1]
       t.integer :favorite_user_id
     end
 
-    add_index(:favorites, [:user_id, :favorite_user_id], :unique => true)
-    add_index(:favorites, [:favorite_user_id, :user_id], :unique => true)
+    add_index(:favorites, %i[user_id favorite_user_id], unique: true)
+    add_index(:favorites, %i[favorite_user_id user_id], unique: true)
   end
 end

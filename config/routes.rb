@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'static_pages/home'
   get '/terms', to: 'static_pages#terms'
   get '/privacidad', to: 'static_pages#privacidad'
-  resources :profiles, :except => [:edit,:new,:create,:update,:show,:destroy]
+  resources :profiles, except: %i[edit new create update show destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'static_pages#home'
   get '/home', to: 'home#show'
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   put '/home/:id', to: 'home#update'
   post '/home/invite/:invited', to: 'home#invite'
   get 'graph/index'
-  get 'graph/data', :defaults => { :format => 'json' }
+  get 'graph/data', defaults: { format: 'json' }
   post '/favorite/add', to: 'favorite#add_favorite'
   post '/favorite/remove', to: 'favorite#remove_favorite'
   get '/favorite', to: 'profiles#favorites'

@@ -1,7 +1,7 @@
 class CreateAgiles < ActiveRecord::Migration[5.1]
   def change
     create_table :agiles do |t|
-      t.string :name, :null => false
+      t.string :name, null: false
 
       t.timestamps
     end

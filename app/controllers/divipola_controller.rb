@@ -1,6 +1,4 @@
 class DivipolaController < ApplicationController
-
-
   def states
     data = CS.get(params[:country])
     render json: data.to_json

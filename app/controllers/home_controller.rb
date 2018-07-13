@@ -1,41 +1,35 @@
 class HomeController < ApplicationController
-
   before_action :require_login
   helper_method :can_invite?
 
-  def can_invite? current_user
-
-    if !Config.is_invitation_period_open?
-      return false,"El periodo de seleccion esta cerrado"
+  def can_invite?(current_user)
+    unless Config.is_invitation_period_open?
+      return false, 'El periodo de seleccion esta cerrado'
     end
 
-    if !Config.has_invitations?
-      return false,"Lo sentimos, ya no tenemos invitaciones disponibles :("
+    unless Config.has_invitations?
+      return false, 'Lo sentimos, ya no tenemos invitaciones disponibles :('
     end
 
-    if !current_user.has_invitation?
-      return false,"No tienes invitaciones disponibles"
+    unless current_user.has_invitation?
+      return false, 'No tienes invitaciones disponibles'
     end
 
-    if @user.was_invite?
-      return false,"Esta persona ya fue invitada"
+    return false, 'Esta persona ya fue invitada' if @user.was_invite?
+
+    unless current_user.was_pay?
+      return false, 'Debes pagar tu entrada antes de poder seleccionar a otras personas.'
     end
 
-    if !current_user.was_pay?
-      return false,"Debes pagar tu entrada antes de poder seleccionar a otras personas."
-    end
-
-    return true,""
-
-
+    [true, '']
 end
 
   def show
-    if params[:postulado]
-      @user =  User.find(params[:postulado])
-    else
-      @user = current_user
-    end
+    @user = if params[:postulado]
+              User.find(params[:postulado])
+            else
+              current_user
+            end
   end
 
   def edit
@@ -52,7 +46,8 @@ end
       else
         # Tell the AocMailer to send a welcome email after save
         AocMailer.notify_invitation(invited, current_user).deliver_later
-        format.html { redirect_to '/profiles', notice: "Has invitado correctamente a #{invited.name} #{invited.lastname}." }
+        name = "#{invited.name} #{invited.lastname}"
+        format.html { redirect_to '/profiles', notice: "Has invitado correctamente a #{name}." }
       end
     end
   end
@@ -90,16 +85,17 @@ end
     end
   end
 
-#  def has_invitation? user_id
-# end
+  #  def has_invitation? user_id
+  # end
 
-  #helper_method :has_invitation?
+  # helper_method :has_invitation?
 
   private
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def profile_params
-    params.require(:profile).permit(:phonenumber,:telegram,:country,:city,:state, :first_time, :expectancy, :agile_id, :agile_description, :hobbies, :bring, :proposal, :bio, :agileRelation_id, :gender_id, :size_id)
+    params.require(:profile).permit(:phonenumber, :telegram, :country, :city, :state, :first_time,
+                                    :expectancy, :agile_id, :agile_description, :hobbies, :bring, :proposal,
+                                    :bio, :agileRelation_id, :gender_id, :size_id)
   end
-
 end
