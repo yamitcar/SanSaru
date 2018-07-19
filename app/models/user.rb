@@ -20,7 +20,9 @@ class User < ApplicationRecord
                           foreign_key: :user_id,
                           association_foreign_key: :favorite_user_id
 
+  validates :terms_of_service, :acceptance => true
   attr_accessor :user_ids
+
 
   def invite(invited)
     invitation = Invitation.find_by(user_id: id)

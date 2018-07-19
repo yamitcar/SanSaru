@@ -20,8 +20,8 @@ function error(result) {
     console.log(result)
 }
 
-var margin = {top: 20, right: 150, bottom: 20, left: 150},
-    width = 1100 - margin.right - margin.left,
+var margin = {top: 20, right: 150, bottom: 20, left: 200},
+    width = 2000 - margin.right - margin.left,
     height = 800 - margin.top - margin.bottom;
 var i = 0,
     duration = 750;

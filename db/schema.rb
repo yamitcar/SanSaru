@@ -10,125 +10,127 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_180_711_201_919) do
+ActiveRecord::Schema.define(version: 2018_07_19_201919) do
+
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+  enable_extension "plpgsql"
 
-  create_table 'agile_relations', force: :cascade do |t|
-    t.string 'name', null: false
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "agile_relations", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'agiles', force: :cascade do |t|
-    t.string 'name', null: false
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "agiles", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'configs', force: :cascade do |t|
-    t.text 'name'
-    t.text 'value'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "configs", force: :cascade do |t|
+    t.text "name"
+    t.text "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'favorites', id: false, force: :cascade do |t|
-    t.integer 'user_id'
-    t.integer 'favorite_user_id'
-    t.index %w[favorite_user_id user_id], name: 'index_favorites_on_favorite_user_id_and_user_id', unique: true
-    t.index %w[user_id favorite_user_id], name: 'index_favorites_on_user_id_and_favorite_user_id', unique: true
+  create_table "favorites", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "favorite_user_id"
+    t.index ["favorite_user_id", "user_id"], name: "index_favorites_on_favorite_user_id_and_user_id", unique: true
+    t.index ["user_id", "favorite_user_id"], name: "index_favorites_on_user_id_and_favorite_user_id", unique: true
   end
 
-  create_table 'genders', force: :cascade do |t|
-    t.string 'name', null: false
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "genders", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'invitations', force: :cascade do |t|
-    t.bigint 'user_id'
-    t.bigint 'invited_one_id'
-    t.bigint 'invited_two_id'
-    t.datetime 'one_on'
-    t.datetime 'two_on'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.boolean 'monkey', default: false
-    t.boolean 'payed', default: false
-    t.index ['invited_one_id'], name: 'index_invitations_on_invited_one_id'
-    t.index ['invited_two_id'], name: 'index_invitations_on_invited_two_id'
-    t.index ['user_id'], name: 'index_invitations_on_user_id', unique: true
+  create_table "invitations", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "invited_one_id"
+    t.bigint "invited_two_id"
+    t.datetime "one_on"
+    t.datetime "two_on"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "monkey", default: false
+    t.boolean "payed", default: false
+    t.index ["invited_one_id"], name: "index_invitations_on_invited_one_id"
+    t.index ["invited_two_id"], name: "index_invitations_on_invited_two_id"
+    t.index ["user_id"], name: "index_invitations_on_user_id", unique: true
   end
 
-  create_table 'profiles', force: :cascade do |t|
-    t.boolean 'first_time', null: false
-    t.string 'expectancy', null: false
-    t.bigint 'agile_id'
-    t.string 'agile_description', null: false
-    t.string 'hobbies'
-    t.string 'bring'
-    t.string 'proposal'
-    t.string 'bio', null: false
-    t.bigint 'agileRelation_id'
-    t.bigint 'gender_id'
-    t.bigint 'size_id'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.string 'country', default: '', null: false
-    t.string 'state', default: '', null: false
-    t.string 'city', default: '', null: false
-    t.string 'phonenumber', default: '', null: false
-    t.string 'telegram'
-    t.index ['agileRelation_id'], name: 'index_profiles_on_agileRelation_id'
-    t.index ['agile_id'], name: 'index_profiles_on_agile_id'
-    t.index ['gender_id'], name: 'index_profiles_on_gender_id'
-    t.index ['size_id'], name: 'index_profiles_on_size_id'
+  create_table "profiles", force: :cascade do |t|
+    t.boolean "first_time", null: false
+    t.string "expectancy", null: false
+    t.bigint "agile_id"
+    t.string "agile_description", null: false
+    t.string "hobbies"
+    t.string "bring"
+    t.string "proposal"
+    t.string "bio", null: false
+    t.bigint "agileRelation_id"
+    t.bigint "gender_id"
+    t.bigint "size_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "country", default: "", null: false
+    t.string "state", default: "", null: false
+    t.string "city", default: "", null: false
+    t.string "phonenumber", default: "", null: false
+    t.string "telegram"
+    t.index ["agileRelation_id"], name: "index_profiles_on_agileRelation_id"
+    t.index ["agile_id"], name: "index_profiles_on_agile_id"
+    t.index ["gender_id"], name: "index_profiles_on_gender_id"
+    t.index ["size_id"], name: "index_profiles_on_size_id"
   end
 
-  create_table 'sizes', force: :cascade do |t|
-    t.string 'name', null: false
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "sizes", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'users', force: :cascade do |t|
-    t.string 'name', null: false
-    t.string 'lastname', null: false
-    t.string 'email', null: false
-    t.bigint 'profile_id'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.string 'encrypted_password', default: '', null: false
-    t.string 'reset_password_token'
-    t.datetime 'reset_password_sent_at'
-    t.datetime 'remember_created_at'
-    t.integer 'sign_in_count', default: 0, null: false
-    t.datetime 'current_sign_in_at'
-    t.datetime 'last_sign_in_at'
-    t.string 'current_sign_in_ip'
-    t.string 'last_sign_in_ip'
-    t.boolean 'admin', default: false
-    t.string 'confirmation_token'
-    t.datetime 'confirmed_at'
-    t.datetime 'confirmation_sent_at'
-    t.boolean 'organizer', default: false, null: false
-    t.index ['confirmation_token'], name: 'index_users_on_confirmation_token', unique: true
-    t.index ['email'], name: 'index_users_on_email', unique: true
-    t.index ['profile_id'], name: 'index_users_on_profile_id'
-    t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
+  create_table "users", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "lastname", null: false
+    t.string "email", null: false
+    t.bigint "profile_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.boolean "admin", default: false
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.boolean "organizer", default: false, null: false
+    t.boolean "terms_of_service", default: false
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["profile_id"], name: "index_users_on_profile_id"
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table 'versions', force: :cascade do |t|
-    t.string 'item_type', null: false
-    t.integer 'item_id', null: false
-    t.string 'event', null: false
-    t.string 'whodunnit'
-    t.text 'object'
-    t.datetime 'created_at'
-    t.text 'object_changes'
-    t.index %w[item_type item_id], name: 'index_versions_on_item_type_and_item_id'
+  create_table "versions", force: :cascade do |t|
+    t.string "item_type", null: false
+    t.integer "item_id", null: false
+    t.string "event", null: false
+    t.string "whodunnit"
+    t.text "object"
+    t.datetime "created_at"
+    t.text "object_changes"
+    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
-  add_foreign_key 'invitations', 'users'
+  add_foreign_key "invitations", "users"
 end

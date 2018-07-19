@@ -1,5 +1,6 @@
 class GraphController < ApplicationController
   # before_action :require_login
+  layout "graph"
 
   def index; end
 
