@@ -17,16 +17,16 @@ class Invitation < ApplicationRecord
   private
 
   def self.build_node(invitation, parent = nil)
-    name = "#{invitation.user.name} #{invitation.user.lastname}"
+    name = "#{invitation.user.name}"
     node = { name: name, parent: parent, payed: invitation.payed }
     if invitation.invited_one
       son = build_node(Invitation.find_by(user_id: invitation.invited_one.id), name)
-      node[:children] = [son]
+      node[:children].nil? ? node[:children] = [son] : node[:children].push(son)
     end
 
     if invitation.invited_two
       son = build_node(Invitation.find_by(user_id: invitation.invited_two.id), name)
-      node[:children].push(son)
+      node[:children].nil? ? node[:children] = [son] : node[:children].push(son)
     end
 
     node
