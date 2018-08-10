@@ -19,7 +19,7 @@ class Config < ApplicationRecord
       cupos.value = value.to_s
       cupos.save!
 
-      close_invitation_period if value == 0
+      #close_invitation_period if value == 0
     else
       raise "Lo sentimos, ya no tenemos cupos disponibles :'("
     end
