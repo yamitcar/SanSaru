@@ -10,6 +10,30 @@ To get started with the app, clone the repo and then install the needed gems:
 $ bundle install --without production
 ```
 
+parar configurar el ambiente de desarrollo instalar> 
+    
+    Postgres
+    ruby
+    rails
+    
+    dentro de la raiz del proyecto
+    
+    > gem install bundler
+    
+    > bundle install
+    
+    configurar los parametros del db en:
+        config/database.yml
+    
+    > rails db:create
+    
+    
+    para iniciar la app
+    
+    rails s
+    foreman start
+    
+
 Next, migrate the database:
 
 ```
