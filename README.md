@@ -48,4 +48,12 @@ to drop heroku db:
 Las invitaciones solo se podran activar si desde la interfaz administrativa se crean:
 
     las 3 invitaciones iniciales
-    se activa el perido de invitaciones en las configuraciones. 
+    se activa el perido de invitaciones en las configuraciones.
+    
+    
+Query for get all the guests
+
+    SELECT users.id, users.name, lastname, email, country,state,city,phonenumber, genders.name, sizes.name, payed
+      FROM public.users, public.invitations, public.profiles, public.genders,public.sizes
+      WHERE users.id = invitations.user_id and users.profile_id = profiles.id 
+      and profiles.gender_id = genders.id and profiles.size_id = sizes.id;
