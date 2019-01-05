@@ -283,7 +283,6 @@ GEM
       i18n
     warden (1.2.7)
       rack (>= 1.0)
-    wdm (0.1.1)
     web-console (3.5.1)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -329,9 +328,8 @@ DEPENDENCIES
   tzinfo-data
   uglifier (= 3.2.0)
   validates_email_format_of (= 1.6.3)
-  wdm (>= 0.1.0)
   web-console (= 3.5.1)
   will_paginate
 
 BUNDLED WITH
-   1.16.2
+   1.17.1

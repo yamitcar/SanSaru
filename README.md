@@ -50,6 +50,8 @@ If the test suite passes, you'll be ready to run the app in a local server:
 $ foreman start
 ```
     
+Para personalizar la aplicación según las condiciones específicas de cada edición del AOC:
+    - Revisar app/helpers/application_helper.rb
 
     
 Para desplegar en Heroku:
@@ -72,7 +74,7 @@ to drop heroku db:
 Las invitaciones solo se podran activar si desde la interfaz administrativa se crean:
 
     las 3 invitaciones iniciales
-    se activa el perido de invitaciones en las configuraciones.
+    se activa el período de invitaciones en las configuraciones.
     
     
 Query for get all the guests

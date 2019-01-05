@@ -189,7 +189,7 @@
 
       <% else %>
         <div class="row">
-          <p> Recuerda que debes completar tu postulación para tener la posibilidad de asistir al AOC-Colombia</p>
+          <p> Recuerda que debes completar tu postulación para tener la posibilidad de asistir al <%= aoc_name %></p>
           <div class="col-md-4 offset-md-4">
             <%= form_tag(home_new_path, method: "get") do %>
               <%= submit_tag("Completar postulación", class: "btn btn-primary") %>
