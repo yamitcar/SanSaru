@@ -4,7 +4,7 @@ class HomeController < ApplicationController
 
   def can_invite?(current_user)
     unless Config.is_invitation_period_open?
-      return false, 'El periodo de seleccion esta cerrado'
+      return false, 'El período de selección está cerrado'
     end
 
     unless Config.has_invitations?
@@ -22,7 +22,7 @@ class HomeController < ApplicationController
     end
 
     [true, '']
-end
+  end
 
   def show
     @user = if params[:postulado]
@@ -54,6 +54,7 @@ end
 
   # GET /profiles/new
   def new
+    @aoc_name = aoc_name
     @profile = current_user.profile || Profile.new
   end
 

@@ -1,5 +1,6 @@
 module ApplicationHelper
 
+  # Repetir esto en config/initializers/rails_admin.rb, en la llamada a config.main_app_name (porque es previo a esto)
   def aoc_name
     "AOC Bariloche 2019"
   end
