@@ -54,7 +54,7 @@ class HomeController < ApplicationController
 
   # GET /profiles/new
   def new
-    @aoc_name = aoc_name
+    @aoc_name = helpers.aoc_name
     @profile = current_user.profile || Profile.new
   end
 
