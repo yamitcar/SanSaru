@@ -22,6 +22,10 @@ module ApplicationHelper
   end
 
   def aoc_price
+    "USD 300"
+  end
+
+  def aoc_price_ideal
     "USD 150"
   end
 
