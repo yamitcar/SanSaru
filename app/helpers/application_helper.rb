@@ -34,7 +34,7 @@ module ApplicationHelper
   end
 
   def aoc_dates
-    "10 al 14 de abril de 2019"
+    "10 al 13 de abril de 2019"
   end
 
   def aoc_food
