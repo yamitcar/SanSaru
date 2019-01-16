@@ -41,7 +41,7 @@
           </td>
           <td><%= postulado.profile.bio %></td>
           <td>
-            <%= link_to "Ver perfil completo", {:controller => "home", :action => "show", :postulado => postulado }%>
+            <%= link_to "Ver perfil completo", { :controller => "home", :action => "show", :postulado => postulado }, target: "_blank" %>
           </td>
         </tr>
       <% end %>
