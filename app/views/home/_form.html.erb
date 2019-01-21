@@ -181,6 +181,7 @@
       </label>
       <div class="col-md-7">
         <%= form.select(:gender_id, Gender.all.collect {|a| [a.name, a.id]},{},{id: :profile_gender_id, class: 'custom-select'}) -%>
+        <image src="/img/camisetas.png" />
       </div>
     </div>
 
@@ -190,6 +191,18 @@
       </label>
       <div class="col-md-7">
         <%= form.select(:size_id, Size.all.collect {|a| [a.name, a.id]},{},{id: :profile_size_id, class: 'custom-select'}) -%>
+        <table class="table table-hover">
+          <thead>
+            <tr><th scope="col"colspan="2">Recto</th><th> </th><th colspan="2" scope="col">Entallado</th></th></tr>
+          </thead>
+          <tbody>
+            <tr><td>S   </td><td>48 x 67 cm</td><td> </td><td>S   </td><td>43 x 62 cm</td></tr>
+            <tr><td>M   </td><td>50 x 70 cm</td><td> </td><td>M   </td><td>45 x 64 cm</td></tr>
+            <tr><td>L   </td><td>53 x 73 cm</td><td> </td><td>L   </td><td>48 x 67 cm</td></tr>
+            <tr><td>XL  </td><td>56 x 76 cm</td><td> </td><td>XL  </td><td>51 x 70 cm</td></tr>
+            <tr><td>XXL </td><td>59 x 80 cm</td><td> </td><td>XXL </td><td>54 x 73 cm</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
