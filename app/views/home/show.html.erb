@@ -7,6 +7,7 @@
     <div class="row justify-content-md-center">
       <h2><%= @user.name %> <%= @user.lastname %></h2>
     </div>
+
     <% if @user.profile %>
       <% @profile = @user.profile %>
       <div class="row justify-content-md-center">
@@ -15,14 +16,18 @@
              <%= CS.get(@profile.country,@profile.state)[@profile.city.to_i] %>
         </h6>
       </div>
+
       <div class="row justify-content-md-center">
-        <h4>Primera vez en un AOC:
+        <button class="btn btn-primary btn-lg btn-block collapsed" type="button" data-toggle="collapse" data-target="#collapseGravatar" aria-expanded="false" aria-controls="collapseGravatar">¿Cómo agrego mi foto?</button>
+     </div>
+      <div class="row justify-content-md-center">
+        <h6>Primera vez en un AOC:
           <% if @profile.first_time %>
             Si
             <% else %>
             No
             <% end %>
-        </h4>
+        </h6>
       </div>
       <% unless params[:postulado] %>
         <div class="row justify-content-md-center">
@@ -143,12 +148,35 @@
           <%= link_to 'Editar postulación', home_edit_path %>
         </div>
       <% end %>
-
     <% end %>
   </div>
   <div class="col-sm-9 mx-auto">
     <% if @user.profile %>
-      <br>
+      <div class="collapse" id="collapseGravatar" style="">
+        <div class="card card-body">
+          <h3>¿Cómo agrego mi foto?</h3>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <h6>Para conocernos mejor, te invitamos a que completes tu postulación con tu foto</h6>
+                  <p>Pasos:</p>
+                    <ol>
+                  <li>Ingresa a <a href="https://es.gravatar.com" target="_blank">es.gravatar.com</a></li>
+                  <li>Presiona el botón "Regístrate" (junto al logo de WordPress.com arriba a la derecha)</li>
+                  <li>Completa el formulario de registro o continúa con tu cuenta de Google (recomendado). ¡Tienes que usar el mismo correo electrónico con el que te postulaste!</li>
+                  <li>Si ingresaste con Google, ¡Ya está cargada tu foto de perfil! Si no ingresaste con Google o quieres cambiar la foto, presiona Add a new image > Upload new y elige un archivo.</li>
+                  <li>Recorta y centra la imagen (asegurate que se vean bien las miniaturas) elige la clasificación de tu imagen (sugerimos G) </li>
+                  </ol>
+                  <p>¡Y listo! Tu postulación ya posee foto.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <br>
         <h3 id="bio">Biografía</h3>
         <p>
           <%= @user.profile.bio %>
