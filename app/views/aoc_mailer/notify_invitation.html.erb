@@ -4,79 +4,78 @@
   <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
 </head>
 <body>
-<p>¡Hola <%= @invited.name %>!
+<p>¡Hola, <%= @invited.name %>!</p>
 
-<p><%= @host.name %> te ha invitado al <%= aoc_name %></p>
-<p>
-  ¡Felicitaciones! Fuiste seleccionado para participar del <a href="<%= aoc_site %>"><%= aoc_fullname %></a>.
-  A partir de este momento tu lugar en el evento está asegurado y contamos con tu asistencia.
-</p>
-<p>
-  Estos son los pasos a seguir:
+<p>¡Felicitaciones! <%= @host.name %> te ha seleccionado para participar del <%= aoc_fullname %>.</p>
+
+<p>Esta es la secuencia de pasos a seguir a partir de ahora:</p>
+
 <ol>
   <li>
-    <p>
-      Recuerda que para garantizar tu asistencia y continuar con el método de selección debes realizar el pago total de la entrada (<%= aoc_price %>).
-      Tienes un plazo de 4 días hábiles para realizar este adelanto, si no lo haces tu cupo será liberado para que la persona que te invitó, invite a una persona diferente.
-      Por otro lado te pedimos por favor, que si por alguna razón decides no asistir, nos lo hagas saber cuanto antes.
-    </p>
-    <p>Para realizar el pago tenemos varios métodos disponibles:</p>
-    <p>
+    <p>PAGO: Debes realizar el <b>pago de reserva de tu lugar</b>, para lo que tienes 2 opciones:</p>
       <ul>
-        <li>
-          Transferencia nacional:
-
-            <p>Realizar una transferencia a la cuenta de Comfenalco Antioquia,
-              Bancolombia cuenta corriente 00285867940
-              nit 890.900.842-6.
-            </p>
-            <p>
-              Basado en una TRM de 3000 COP.
-            </p>
-          <p>Total a transferir: 640.000 COP</p>
-        </li>
-        <li>
-          Transferencia Internacional:
-          <p><a href="https://www.dropbox.com/sh/pt33swh04zqq7jz/AADSeYcuUaj4Hq-hJAULvq0ua?dl=0">Formato SWIFT</a></p>
-        </li>
-        <li>
-          Paypal (solo funciona para pagos internacionales, si vienes de fuera del país solo pagarás un adelanto de 50 dolares y el valor restante el el hotel a tu ingreso):
-          <br>
-          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-            <input type="hidden" name="cmd" value="_s-xclick">
-            <input type="hidden" name="hosted_button_id" value="3NDB3RCDKKJJC">
-            <input type="image" src="https://www.paypalobjects.com/es_XC/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-            <img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
-          </form>
-        </li>
+        <li>Hacer el <b>pago solidario</b>, es decir el total del costo de tu participación en el evento, que es de $13.500 argentinos. De esta forma, además de reservar tu lugar estás completando el pago, y sobre todo estás ayudando económicamente a este evento.</li>
+        <li>Hacer el <b>pago de la reserva</b>, que es de $2.000 argentinos. El pago del resto de tu inscripción se deberá realizar a más tardar la última semana de marzo (te avisaremos más cerca de la fecha).</li>
 
       </ul>
-    </p>
-  </li>
-  <li> Una vez hayas realizado el pago, envíanos el comprobante respondiendo a este correo. De esta manera habilitaremos en tu perfil de San Saru dos invitaciones para que selecciones a dos personas inscritas (sujeto a disponibilidad de cupos).</li>
-  <li><p>Selecciona a dos personas que quieras que participen en el evento. Te pedimos que en la medida de tus posibilidades, hagas tu selección dentro de los próximos 2 días (una vez estés habilitado para seleccionar)
-    y que intentes basarla en características que consideres que harán del AOC un evento más rico y no solo en amiguismo y/o relaciones personales.</p>
+      <p>Te damos más detalles en esta <a hrefg="https://docs.google.com/document/d/1G4E_JenPRq2shhzOSYpMcGe3Rfv_FQvKkr_7k7ZhJ9M/edit?usp=sharing">explicación ampliada</a> ó en <a href="https://youtu.be/FnsXHhd89Kg">este video</a>.</p>
 
-    <p>
-      <a href="https://youtu.be/trdETdNIl3Q">Aquí</a> encontrarás un instructivo sobre cómo seleccionar.
-    </p>
+      <p><b>¡Importante!</b> Tienes un plazo de 4 días hábiles para realizar este pago. Si no lo haces tu lugar será liberado para que otra persona pueda tomarlo.</p>
+
+      <p>Si decides no asistir, por favor ¡avísanos cuanto antes!</p>
+
+      <p><b>Formas de pago</b>:</p>
+      <ul>
+        <li>Si <b>no tienes</b> cuenta bancaria argentina: <i>avísanos a la brevedad y te llegará un email específico de la organización con el detalle de la forma de pago</i>.</li>
+
+        <li><p>Si tienes cuenta bancaria argentina: debés realizar una transferencia a esta cuenta: </p>
+          <ul>
+            <li>Titular: Hotel Tronador S.A. - CUIT 30-53760762-5</li>
+            <li>Santander Río:  Cuenta Corriente - $(Arg)</li>
+            <li>CBU 07202850-20000000199922</li>
+          </ul>
+        </li>
+      </ul>
+  </li>
+  <li>AVISO DE PAGO: Envía el comprobante de la transferencia respondiendo a este correo y con copia a <a href="mailto:hoteltronador@bariloche.com.ar?subject=AOC+Argentina+2019+Aviso+de+pago&cc=argentina@agileopen.camp">hoteltronador@bariloche.com.ar</a>, detallando en el texto del mail la siguiente información: </li>
+    <ul>
+      <li>Tu nombre completo</li>
+      <li>CUIL / CUIT</li>
+      <li>Domicilio</li>
+      <li>Fecha de la transferencia</li>
+      <li>Monto que transferiste</li>
+      <li>Avisarnos si tenés la intención de hacer <b>pago solidario</b> </li>
+      <li>Tipo de factura que vas a requerir por el pago. Si es A, indicar:
+        <ul>
+          <li>razón social </li>
+          <li>CUIT </li>
+          <li>dirección</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li>
+    <p>SELECCIÓN: Una vez que hayamos comprobado tu pago, se habilitará en tu perfil San Saru la opción para que <a href="https://sansaru2019brc.herokuapp.com/profiles">selecciones a 2 participantes más</a>a> (¡serán tus 2 mon@s!).</p>
+
+    <p><b>¡Importante!</b> Te pedimos que en la medida de tus posibilidades, hagas tu selección dentro de los 2 días siguientes (una vez estés habilitad@ para seleccionar). </p>
+
+    <p><b>¡También muy importante!</b> La selección distribuida de participantes es uno de los procesos clave para hacer de éste un evento inolvidable. Por eso te pedimos que hagas tu elección lo más a conciencia que puedas e intentes basarla en características que consideres importantes para ese propósito, y no sólo en amistades y/o relaciones personales. Puedes ver <a href="https://youtu.be/trdETdNIl3Q">este video instructivo</a> sobre cómo seleccionar (gentileza del AOC Colombia 2018).</p>  
   </li>
 </ol>
 
+<p><b>Notas:</b></p>
+<p>
+<ul>
+  <li><b>Cupo:</b> Sólo 75 personas pueden ser seleccionadas. Una vez completado ese cupo no  podrás seleccionar a nadie más, si no lo hiciste antes.</li>
+  <li><b>Devoluciones:</b> Ten en cuenta que si pagas la reserva y luego decides no asistir al evento no podremos devolverte ese monto. Todo lo recaudado es utilizado para reducir el costo de las inscripciones (¡el tuyo también!) y es aplicado al momento de recibirlo. Si cancelas luego del pago solidario, comuni ate con nosotros y vemos cómo resolverlo.</li>
+  <li><b>Sponsors:</b> Te invitamos a ayudarnos a conseguir sponsors. Puedes descargar esta <a href="https://drive.google.com/file/d/12CM5Wv353C8SK31COibREKDhRw7ti3Lk/view?usp=sharing">Carta de Presentación del Evento</a>, y enviarla a cualquier potencial sponsor.</li>
+  <li><b>Comunicarnos:</b> ya puedes unirte al grupo de <a href="https://t.me/joinchat/BNT3rEGBP8iE20CsTi7tYA">Telegram AOC</a>, donde estaremos tod@s l@s participantes de todos los AOC.</li>
+</ul>
 </p>
 
-<h3>Nota</h3>
+<p>¡Gracias por sumarte! ¡Nos vemos pronto!</p>
 
-<p>Te recordamos que nuestro cupo de invitaciones es de <%= aoc_limit %> personas y una vez completado el cupo no podrás invitar a nadie más si no lo hiciste antes.</p>
-
-<p>Ten en cuenta que si pagas el adelanto de <%= aoc_reserve %> y decides no asistir al evento no podremos devolverte el dinero pues con este adelanto estamos reservando el lugar y que el valor final de la inscripción dependerá directamente de la financiación que consigamos. Es por ello que te invitamos a ayudarnos a conseguir sponsors para reducir el costo de inscripción que todos (¡el tuyo también!) finalmente abonaremos. Te adjuntamos una carta de presentación del evento, para que puedas presentarla a cualquier potencial sponsor.</p>
-
-<p>Gracias por sumarte al <%= aoc_name %>.</p>
-
-<p>Por último puedes unirte al grupo de <a href="https://t.me/joinchat/AH7y60qTJNpBtA5PDD7EEg">Telegram</a>, donde estaremos todos los participantes del evento.
-</p>
-
-<p>¡Nos vemos pronto!</p>
 
 <p>El equipo <%= aoc_name %></p>
 
