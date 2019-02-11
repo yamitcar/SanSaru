@@ -24,6 +24,10 @@ class User < ApplicationRecord
   attr_accessor :user_ids
 
 
+  def full_name
+    "#{name} #{lastname}"
+  end
+
   def invite(invited)
     invitation = Invitation.find_by(user_id: id)
     if invitation
