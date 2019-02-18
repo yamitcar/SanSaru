@@ -17,7 +17,7 @@ class Invitation < ApplicationRecord
   private
 
   def self.build_node(invitation, parent = nil)
-    name = "#{invitation.user.name}"
+    name = "#{invitation.user.name} #{invitation.user.lastname}"
     node = { name: name, parent: parent, payed: invitation.payed }
     if invitation.invited_one
       son = build_node(Invitation.find_by(user_id: invitation.invited_one.id), name)
