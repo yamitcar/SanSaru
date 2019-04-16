@@ -22,6 +22,10 @@ module ApplicationHelper
   end
 
   def aoc_price
+    "USD 360"
+  end
+
+  def aoc_price_ideal
     "USD 150"
   end
 
@@ -30,11 +34,7 @@ module ApplicationHelper
   end
 
   def aoc_dates
-    "10 al 14 de abril de 2019"
-  end
-
-  def aoc_food
-    "Desde la cena del miércoles 10 de abril hasta el desayuno del domingo 14 de abril"
+    "10 al 13 de abril de 2019"
   end
 
   def aoc_venue

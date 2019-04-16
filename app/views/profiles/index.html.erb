@@ -1,6 +1,7 @@
 <div class="row align-items-center">
   <div class="col-md-12">
     <h1 class="text-center">Postulados</h1>
+    <p  class="text-center">(No aparece tu propio perfil, que puedes ver y editar en "MI CUENTA")</p>
     <p id="notice"><%= notice %></p>
   </div>
 </div>
@@ -41,7 +42,7 @@
           </td>
           <td><%= postulado.profile.bio %></td>
           <td>
-            <%= link_to "Ver perfil completo", {:controller => "home", :action => "show", :postulado => postulado }%>
+            <%= link_to "Ver perfil completo", { :controller => "home", :action => "show", :postulado => postulado }, target: "_blank" %>
           </td>
         </tr>
       <% end %>

@@ -1,17 +1,24 @@
 <h2 class="text-center">Inscripción San Saru</h2>
 <div>
-  <p class="text-center">El Agile Open Camp cuenta con una cantidad de lugares limitados. <%= aoc_limit %> en este <%= aoc_name %>.
-    El evento se llevará a cabo los días <%= aoc_dates %> en el <%= aoc_venue %>, <%= aoc_venue_location %>.
-    Como no queremos ser los organizadores los que seleccionemos quienes participan y quienes no, preferimos un enfoque más horizontal, participativo y descentralizado. Así que creamos un método mediante el cuál se hará una elección de postulantes distribuida entre todos los participantes al que llamamos método "San Saru".
-    <br>
+  <p class="text-center">
+    El <%= aoc_fullname %> se llevará a cabo los días <%= aoc_dates %> en el <%= aoc_venue %>, <%= aoc_venue_location %>. Contaremos con una cantidad máxima de <%= aoc_limit %> lugares. Como en general suelen haber más interesados que lugares disponibles, y nos gustan los enfoques horizontales no queremos fijar un criterio unilateral (por ejemplo el orden de llegada/registración) para definir quiénes participarán del evento. Así que en 2016 creamos un método llamado "San Saru", mediante el cual hacemos la elección de postulantes en forma distribuida entre todos los participantes.
   </p>
 
-  <p class="text-center"><strong>Debajo te contamos más en detalle de qué se trata y por qué lo hicimos así. El cuento corto es: tienes que postularte completando tus datos usando el botón INSCRÍBETE AHORA que está debajo de este párrafo. En unos días comenzaremos el proceso de selección, y si eres elegido te enviaremos un email con las instrucciones; deberás pagar <%= aoc_reserve %> como adelanto (el precio máximo será <%= aoc_price %> pero si conseguimos más sponsors, disminurá (esperamos que cueste bastante menos); y por último, si aún hay lugares disponibles, podrás elegir a otros participantes.
+  <p><strong>
+    Debajo te contamos más en detalle. El cuento corto es:
+    <ul>
+    <li>Tienes que postularte usando el botón INSCRÍBETE AHORA que está debajo de este párrafo, completando tus datos. 
+    <li>En unos días iniciará el proceso de selección. 
+    <li>Si algún seleccionado te elige, te enviaremos un email de aviso. 
+    <li>En ese momento deberás confirmar si realmente quieres participar, pagando <%= aoc_reserve %> como adelanto (más detalles en la sección Costo de inscripción debajo). 
+    <li>Por último, si aún quedan lugares disponibles, podrás seleccionar a otros 2 participantes.
+    </ul>
   </strong></p>
 
   <div class="card border-warning">
     <div class="card-body text-warning">
-      <p class="card-text text-center"><strong>Importante: </strong>El AOC es un evento sin fines de lucro. Todo lo que se recauda se utiliza pagar los costos del evento. Incluso los organizadores pagan lo mismo que el resto de participantes.</p>
+      <p class="card-text text-center"><strong>Importante: </strong>El AOC es un evento sin fines de lucro. Todo lo que se recauda se utiliza para pagar los costos del evento.
+      <br><b>Incluso los organizadores</b> pagan lo mismo que el resto de participantes.</p>
     </div>
   </div>
   <br>
@@ -35,7 +42,7 @@
             <div class="panel-body">
 
               <div style="text-align:center; ">
-                <img style="width: 90%" alt="" class="ut-animate-image animated fadeIn" data-effecttype="image" data-effect="fadeIn" src="http://www.onmarkproductions.com/assets/images/lr-monkeys-hase-1646-edo-TN.JPG">
+                <img style="width: 40%" alt="" class="ut-animate-image animated fadeIn" data-effecttype="image" data-effect="fadeIn" src="http://www.onmarkproductions.com/assets/images/lr-monkeys-hase-1646-edo-TN.JPG">
               </div>
               <p>San saru es un término japonés que se podría traducir como “Los tres monos sabios” y representado por la imagen anterior. El concepto tiene varias interpretaciones. La que nos gusta y la que
                 nos llevó a elegir este nombre para el método es la siguiente: Cuenta la leyenda que fueron enviados
@@ -93,10 +100,10 @@
       <p>El proceso consta de tres etapas:</p>
       <ul>
         <li style="padding-bottom: 20px">
-          <strong>Postulación: </strong>Los interesados en participar nos cuentan quiénes son, a qué se dedican, su relación con la agilidad, que ideas pueden aportar al evento y qué esperan llevarse completando un formulario.</li>
+          <strong>Postulación: </strong>Los interesados en participar nos cuentan quiénes son, a qué se dedican, su relación con la agilidad, qué ideas pueden aportar al evento y qué esperan llevarse completando un formulario.</li>
         <li style="padding-bottom: 20px">
           <strong>Selección: </strong><%= aoc_monkeys %> seleccionarán, cada un@, a dos postulantes
-          para participar del evento. Cada persona seleccionada deberá elegir otras dos postulantes, y así sucesivamente. La personas seleccionadas serán informadas oportunamente y se les indicará cómo continuar.</li>
+          para participar del evento. Cada persona seleccionada deberá elegir otras dos postulantes, y así sucesivamente. Las personas seleccionadas serán informadas oportunamente y se les indicará cómo continuar. <b>Los invitamos a seleccionar contemplando el espíritu de complementariedad del San Saru.</b></li>
         <li style="padding-bottom: 20px">
           <strong>Inscripción: </strong>Las personas seleccionadas deben hacer efectiva su inscripción una vez sean notificadas que han sido seleccionadas, abonando el adelanto de <%= aoc_reserve %> (ver abajo “Costo de inscripción”). </li>
       </ul>
@@ -106,15 +113,13 @@
 
   <h3 class="text-center"> Costo de inscripción</h3>
   <hr class="dark">
-  <div class="card border-warning">
-    <div class="card-body text-warning">
-      <p class="card-text text-center"><strong>Importante: </strong>¡Para postularte no hay que pagar nada!
-    </div>
-  </div>
-  <br>
 
-  <p class="text-center">Primero debes postularte. Una vez alguien te seleccione deberás pagar <%= aoc_reserve %> como adelanto del valor total que será como máximo de <strong><%= aoc_price %></strong>, pero que irá disminuyendo conforme consigamos más sponsors.</p>
-  <p class="text-center">Si nos ayudas a conseguir más sponsors el valor disminuye para todos. Poco antes del evento pagaremos el total restante, que esperamos que sea bastante más bajo.</p>
+  <p class="text-center">Primero debes postularte (esta acción no tiene ningún costo).</p>
+
+    <p class="text-center">Una vez que seas seleccionado deberás pagar <%= aoc_reserve %> como adelanto del valor total, que será como máximo de <%= aoc_price %>, pero que <b>irá disminuyendo conforme consigamos más y más sponsors</b>. Si nos ayudas a conseguir sponsors el valor disminuye para todos. Poco antes del evento, cada inscripto deberá pagar el total restante, que esperamos sea bastante más bajo que <%= aoc_price %>. ¡Históricamente ronda los <%= aoc_price_ideal %>, pero siempre aspiramos a que sea menos que eso!
+    </p>
+
+    <p class="text-center">Por último, si alguno de los inscriptos desea pagar el valor total de la inscripción (<%= aoc_price %>) como una forma de <a href="https://es.wikipedia.org/wiki/Micromecenazgo">crowdfunding</a> del evento, también tendrá la opción de hacerlo.</p>
 
 
   <div class="card border-info">
@@ -127,7 +132,8 @@
         <li>
           <strong>Alojamiento:</strong> En habitaciones compartidas con número variable de personas.</li>
         <li>
-          <strong>Alimentación completa</strong>: <%= aoc_food %>.</li>
+          <strong>Alimentación completa:</strong> Desde la cena del miércoles 10 de abril hasta el almuerzo del sábado 13 de abril.</li>
+          <li><strong>Transporte:</strong> Desde Bariloche al lugar del evento, ida y vuelta.</li>
       </ul>
       </p>
     </div>
