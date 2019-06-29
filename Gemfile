@@ -1,27 +1,29 @@
 source 'https://rubygems.org'
 
+ruby '2.6.1'
+
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
 
 gem 'bcrypt', platforms: :ruby
-gem 'bootstrap', '4.0.0'
+gem 'bootstrap', '4.3.1'
 gem 'bootswatch'
 gem 'city-state'
 gem 'coffee-rails', '4.2.2'
 gem 'devise'
-gem 'jbuilder',     '2.7.0'
-gem 'jquery-rails', '4.3.1'
+gem 'jbuilder',     '2.9.1'
+gem 'jquery-rails', '4.3.5'
 gem 'paper_trail'
-gem 'pg', '0.20.0'
-gem 'puma', '3.9.1'
-gem 'rails', '5.2.0'
-gem 'rails_admin', '~> 1.3.0'
+gem 'pg', '1.1.4'
+gem 'puma', '4.0.0'
+gem 'rails', '5.2.3 '
+gem 'rails_admin', '~> 1.4.2'
 gem 'rails_admin_history_rollback'
-gem 'sass-rails', '5.0.6'
-gem 'turbolinks', '5.0.1'
-gem 'uglifier', '3.2.0'
+gem 'sass-rails', '5.0.7'
+gem 'turbolinks', '5.2.0'
+gem 'uglifier', '4.1.20'
 gem 'validates_email_format_of', '1.6.3'
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 gem 'will_paginate'
@@ -33,6 +35,7 @@ group :development, :test do
   gem 'haml-lint', require: false
   gem 'rubocop', require: false
   gem 'selenium-webdriver'
+  gem 'dotenv-rails'
 end
 
 group :development do

@@ -1,4 +1,4 @@
-# San-Saru AoC Co 2018
+# San-Saru AoC Co 2019
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/e7b16647550a48e4c9a3/maintainability)](https://codeclimate.com/github/yamitcar/SanSaru/maintainability) <a href="https://codeclimate.com/github/yamitcar/SanSaru/test_coverage"><img src="https://api.codeclimate.com/v1/badges/e7b16647550a48e4c9a3/test_coverage" /></a>
 
@@ -10,45 +10,47 @@ To get started with the app, clone the repo and then install the needed gems:
 $ bundle install --without production
 ```
 
-parar configurar el ambiente de desarrollo instalar> 
+parar configurar el ambiente de desarrollo instalar:
     
     Postgres
     ruby
     rails
     
-    dentro de la raiz del proyecto
+dentro de la raiz del proyecto ejecutar:
     
-    > gem install bundler
+    gem install bundler
     
-    > bundle install
+    bundle install
     
-    configurar los parametros del db en:
+configurar los parametros del db en:
         config/database.yml
     
-    > rails db:create
+    rails db:create
+    rails db:migrate
+    
+en el archivo .env, configurar los datos de acceso a email:
+
+    MAIL_DOMAIN=...
+    MAIL_USERNAME=...
+    MAIL_PASSWORD=...
+    SMTP_ADDR=...
+
+En el archivo db/seeds.rb, verificar los datos del usuario administrador!
+
+    User.create(name: 'aoc', lastname: 'admin', email: 'yamit.cardenas@gmail.com', password: 'aocAdmin!',
+            password_confirmation: 'aocAdmin!', admin: true, terms_of_service: true)
+         
+Luego ejecutar:     
+
+    rails db:seed
+    
+a la casilla del mail del admin deberá llegar un mail de confirmación de la cuenta.
     
     
-    para iniciar la app
+para iniciar la app
     
     rails s
-    foreman start
     
-
-Next, migrate the database:
-
-```
-$ rails db:migrate
-```
-
-on heroku:
-
-    heroku run rails db:migrate
-    
-If the test suite passes, you'll be ready to run the app in a local server:
-
-```
-$ foreman start
-```
     
 Para personalizar la aplicación según las condiciones específicas de cada edición del AOC:
     - Revisar app/helpers/application_helper.rb

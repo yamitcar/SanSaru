@@ -22,4 +22,6 @@
 
 .byebug_history
 .idea/
-.env
+.rubocop_todo.yml
+Gemfile.lock
+.scannerwork/*
