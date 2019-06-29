@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_24_232923) do
+ActiveRecord::Schema.define(version: 2019_06_29_205720) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,24 @@ ActiveRecord::Schema.define(version: 2018_07_24_232923) do
   create_table "configs", force: :cascade do |t|
     t.text "name"
     t.text "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "fullname", null: false
+    t.string "site", null: false
+    t.string "support_mail", null: false
+    t.integer "participants", null: false
+    t.decimal "price", precision: 8, scale: 2, null: false
+    t.decimal "reserve_price", precision: 8, scale: 2
+    t.decimal "ideal_price", precision: 8, scale: 2
+    t.date "start_date", null: false
+    t.date "end_date", null: false
+    t.string "venue", null: false
+    t.string "venue_location", null: false
+    t.string "monkeys", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -145,7 +163,7 @@ ActiveRecord::Schema.define(version: 2018_07_24_232923) do
   create_table "versions", force: :cascade do |t|
     t.string "item_type", null: false
     t.integer "item_id", null: false
-    t.string "event", null: false
+    t.string "events", null: false
     t.string "whodunnit"
     t.text "object"
     t.datetime "created_at"

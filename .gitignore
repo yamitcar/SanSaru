@@ -25,3 +25,4 @@
 .rubocop_todo.yml
 Gemfile.lock
 .scannerwork/*
+.env

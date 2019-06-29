@@ -22,4 +22,6 @@ Rails.application.routes.draw do
 
   get 'cities/:country', to: 'divipola#states'
   get 'cities/:country/:state', to: 'divipola#cities'
+
+  resources :events
 end

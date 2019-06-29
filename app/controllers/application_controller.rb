@@ -22,4 +22,11 @@ class ApplicationController < ActionController::Base
       redirect_to new_user_session_path
     end
   end
+
+  def require_admin_login
+    unless (user_signed_in? and current_user.admin)
+      flash[:error] = 'no tienes acceso a esta pagina'
+      redirect_to(:home)
+    end
+  end
 end
