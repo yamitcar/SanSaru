@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
   resources :events
   resources :pages
-  #get '/pages/new', to: 'pages#new'
+
+  get '/:event_id/:page_path', to: 'static_pages#prepare_render'
 
 end

@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   def require_login
     unless user_signed_in?
       # TODO: flash doesnt work
-      flash[:error] = 'debes estar logueado para ver esto'
+      flash[:notice] = 'debes estar logueado para ver esto'
       redirect_to new_user_session_path
     end
   end

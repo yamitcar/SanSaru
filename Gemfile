@@ -29,6 +29,7 @@ gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 gem 'will_paginate'
 gem 'md_simple_editor'
 gem 'font-awesome-sass', '~> 5.8.1'
+gem  'redcarpet'
 
 group :development, :test do
   gem 'byebug', '9.0.6', platform: :mri
