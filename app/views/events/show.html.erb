@@ -1,0 +1,44 @@
+<div class="row justify-content-md-center">
+  <h2><%= @event.fullname %> </h2>
+</div>
+<br>
+<div class="row align-items-center">
+  <div class="col-md-12">
+
+
+    <div class="row justify-content-md-center">
+      <div class="col-md-24">
+        <h3>Páginas</h3>
+
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th scope="col">Ruta</th>
+            <th scope="col">Contenido</th>
+            <th scope="col" colspan="2"></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @event.pages.each do |page| %>
+            <tr>
+              <td><%=page.path %></td>
+              <td><%=page.content.slice(0..497) + '...' %></td>
+              <td><%= link_to 'Edit', edit_page_path(page) %></td>
+              <td><%= link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+        <%= link_to 'Nueva página', {:controller => "pages", :action => "new", :event => @event } %> |
+        <%= link_to 'Back', events_path %>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+

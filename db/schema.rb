@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_29_205720) do
+ActiveRecord::Schema.define(version: 2019_06_29_234249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,6 +101,15 @@ ActiveRecord::Schema.define(version: 2019_06_29_205720) do
     t.index ["user_id"], name: "index_invitations_on_user_id", unique: true
   end
 
+  create_table "pages", force: :cascade do |t|
+    t.string "path"
+    t.text "content"
+    t.bigint "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_pages_on_event_id"
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.boolean "first_time", null: false
     t.string "expectancy", null: false
@@ -163,7 +172,7 @@ ActiveRecord::Schema.define(version: 2019_06_29_205720) do
   create_table "versions", force: :cascade do |t|
     t.string "item_type", null: false
     t.integer "item_id", null: false
-    t.string "events", null: false
+    t.string "event", null: false
     t.string "whodunnit"
     t.text "object"
     t.datetime "created_at"

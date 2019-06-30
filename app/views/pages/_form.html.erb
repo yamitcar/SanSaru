@@ -1,0 +1,58 @@
+<div class="col-md-10 offset-md-1">
+  <br>
+<%= form_with(model: page, local: true) do |form| %>
+  <% if page.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(page.errors.count, "error") %> prohibited this page from being saved:</h2>
+
+      <ul>
+        <% page.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <h3>Editando página del evento: <%= @page.event.fullname %></h3>
+    <br>
+
+    <fieldset>
+      <div class="form-group row">
+        <label class="col-md-5 control-label" for="textinput">
+          <%= form.label :path, "Ruta de la página (debe ser única, sin espacios ni caracteres especiales)" %>
+        </label>
+        <div class="col-md-7">
+          <%= form.text_field :path, id: :page_path, class: 'form-control input-md' %>
+        </div>
+      </div>
+
+
+      <div class="form-group row">
+        <label class="col-md-5 control-label" for="textinput">
+          <%= form.label :content, "Contenido" %>
+        </label>
+        <p>
+          puedes encontrar mas información sobre como editar con markdown
+          <a href="https://www.markdownguide.org/basic-syntax/" target="_blank">  aquí  </a>
+        </p>
+
+
+      </div>
+      <div class="form-group row">
+        <div  class="col-md-12" >
+          <%= md_simple_editor  do %>
+            <%= form.text_area :content, id: :page_content, style: 'height: 600px; width: 100%;' %>
+          <% end %>
+        </div>
+      </div>
+
+      <%= form.hidden_field :event_id, :value => @page.event.id %>
+
+      <div class="form-group row">
+        <div class="col-md-12 text-center">
+          <%= form.submit "Guardar Página", class: "btn btn-primary" %>
+        </div>
+      </div>
+    </fieldset>
+  <% end %>
+</div>

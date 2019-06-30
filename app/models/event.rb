@@ -12,6 +12,8 @@ class Event < ApplicationRecord
   validates :venue_location, presence: true
   validates :monkeys, presence: true
 
+  has_many :pages
+
   #
   # :name,:fullname,, :site,
   #                                     :support_mail,:participants, :price,
