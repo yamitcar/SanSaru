@@ -11,6 +11,7 @@ class Event < ApplicationRecord
   validates :venue, presence: true
   validates :venue_location, presence: true
   validates :monkeys, presence: true
+  validates :active, presence: true
 
   has_many :pages
 
@@ -19,4 +20,10 @@ class Event < ApplicationRecord
   #                                     :support_mail,:participants, :price,
   #                                     :reserve_price, :ideal_price,:start_date,
   #                                     :end_date,  :venue, :venue_location, :monkeys
+  #
+
+  def aoc_dates
+     "#{start_date.strftime('%d de %b')} al #{end_date.strftime('%d de %b')} de #{end_date.strftime('%Y')}"
+  end
+
 end

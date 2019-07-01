@@ -23,6 +23,7 @@ class User < ApplicationRecord
   validates :terms_of_service, :acceptance => true
   attr_accessor :user_ids
 
+  belongs_to :actual_event, class_name: 'Event', :foreign_key => 'actual_event_id', optional: true
 
   def full_name
     "#{name} #{lastname}"
@@ -89,3 +90,4 @@ class User < ApplicationRecord
 end
 # TODO: poner textos en español y plantillas de email
 # TODO no permitir borrar cuenta
+

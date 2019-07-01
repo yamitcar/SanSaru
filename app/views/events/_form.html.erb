@@ -134,6 +134,15 @@
         </div>
       </div>
 
+      <div class="form-group row">
+        <label class="col-md-5 control-label" for="textinput">
+          <%= form.label :active, "¿Evento activo?" %>
+        </label>
+        <div class="col-md-7">
+          <%= form.check_box :active, id: :event_active, class: 'form-control input-md' %>
+        </div>
+      </div>
+
 
       <div class="form-group row">
         <div class="col-md-12 text-center">

@@ -19,7 +19,7 @@
 
         <div class="form-group">
           <label class="col-md-4 control-label" for="textinput">
-            <%= f.label :password %>
+            <%= f.label :password, "Password" %>
           </label>
           <div class="col-md-4">
             <%= f.password_field :password, class: 'form-control input-md' %>
@@ -27,17 +27,23 @@
         </div>
 
 
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="textinput">
+            <%= f.label :actual_event, "Selecciona un evento" %>
+          </label>
+          <div class="col-md-4">
+            <%= f.select(:actual_event_id, Event.where(active: true).collect {|a| [a.fullname, a.id]},{},{id: :actual_event_id, class: 'custom-select'}) -%>
+          </div>
+        </div>
+
+
         <% if devise_mapping.rememberable? -%>
+
           <div class="form-group">
-
-            <div class="col-md-4">
-
-              <label class="col-md-4 control-label" for="textinput">
-                <%= f.check_box :remember_me %>
-                <%= f.label :remember_me, "Recuerdame" %>
-              </label>
-
-            </div>
+            <label class="col-md-4 control-label" for="textinput">
+              <%= f.check_box :remember_me %>
+              Recuerdame
+            </label>
           </div>
         <% end -%>
 

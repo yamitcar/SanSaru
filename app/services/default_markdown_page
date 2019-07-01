@@ -1,0 +1,66 @@
+# <center> Inscripción San Saru</center>
+
+El {{{ fullname }}} se llevará a cabo los días {{{ aoc_dates }}} en el {{{ venue }}},  {{{ venue_location }}}. Contaremos con una cantidad máxima de {{{ participants }}} lugares. Como en general suelen haber más interesados que lugares disponibles, y nos gustan los enfoques horizontales no queremos fijar un criterio unilateral (por ejemplo el orden de llegada/registro) para definir quiénes participarán del evento. Así que en 2016 creamos un método llamado "San Saru", mediante el cual hacemos la elección de postulantes en forma distribuida entre todos los participantes.
+
+__Debajo te contamos más en detalle. El cuento corto es:__
+
+* __Tienes que postularte usando el botón INSCRÍBETE AHORA que está debajo de este párrafo, completando tus datos.__
+* __En unos días iniciará el proceso de selección.__
+* __Si algún seleccionado te elige, te enviaremos un email de aviso.__
+* __En ese momento deberás confirmar si realmente quieres participar, pagando USD {{{ reserve_price }}} como adelanto (más detalles en la sección Costo de inscripción debajo).__
+* __Por último, si aún quedan lugares disponibles, podrás seleccionar a otros 2 participantes.__
+
+<br>
+
+<div class="card border-warning">
+    <div class="card-body text-warning">
+      <p class="card-text text-center"><strong>Importante: </strong>El AOC es un evento sin fines de lucro. Todo lo que se recauda se utiliza para pagar los costos del evento.
+      <br><b>Incluso los organizadores</b> pagan lo mismo que el resto de participantes.</p>
+    </div>
+  </div>
+
+<div style="text-align: center;">
+    <form class="button_to" method="get" action="/users/sign_up"><input class="btn btn-warning btn-lg btn-block" type="submit" value="Inscríbete ahora"></form>
+  </div>
+
+<br>
+
+# <center>¿Cómo funciona?</center>
+_________________
+El proceso consta de tres etapas:
+
+* __Postulación:__ Los interesados en participar nos cuentan quiénes son, a qué se dedican, su relación con la agilidad, qué ideas pueden aportar al evento y qué esperan llevarse completando un formulario.
+* __Selección:__ {{{ monkeys }}} seleccionarán, cada un@, a dos postulantes para participar del evento. Cada persona seleccionada deberá elegir otras dos postulantes, y así sucesivamente. Las personas seleccionadas serán informadas oportunamente y se les indicará cómo continuar. Los invitamos a seleccionar contemplando el espíritu de complementariedad del San Saru.
+* __Inscripción:__ Las personas seleccionadas deben hacer efectiva su inscripción una vez sean notificadas que han sido seleccionadas, abonando el adelanto de {{{ reserve_price }}} (ver abajo “Costo de inscripción”).
+
+<br>
+
+# <center>Costo de inscripción </center>
+_________________
+Primero debes postularte (esta acción no tiene ningún costo).
+
+Una vez que seas seleccionado deberás pagar {{{ reserve_price }}} como adelanto del valor total, que será como máximo de {{{ price }}}, pero __que irá disminuyendo conforme consigamos más y más sponsors.__ Si nos ayudas a conseguir sponsors el valor disminuye para todos. Poco antes del evento, cada inscrito deberá pagar el total restante, que esperamos sea bastante más bajo que {{{ price }}}. ¡Históricamente ronda los {{{ ideal_price }}}, pero siempre aspiramos a que sea menos que eso!
+
+<div class="card border-info">
+    <div class="card-body text-info">
+      <p class="card-text">
+        </p><p>
+          El precio incluye:
+        </p>
+      <ul>
+        <li>
+          <strong>Alojamiento:</strong> En habitaciones compartidas con número variable de personas.</li>
+        <li>
+          <strong>Alimentación completa:</strong> Desde la cena del miércoles {{{ aoc_dates }}}.</li>
+          <li><strong>Transporte:</strong> Desde {{{ venue }}} al lugar del evento, ida y vuelta.</li>
+      </ul>
+      <p></p>
+    </div>
+  </div>
+
+
+Nos sustentamos con el aporte de nuestros sponsors. ¡Cuantos más consigamos, más barato será! Así que necesitamos tu ayuda recomendando o consiguiendo sponsors. Cualquier sugerencia, escribenos a <{{{ support_mail }}}>
+
+<div style="text-align: center;">
+    <form class="button_to" method="get" action="/users/sign_up"><input class="btn btn-warning btn-lg btn-block" type="submit" value="Inscríbete ahora"></form>
+  </div>

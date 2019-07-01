@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_29_234249) do
+ActiveRecord::Schema.define(version: 2019_07_01_005999) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2019_06_29_234249) do
     t.string "monkeys", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "active"
   end
 
   create_table "favorites", id: false, force: :cascade do |t|
@@ -163,6 +164,7 @@ ActiveRecord::Schema.define(version: 2019_06_29_234249) do
     t.datetime "confirmation_sent_at"
     t.boolean "organizer", default: false, null: false
     t.boolean "terms_of_service", default: false
+    t.integer "actual_event_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["profile_id"], name: "index_users_on_profile_id"
@@ -181,4 +183,5 @@ ActiveRecord::Schema.define(version: 2019_06_29_234249) do
   end
 
   add_foreign_key "invitations", "users"
+  add_foreign_key "users", "events", column: "actual_event_id"
 end

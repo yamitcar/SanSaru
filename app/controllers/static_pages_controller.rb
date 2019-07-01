@@ -14,7 +14,7 @@ class StaticPagesController < ApplicationController
     if (event)
       pages = event.pages.select{ |page| page.path == params[:page_path]}
       unless(pages.empty?)
-        @content = pages[0].content
+        @content = MarkdownEventParser.add_event_details(event, pages[0].content)
       end
     end
     @content = MARKDOWN.render(@content)
