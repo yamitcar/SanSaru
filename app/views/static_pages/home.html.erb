@@ -1,19 +1,43 @@
-<h2 class="text-center">Inscripción San Saru</h2>
 <div>
-  <p class="text-center">
-    El <%= aoc_fullname %> se llevará a cabo los días <%= aoc_dates %> en el <%= aoc_venue %>, <%= aoc_venue_location %>. Contaremos con una cantidad máxima de <%= aoc_limit %> lugares. Como en general suelen haber más interesados que lugares disponibles, y nos gustan los enfoques horizontales no queremos fijar un criterio unilateral (por ejemplo el orden de llegada/registración) para definir quiénes participarán del evento. Así que en 2016 creamos un método llamado "San Saru", mediante el cual hacemos la elección de postulantes en forma distribuida entre todos los participantes.
-  </p>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <div class="card text-center">
+           <%= image_tag('simios-sabios.jpg', :alt => 'Simios Sabios', class: 'card-img-top') %> 
+          <div class="card-body">
+            <h2 class="card-title">Inscripción San Saru</h2>
+            <p class="card-text">   
+            El <%= aoc_fullname %> se llevará a cabo los días <%= aoc_dates %> en el <%= aoc_venue %>, <%= aoc_venue_location %>. 
+            Contaremos con una cantidad máxima de <%= aoc_limit %> lugares. 
+            Como en general suelen haber más interesados que lugares disponibles, y nos gustan los enfoques horizontales no queremos 
+            fijar un criterio unilateral (por ejemplo el orden de llegada/registración) para definir quiénes participarán del evento. 
+            Así que en 2016 creamos un método llamado "San Saru", mediante el cual hacemos la elección de postulantes en forma distribuida 
+            entre todos los participantes.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-6">  
+        <div class="card">
+          <div class="card-header">
+            <h5>Debajo te contamos más en detalle. El cuento corto es:</h5>
+          </div>
+          <ul class="list-group">
+            <li class="list-group-item">❶ Tienes que <strong>postularte</strong> usando el <strong>botón INSCRÍBETE AHORA</strong> que está debajo de este párrafo, completando tus datos.</li>
+            <li class="list-group-item">❷ En unos días <strong>iniciará el proceso</strong> de selección. </li>
+            <li class="list-group-item">❸ Si <strong>algún seleccionado te elige</strong>, te enviaremos un email de aviso.</li>
+            <li class="list-group-item">❹ En ese momento deberás <strong>confirmar si realmente quieres participar</strong>, pagando <%= aoc_reserve %> tu inscripción (más detalles en la sección Costo de inscripción debajo).</li>
+            <li class="list-group-item">❺ Por último, si aún quedan lugares disponibles, <strong>podrás seleccionar a otros 2 participantes</strong>.</li>
+          </ul>
+          <div class="card-footer text-muted">
+            ¿Te sumas?
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <p><strong>
-    Debajo te contamos más en detalle. El cuento corto es:
-    <ul>
-    <li>Tienes que postularte usando el botón INSCRÍBETE AHORA que está debajo de este párrafo, completando tus datos. 
-    <li>En unos días iniciará el proceso de selección. 
-    <li>Si algún seleccionado te elige, te enviaremos un email de aviso. 
-    <li>En ese momento deberás confirmar si realmente quieres participar, pagando <%= aoc_reserve %> como adelanto (más detalles en la sección Costo de inscripción debajo). 
-    <li>Por último, si aún quedan lugares disponibles, podrás seleccionar a otros 2 participantes.
-    </ul>
-  </strong></p>
+  <br />
 
   <div class="card border-warning">
     <div class="card-body text-warning">
