@@ -48,7 +48,10 @@ Luego ejecuta:
 
 A la casilla del mail del admin deberá llegar un mail de confirmación de la cuenta.
     
-    
+Para que los assets queden disponibles, ejecuta:
+
+    rake assets:precompile
+
 Para iniciar la app, ejecuta:
 
     rails s
