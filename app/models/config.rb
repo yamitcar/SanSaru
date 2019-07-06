@@ -32,6 +32,10 @@ class Config < ApplicationRecord
   end
 
   def self.is_invitation_period_open?
-    Config.find_by(name: :eleccion).value == 'true'
+    #Config.find_by(name: :eleccion).value == 'true'
+    if Config.find_by(name: :eleccion) && Config.find_by(name: :eleccion).value == 'true'
+      return (true)
+    end
+    false
   end
 end
