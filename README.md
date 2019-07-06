@@ -54,7 +54,7 @@ Para iniciar la app, ejecuta:
     rails s
 
 Para personalizar la aplicación según las condiciones específicas de cada edición del AOC:
-+ Revisar app/helpers/application_helper.rb
++ Revisar _app/helpers/application_helper.rb_
 
 ### Heroku
 
@@ -62,19 +62,25 @@ Para desplegar en Heroku, sigue estos pasos:
 
 + Hacer push
 + Agregar cambios en la base de datos:
+
         heroku run rails db:migrate
+        
 + Correr semillas y crear usuarios (verificar el usuario administrador)
+        
         heroku run rails db:seed 
         // o 
         heroku run rails console 
         // y ejecutaR cambios desde alli. 
-+ Agregar variables de entorno:
-        mails y demas
+        
++ Agregar variables de entorno, mails y demas:
+
         heroku config:add MAIL_PASSWORD=password12345 MAIL_USERNAME=support@yoururl.com MAIL_DOMAIN=gmail.com SMTP_ADDR=smtp.gmail.com
         
 Para borrar la base de datos de heroku:
      
     heroku pg:reset DATABASE_URL
+    
+### Invitaciones
 
 Las invitaciones solo se podran activar si desde la interfaz administrativa se crean:
 + Las 3 invitaciones iniciales
