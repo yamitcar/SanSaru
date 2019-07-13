@@ -89,8 +89,13 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { host: 'sansaru2019brc.herokuapp.com' }
-  Rails.application.routes.default_url_options[:host] = 'sansaru2019brc.herokuapp.com'
+  host = ENV.fetch('APP_HOST', 'https://sansarud4g.herokuapp.com')
+  user_name = ENV.fetch('SENDGRID_USERNAME', ENV['MAIL_USERNAME'])
+  password = ENV.fetch('SENDGRID_PASSWORD', ENV['MAIL_PASSWORD'])
+  address = ENV.fetch('SENDGRID_ADDRESS', ENV['SMTP_ADDR'])
+
+  config.action_mailer.default_url_options = { host: host }
+  Rails.application.routes.default_url_options[:host] = host
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
@@ -98,12 +103,12 @@ Rails.application.configure do
   config.action_mailer.default charset: 'utf-8'
 
   config.action_mailer.smtp_settings = {
-    address: ENV['SMTP_ADDR'],
+    address: address,
     port: 587,
-    domain: ENV['MAIL_DOMAIN'],
+    domain: host,
     authentication: 'plain',
     enable_starttls_auto: true,
-    user_name: ENV['MAIL_USERNAME'],
-    password: ENV['MAIL_PASSWORD']
+    user_name: user_name,
+    password: password
   }
 end
