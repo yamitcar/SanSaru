@@ -12,7 +12,7 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
 
-  belongs_to :profile, required: false
+  has_many :profiles
   has_one :invitation
   has_and_belongs_to_many :favorites,
                           class_name: 'User',

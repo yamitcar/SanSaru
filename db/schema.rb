@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_10_005999) do
+ActiveRecord::Schema.define(version: 2019_07_11_005999) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -130,6 +130,8 @@ ActiveRecord::Schema.define(version: 2019_07_10_005999) do
     t.string "city", default: "", null: false
     t.string "phonenumber", default: "", null: false
     t.string "telegram"
+    t.integer "user_id"
+    t.integer "event_id"
     t.index ["agileRelation_id"], name: "index_profiles_on_agileRelation_id"
     t.index ["agile_id"], name: "index_profiles_on_agile_id"
     t.index ["gender_id"], name: "index_profiles_on_gender_id"
@@ -146,7 +148,6 @@ ActiveRecord::Schema.define(version: 2019_07_10_005999) do
     t.string "name", null: false
     t.string "lastname", null: false
     t.string "email", null: false
-    t.bigint "profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "encrypted_password", default: "", null: false
@@ -167,7 +168,6 @@ ActiveRecord::Schema.define(version: 2019_07_10_005999) do
     t.integer "actual_event_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["profile_id"], name: "index_users_on_profile_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
@@ -183,5 +183,7 @@ ActiveRecord::Schema.define(version: 2019_07_10_005999) do
   end
 
   add_foreign_key "invitations", "users"
+  add_foreign_key "profiles", "events"
+  add_foreign_key "profiles", "users"
   add_foreign_key "users", "events", column: "actual_event_id"
 end

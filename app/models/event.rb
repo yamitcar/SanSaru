@@ -15,6 +15,7 @@ class Event < ApplicationRecord
   validates :active, presence: true
 
   has_many :pages
+  has_many :profiles
 
   def aoc_dates
      "#{start_date.strftime('%d de %b')} al #{end_date.strftime('%d de %b')} de #{end_date.strftime('%Y')}"

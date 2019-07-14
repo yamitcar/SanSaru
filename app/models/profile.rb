@@ -4,6 +4,10 @@ class Profile < ApplicationRecord
   belongs_to :gender
   belongs_to :agile
   belongs_to :agileRelation
+
+  belongs_to :user
+  belongs_to :event
+
   validates :country, presence: true
   validates :state, presence: true
   validates :city, presence: true
