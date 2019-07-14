@@ -1,3 +1,21 @@
+## Roadmap multitenant
+ 
+* perfiles de usuario
+
+    - Borrar profile_id de usuario
+    - agregar el user_id al perfil
+    - agregar el event_id al perfil    
+    - arreglar todas las views con el perfil por evento del usuario
+
+* Mejorar el home principal de la app
+* plantillas de mail configurables para el evento
+* tabla de configs por evento
+* tabla de invitaciones por evento
+* visualizacion del mapa por evento
+* Mejorar el editos de markdown
+* Formulario de perfil configurable por evento
+
+
 # San-Saru AoC Co 2019
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/e7b16647550a48e4c9a3/maintainability)](https://codeclimate.com/github/yamitcar/SanSaru/maintainability) <a href="https://codeclimate.com/github/yamitcar/SanSaru/test_coverage"><img src="https://api.codeclimate.com/v1/badges/e7b16647550a48e4c9a3/test_coverage" /></a>
