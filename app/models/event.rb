@@ -22,7 +22,11 @@ class Event < ApplicationRecord
 
   def add_homepage
     content = File.read("#{Rails.root}/public/default_markdown_page")
-    pages << Page.new(path: @event.fullname.parameterize.underscore, content: content)
+    pages << Page.new(path: default_page_path, content: content)
+  end
+
+  def default_page_path
+    fullname.parameterize.underscore
   end
 
 end

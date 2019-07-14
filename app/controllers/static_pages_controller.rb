@@ -1,13 +1,19 @@
 class StaticPagesController < ApplicationController
 
   MARKDOWN = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
-  def home; end
+  def home
+    if(current_user&.actual_event)
+      redirect_to("/#{current_user.actual_event.id}/#{current_user.actual_event.default_page_path}")
+    else
+      render
+    end
+  end
 
   def terms; end
 
   def privacidad; end
 
-  #get '/home/:event_id/:page_path', to: 'static_pages#prepare_render'
+  #get '/:event_id/:page_path', to: 'static_pages#prepare_render'
   def prepare_render
     @content = '## Página no encontrada'
     event = Event.find(params[:event_id])
