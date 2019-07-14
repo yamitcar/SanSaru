@@ -1,10 +1,15 @@
-## Roadmap multitenant
+## Roadmap multitenant - NO SERÁ compatable con la version 1.0.
+ 
+* Creacion de eventos - __Done__ // ir a '/events' logueado con una cuenta de admin.
+* Creacion de paginas configurables por evento ( con markdown) - __Done__
+* Login, seleccionando el evento al cual quieres postular - __Done__
+* Redirecionamiento del home a paginas configurables segun evento - __Done__
  
 * perfiles de usuario
 
-    - Borrar profile_id de usuario
-    - agregar el user_id al perfil
-    - agregar el event_id al perfil    
+    - Borrar profile_id de usuario - __Done__
+    - agregar el user_id al perfil - __Done__
+    - agregar el event_id al perfil - __Done__
     - arreglar todas las views con el perfil por evento del usuario
 
 * Mejorar el home principal de la app
