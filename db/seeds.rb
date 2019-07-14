@@ -1,6 +1,7 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
+# TODO this part has problems with the account validation token
 User.create(name: 'aoc', lastname: 'admin', email: 'yamit.cardenas@gmail.com', password: 'aocAdmin!',
             password_confirmation: 'aocAdmin!', admin: true, terms_of_service: true)
 
@@ -28,3 +29,9 @@ Size.create(name: 'XXL')
 
 Config.create(name: :invitaciones, value: 75)
 Config.create(name: :eleccion, value: 'false')
+
+Event.new(name: 'default',fullname:'default San Saru',
+          site: 'https://some.com',support_mail:'aoc@sansaru.com',participants: 80,ideal_price:100, price: 80,
+          reserve_price: 0, start_date: Time.now,end_date: Time.now, venue: 'street 123', monkeys: 'ciego,sordo,mudo')
+Event.add_homepage
+Event.save!
