@@ -32,7 +32,7 @@
             <%= f.label :actual_event, "Selecciona un evento" %>
           </label>
           <div class="col-md-4">
-            <%= f.select(:actual_event_id, Event.where(active: true).collect {|a| [a.fullname, a.id]},{},{id: :actual_event_id, class: 'custom-select'}) -%>
+            <%= f.select(:actual_event, Event.where(active: true).collect {|a| [a.fullname, a.id]},{},{id: :actual_event_id, class: 'custom-select'}) -%>
           </div>
         </div>
 
