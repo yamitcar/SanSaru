@@ -1,10 +1,14 @@
+require 'will_paginate/array'
+
 class ProfilesController < ApplicationController
   before_action :set_profile, only: [:destroy]
   before_action :require_login
 
   def index
-    @postulados = User.where.not(profile_id: [nil]).where.not(id: current_user.id)
-                      .order('organizer DESC, created_at ASC').paginate(page: params[:page], per_page: 10)
+    # TODO optimize this query https://stackoverflow.com/questions/20942482/rails-find-using-where-in-one-to-many-relation
+
+    @profiles = Profile.where.not(user_id: current_user.id).where(event_id: current_user.actual_event.id)
+                   .order('organizer DESC, created_at ASC').paginate(page: params[:page], per_page: 10)
   end
 
   def favorites

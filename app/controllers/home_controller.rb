@@ -62,10 +62,10 @@ class HomeController < ApplicationController
   # POST /profiles.json
   def create
     @profile = Profile.new(profile_params)
+    @profile.user = current_user
+    @profile.event = current_user.actual_event
     respond_to do |format|
       if @profile.save
-        current_user.profile = @profile
-        current_user.save!
         format.html { redirect_to '/home', notice: 'Profile was successfully created.' }
       else
         format.html { render :new }

@@ -21,28 +21,28 @@
       </thead>
 
       <tbody>
-      <% @postulados.each do |postulado| %>
+      <% @profiles.each do |profile| %>
         <%  invitados = Invitation.all.map(&:user_id) %>
         <tr style="
-        background-color: <%= invitados.index(postulado.id) ? 'lightcyan;' : 'white;' %>">
+        background-color: <%= invitados.index(profile.user.id) ? 'lightcyan;' : 'white;' %>">
           <td>
-            <% if postulado.organizer %>
+            <% if profile.organizer %>
               &#9889;
             <% end %>
           </td>
-          <td><%= postulado.name %> <%= postulado.lastname %> </td>
-          <td><%= CS.get[postulado.profile.country.to_sym ]%>,
-            <%= CS.get(postulado.profile.country)[postulado.profile.state.to_sym]%>,
-            <%= CS.get(postulado.profile.country,postulado.profile.state)[postulado.profile.city.to_i] %></td>
-          <td> <% if postulado.profile.first_time %>
+          <td><%= profile.user.name %> <%= profile.user.lastname %> </td>
+          <td><%= CS.get[profile.country.to_sym ]%>,
+            <%= CS.get(profile.country)[profile.state.to_sym]%>,
+            <%= CS.get(profile.country,profile.state)[profile.city.to_i] %></td>
+          <td> <% if profile.first_time %>
               Si
             <% else %>
               No
             <% end %>
           </td>
-          <td><%= postulado.profile.bio %></td>
+          <td><%= profile.bio %></td>
           <td>
-            <%= link_to "Ver perfil completo", { :controller => "home", :action => "show", :postulado => postulado }, target: "_blank" %>
+            <%= link_to "Ver perfil completo", { :controller => "home", :action => "show", :postulado => profile.user }, target: "_blank" %>
           </td>
         </tr>
       <% end %>
@@ -50,7 +50,7 @@
     </table>
     <div class="row align-items-center">
       <div class="col-md-4 offset-md-4 text-center">
-        <%= will_paginate @postulados %>
+        <%= will_paginate @profiles %>
       </div>
     </div>
 

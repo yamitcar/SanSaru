@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_11_005999) do
+ActiveRecord::Schema.define(version: 2019_07_11_125999) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -132,6 +132,7 @@ ActiveRecord::Schema.define(version: 2019_07_11_005999) do
     t.string "telegram"
     t.integer "user_id"
     t.integer "event_id"
+    t.boolean "organizer", default: false, null: false
     t.index ["agileRelation_id"], name: "index_profiles_on_agileRelation_id"
     t.index ["agile_id"], name: "index_profiles_on_agile_id"
     t.index ["gender_id"], name: "index_profiles_on_gender_id"
@@ -163,7 +164,6 @@ ActiveRecord::Schema.define(version: 2019_07_11_005999) do
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.boolean "organizer", default: false, null: false
     t.boolean "terms_of_service", default: false
     t.integer "actual_event_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

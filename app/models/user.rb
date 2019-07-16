@@ -29,6 +29,14 @@ class User < ApplicationRecord
     "#{name} #{lastname}"
   end
 
+  def profile
+    profiles.where(event_id: actual_event_id).first
+  end
+
+  def organizer
+    profile.organizer
+  end
+
   def invite(invited)
     invitation = Invitation.find_by(user_id: id)
     if invitation
