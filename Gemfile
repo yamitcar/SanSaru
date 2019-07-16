@@ -30,6 +30,7 @@ gem 'will_paginate'
 gem 'md_simple_editor'
 gem 'font-awesome-sass', '~> 5.8.1'
 gem  'redcarpet'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'byebug', '9.0.6', platform: :mri
@@ -38,7 +39,7 @@ group :development, :test do
   gem 'haml-lint', require: false
   gem 'rubocop', require: false
   gem 'selenium-webdriver'
-  gem 'dotenv-rails'
+
 end
 
 group :development do
