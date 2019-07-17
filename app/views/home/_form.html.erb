@@ -23,15 +23,16 @@
         <% countries = CS.get.collect {|a| [a[1], a[0]]} %>
         <% countries.unshift ['Selecciona tu País',''] %>
         <%= form.select(:country, countries,{},{id: :countries, class: 'custom-select'}) -%>
-
+        <br>
         <% states = CS.get(profile.country).collect {|a| [a[1], a[0]]} %>
         <% states.unshift ['Selecciona tu Región',''] %>
         <%= form.select(:state, states,{},{id: :states, class: 'custom-select'}) -%>
-
+        <br>
         <% cities = [] %>
         <%  CS.get(profile.country,profile.state).each_with_index do |val,index| %>
           <% cities.push [val,index] %>
         <% end %>
+        <br>
         <% cities.unshift ['Selecciona tu ciudad',''] %>
         <%= form.select(:city, cities,{},{id: :cities, class: 'custom-select'}) -%>
 
@@ -219,7 +220,7 @@
 
     <div class="form-group row">
       <label class="col-md-5 control-label" for="textinput">
-        <%= form.label :phonenumber, 'Dejanos tu numero de telefono' %><br>
+        <%= form.label :phonenumber, 'Dejános tu numero de telefono' %><br>
         </label>
         <div class="col-md-7">
           <%= form.text_field :phonenumber, id: :profile_phonenumber, class: 'form-control input-md' %>
