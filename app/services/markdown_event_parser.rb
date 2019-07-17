@@ -1,6 +1,6 @@
 class MarkdownEventParser
 
-  POSSIBILITIES = ['name','fullname','site','support_mail',
+  POSSIBILITIES = ['name','fullname','site','support_mail','san_saru_details',
                    'participants','price','reserve_price','ideal_price',
                    'start_date','end_date','aoc_dates','venue',
                    'venue_location','monkeys'

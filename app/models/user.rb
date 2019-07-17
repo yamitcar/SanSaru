@@ -34,7 +34,7 @@ class User < ApplicationRecord
   end
 
   def organizer
-    profile.organizer
+    profile&.organizer || false
   end
 
   def invite(invited)

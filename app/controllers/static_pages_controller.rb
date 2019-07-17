@@ -1,6 +1,8 @@
 class StaticPagesController < ApplicationController
 
-  MARKDOWN = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
+  MARKDOWN = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(
+      filter_html:false,no_images:false, no_links: true, hard_wrap: true),
+                                     autolink: true, tables: true)
   def home
     if(current_user&.actual_event)
       redirect_to("/#{current_user.actual_event.id}/#{current_user.actual_event.default_page_path}")

@@ -30,4 +30,9 @@ class Event < ApplicationRecord
     fullname.parameterize.underscore
   end
 
+  def san_saru_details
+    content = File.read("#{Rails.root}/public/san_saru_markdown_page")
+    content.html_safe
+  end
+
 end
