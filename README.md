@@ -11,7 +11,7 @@
     - agregar el user_id al perfil - __Done__
     - agregar el event_id al perfil - __Done__
     - arreglar todas las views y consultas con el perfil por evento del usuario __Done__
-    - Rename and reorder home_controller
+    
 
 * Mejorar el home principal de la app
 * plantillas de mail configurables para el evento
@@ -20,6 +20,8 @@
 * visualizacion del mapa por evento
 * Mejorar el editos de markdown
 * Formulario de perfil configurable por evento
+* add admins por evento unicamente.
+- Rename and reorder home_controller
 
 
 # San-Saru AoC Co 2019
