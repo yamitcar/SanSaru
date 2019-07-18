@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  # layout "application_v2"
   before_action :set_paper_trail_whodunnit
   # protect_from_forgery with: :exception
   protect_from_forgery prepend: true
