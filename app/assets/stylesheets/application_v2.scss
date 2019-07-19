@@ -459,3 +459,19 @@ footer ul li {
 .navbar-light .navbar-brand, .navbar-light .navbar-brand:hover {
   color: transparent;
 }
+
+.orange-footer {  
+  width: 100%;
+
+  .title-element {
+    background: #E25E00;
+  }
+
+  .last-footer {
+    background: #555;
+    width: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+  }
+}
