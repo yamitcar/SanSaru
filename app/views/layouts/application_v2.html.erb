@@ -12,26 +12,24 @@
 <body>
   <%= render 'layouts/header_v2' %>
   <%= render 'layouts/welcome_v2' %>
-    <div class="container">
-      <% if notice %>
-        <p class="alert alert-success">
-          <%= notice %>
-        </p>
-      <% end %>
-      <% if alert %>
-        <p class="alert alert-danger">
-          <%= alert %>
-        </p>
-      <% end %>
-      <%= yield %>
-      <%= debug(params) if Rails.env.development? %>
-      <%= ".................." if Rails.env.development? %>
-      <%= ENV['SMTP_ADDR'] if Rails.env.development? %>
-      <%= ENV['MAIL_DOMAIN'] if Rails.env.development? %>
-      <%= ENV['MAIL_PASSWORD'] if Rails.env.development? %>
-      <%= ENV['MAIL_USERNAME'] if Rails.env.development? %>
-      <%= ".................." if Rails.env.development? %>
-    </div>
+  <% if notice %>
+    <p class="alert alert-success">
+      <%= notice %>
+    </p>
+  <% end %>
+  <% if alert %>
+    <p class="alert alert-danger">
+      <%= alert %>
+    </p>
+  <% end %>
+  <%= yield %>
+  <%= debug(params) if Rails.env.development? %>
+  <%= ".................." if Rails.env.development? %>
+  <%= ENV['SMTP_ADDR'] if Rails.env.development? %>
+  <%= ENV['MAIL_DOMAIN'] if Rails.env.development? %>
+  <%= ENV['MAIL_PASSWORD'] if Rails.env.development? %>
+  <%= ENV['MAIL_USERNAME'] if Rails.env.development? %>
+  <%= ".................." if Rails.env.development? %>
   <%= render 'layouts/footer' %>
 </body>
 

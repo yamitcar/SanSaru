@@ -380,8 +380,15 @@ footer ul li {
 // Custom elements
 
 .welcome {
-  font-family: Ubuntu, 'Segoe UI', Tahoma, Verdana, sans-serif;
   background: #575757c4;
+}
+
+.san-saru-info .title-element {
+  background: #75AC0A;
+}
+
+.title-element {
+  font-family: Ubuntu, 'Segoe UI', Tahoma, Verdana, sans-serif;
   color: #FFFFFF;
   text-align: center;
   padding: 0.6em;
@@ -395,4 +402,26 @@ footer ul li {
       font-size: 25px;
       font-weight: bold;
   }
+}
+
+.basic-info {
+  height: 80vh;
+  width: 100%;
+  background: url('https://images.pexels.com/photos/699558/pexels-photo-699558.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260') no-repeat;
+  background-size: cover;
+  background-position: bottom;
+}
+
+.navbar-light {
+  .logo {
+    height: 40px;
+    width: 10%;
+    min-width: 80px;
+    background: url('logo-aoc-header-black.png') no-repeat;
+    background-size: contain;
+  }
+}
+
+.navbar-light .navbar-brand, .navbar-light .navbar-brand:hover {
+  color: transparent;
 }
