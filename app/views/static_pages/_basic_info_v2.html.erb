@@ -1,3 +1,19 @@
-<div class="basic-info">
+<script type="text/javascript">
+  $("#basic-info a[href^='#']").on('click', function(e) {
+
+    e.preventDefault();
+
+    var hash = this.hash;
+
+    $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 400, function(){
+        window.location.hash = hash;
+      });
+
+  });
+</script>
+<div id="basic-info" class="basic-info">
   .
+  <a href="#san-saru" class="badge badge-pill badge-light link-to-san-saru">∨</a>
 </div>

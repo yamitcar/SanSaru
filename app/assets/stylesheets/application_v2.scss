@@ -410,6 +410,17 @@ footer ul li {
   background: url('https://images.pexels.com/photos/699558/pexels-photo-699558.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260') no-repeat;
   background-size: cover;
   background-position: bottom;
+  position: relative;
+
+  .link-to-san-saru {
+    position: absolute;
+    bottom: 1em;
+    left: 49%;
+    padding: 1em;
+    font-size: 1em;
+    color: #888;
+    font-weight: lighter;
+  }
 }
 
 .navbar-light {
