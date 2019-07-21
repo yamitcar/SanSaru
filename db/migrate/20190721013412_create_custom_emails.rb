@@ -7,5 +7,9 @@ class CreateCustomEmails < ActiveRecord::Migration[5.2]
       t.belongs_to :event, index: true
       t.timestamps
     end
+
+    Event.all.each do |event|
+      event.add_invitation_email
+    end
   end
 end

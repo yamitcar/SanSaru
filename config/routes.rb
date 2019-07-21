@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 
   resources :events
   resources :pages
+  resources :custom_emails
 
   get '/:event_id/:page_path', to: 'static_pages#prepare_render'
 

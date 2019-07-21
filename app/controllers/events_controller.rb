@@ -26,6 +26,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.add_homepage
+    @event.add_invitation_email
 
     respond_to do |format|
       if @event.save

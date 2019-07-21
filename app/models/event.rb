@@ -23,8 +23,17 @@ class Event < ApplicationRecord
   end
 
   def add_homepage
-    content = File.read("#{Rails.root}/public/default_markdown_page")
-    pages << Page.new(path: default_page_path, content: content)
+    unless(pages.any? {|page| page.path == default_page_path })
+      content = File.read("#{Rails.root}/public/templates/default_markdown_page")
+      pages << Page.new(path: default_page_path, content: content)
+    end
+  end
+
+  def add_invitation_email
+    unless(custom_emails.any? {|custom_email| custom_email.name == :notify_invitation })
+      template = File.read("#{Rails.root}/public/templates/notify_invitation")
+      custom_emails << CustomEmail.new(name: :notify_invitation, template: template, copy_to: support_mail)
+    end
   end
 
   def default_page_path
@@ -32,7 +41,7 @@ class Event < ApplicationRecord
   end
 
   def san_saru_details
-    content = File.read("#{Rails.root}/public/san_saru_markdown_page")
+    content = File.read("#{Rails.root}/public/templates/san_saru_markdown_page")
     content.html_safe
   end
 

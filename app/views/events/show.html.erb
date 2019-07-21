@@ -55,7 +55,8 @@
 <br>
 <div class="row justify-content-md-end">
   <div class="col-md-2">
-    <%= link_to 'Editar', edit_event_path(@event) %>
+    <%= link_to 'Editar', edit_event_path(@event) %> |
+    <%= link_to 'Atras', events_path %>
   </div>
 </div>
 
@@ -91,8 +92,7 @@
 
 <div class="row justify-content-md-end">
   <div class="col-md-2">
-    <%= link_to 'Nueva página', {:controller => "pages", :action => "new", :event => @event } %> |
-    <%= link_to 'Atras', events_path %>
+    <%= link_to 'Nueva página', {:controller => "pages", :action => "new", :event => @event } %>
   </div>
 </div>
 
@@ -114,15 +114,12 @@
       <% @event.custom_emails.each do |email| %>
         <tr>
           <td><%=email.name %></td>
-          <td><%=emails.template.slice(0..497) + '...' %></td>
-          <td><%= link_to 'Editar', edit_page_path(page) %></td>
+          <td><%=email.template.slice(0..497) + '...' %></td>
+          <td><%= link_to 'Editar', edit_custom_email_path(email) %></td>
         </tr>
       <% end %>
       </tbody>
     </table>
-    <%= link_to 'Nueva página', {:controller => "pages", :action => "new", :event => @event } %> |
-    <%= link_to 'Back', events_path %>
-
   </div>
 </div>
 
