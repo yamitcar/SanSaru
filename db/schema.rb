@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_16_005999) do
+ActiveRecord::Schema.define(version: 2019_07_21_013412) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,16 @@ ActiveRecord::Schema.define(version: 2019_07_16_005999) do
     t.text "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "custom_emails", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "copy_to", null: false
+    t.text "template", null: false
+    t.bigint "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_custom_emails_on_event_id"
   end
 
   create_table "events", force: :cascade do |t|

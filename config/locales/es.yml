@@ -29,5 +29,16 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
-  hello: "Hola mundo"
+es:
+  defaults: &defaults
+    month_names:
+      [~, Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Augusto, Septiembre, Octubre, Noviembre, Deciembre]
+    formats:
+      default: "%d. %B %Y"
+      short: "%d.%m.%Y"
+  date:
+    <<: *defaults
+    order: ["year", "month", "day"]
+  time:
+    <<: *defaults
+

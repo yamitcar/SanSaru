@@ -15,6 +15,7 @@ class Event < ApplicationRecord
   validates :active, presence: true
 
   has_many :pages
+  has_many :custom_emails
   has_many :profiles
 
   def aoc_dates
