@@ -4,9 +4,9 @@
   <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
 </head>
 <body>
-<p>¡Hola, {{{ invited.name }}}!</p>
+<p>¡Hola, {{{ invited.name }}} !</p>
 
-<p>¡Felicitaciones! {{{host.name }}} te ha seleccionado para participar del Agile Open Camp Argentina 2019.</p>
+<p>¡Felicitaciones! {{{ host.name }}} te ha seleccionado para participar en el {{{ event.fullname }}}.</p>
 
 <p>Esta es la secuencia de pasos a seguir a partir de ahora:</p>
 
@@ -14,8 +14,8 @@
   <li>
     <p>PAGO: Debes realizar el <b>pago de reserva de tu lugar</b>, para lo que tienes 2 opciones:</p>
     <ul>
-      <li>Hacer el <b>pago solidario</b>, es decir el total del costo de tu participación en el evento, que es de $13.500 argentinos. De esta forma, además de reservar tu lugar estás completando el pago, y sobre todo estás ayudando económicamente a este evento.</li>
-      <li>Hacer el <b>pago de la reserva</b>, que es de $2.000 argentinos. El pago del resto de tu inscripción se deberá realizar a más tardar la última semana de marzo (te avisaremos más cerca de la fecha).</li>
+      <li>Hacer el <b>pago solidario</b>, es decir el total del costo de tu participación en el evento, que es de {{{ event.price }}} COP. De esta forma, además de reservar tu lugar estás completando el pago, y sobre todo estás ayudando económicamente a este evento.</li>
+      <li>Hacer el <b>pago de la reserva</b>, que es de {{{ event.reserve_price }}} COP. El pago del resto de tu inscripción se deberá realizar a más tardar la última semana de marzo (te avisaremos más cerca de la fecha).</li>
 
     </ul>
     <p>Te damos más detalles en esta <a href="https://docs.google.com/document/d/1G4E_JenPRq2shhzOSYpMcGe3Rfv_FQvKkr_7k7ZhJ9M/edit?usp=sharing">explicación ampliada</a> ó en <a href="https://youtu.be/FnsXHhd89Kg">este video</a>.</p>
@@ -58,7 +58,7 @@
 </li>
 
 <li>
-  <p>SELECCIÓN: Una vez que hayamos comprobado tu pago, se habilitará en tu perfil San Saru la opción para que <a href="https://sansaru2019brc.herokuapp.com/profiles">selecciones a 2 participantes más</a> (¡serán tus 2 mon@s!).</p>
+  <p>SELECCIÓN: Una vez que hayamos comprobado tu pago, se habilitará en tu perfil San Saru la opción para que <a href="https://san-saru.herokuapp.com/profiles">selecciones a 2 participantes más</a> (¡serán tus 2 mon@s!).</p>
 
   <p><b>¡Importante!</b> Te pedimos que en la medida de tus posibilidades, hagas tu selección dentro de los 2 días siguientes (una vez estés habilitad@ para seleccionar). </p>
 
@@ -69,7 +69,7 @@
 <p><b>Notas:</b></p>
 <p>
   <ul>
-    <li><b>Cupo:</b> Sólo 75 personas pueden ser seleccionadas. Una vez completado ese cupo no  podrás seleccionar a nadie más, si no lo hiciste antes.</li>
+    <li><b>Cupo:</b> Sólo {{{ event.participants }}} personas pueden ser seleccionadas. Una vez completado ese cupo no  podrás seleccionar a nadie más, si no lo hiciste antes.</li>
     <li><b>Devoluciones:</b> Ten en cuenta que si pagas la reserva y luego decides no asistir al evento no podremos devolverte ese monto. Todo lo recaudado es utilizado para reducir el costo de las inscripciones (¡el tuyo también!) y es aplicado al momento de recibirlo. Si cancelas luego del pago solidario, comunicate con nosotros y vemos cómo resolverlo.</li>
     <li><b>Sponsors:</b> Te invitamos a ayudarnos a conseguir sponsors. Puedes descargar esta <a href="https://drive.google.com/file/d/12CM5Wv353C8SK31COibREKDhRw7ti3Lk/view?usp=sharing">Carta de Presentación del Evento</a>, y enviarla a cualquier potencial sponsor.</li>
     <li><b>Comunicarnos:</b> ya puedes unirte al grupo de <a href="https://t.me/joinchat/BNT3rEGBP8iE20CsTi7tYA">Telegram AOC</a>, donde estaremos tod@s l@s participantes de todos los AOC.</li>

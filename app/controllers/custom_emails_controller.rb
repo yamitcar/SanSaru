@@ -29,7 +29,14 @@ class CustomEmailsController < ApplicationController
   def update
     respond_to do |format|
       if @custom_email.update(custom_email_params)
-        format.html { redirect_to @custom_email.event, notice: 'Email was successfully updated.' }
+        message = 'Email actualizado correctamente'
+        if(params[:commit] == "Guardar y enviar una prueba a los copiados")
+          if(@custom_email.name == :notify_invitation.to_s)
+              message = 'Email actualizado y enviado, fijate en tu buzón'
+            AocMailer.notify_invitation(current_user, current_user, true).deliver_later
+          end
+        end
+        format.html { redirect_to @custom_email.event, notice: message }
         format.json { render :show, status: :ok, location: @custom_email }
       else
         format.html { render :edit }

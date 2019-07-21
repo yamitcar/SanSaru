@@ -14,11 +14,11 @@
     
 
 * Mejorar el home principal de la app
-* plantillas de mail configurables para el evento
+* plantillas de mail configurables para el evento __Done__ // ver pagina de administracion del evento
 * tabla de configs por evento
 * tabla de invitaciones por evento
 * visualizacion del mapa por evento
-* Mejorar el editos de markdown
+* Mejorar el editor de markdown y html
 * Formulario de perfil configurable por evento
 * add admins por evento unicamente.
 - Rename and reorder home_controller
