@@ -27,6 +27,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.add_homepage
     @event.add_invitation_email
+    @event.tickets_left = @event.participants
 
     respond_to do |format|
       if @event.save

@@ -42,9 +42,9 @@ class User < ApplicationRecord
     if invitation
       begin
         ActiveRecord::Base.transaction do
-          if Config.has_invitations?
+          if actual_event.has_invitations?
             formalize_invitation invitation, invited
-            Config.discount_invitation
+            actual_event.discount_invitation
           end
         end
       rescue ActiveRecord::RecordInvalid => exception
@@ -96,6 +96,5 @@ class User < ApplicationRecord
     Invitation.create!(user_id: invited.id)
   end
 end
-# TODO: poner textos en español y plantillas de email
 # TODO no permitir borrar cuenta
 

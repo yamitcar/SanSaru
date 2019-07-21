@@ -3,11 +3,11 @@ class HomeController < ApplicationController
   helper_method :can_invite?
 
   def can_invite?(current_user)
-    unless Config.is_invitation_period_open?
+    unless current_user.actual_event.is_invitation_period_open?
       return false, 'El período de selección está cerrado'
     end
 
-    unless Config.has_invitations?
+    unless current_user.actual_event.has_invitations?
       return false, 'Lo sentimos, ya no tenemos invitaciones disponibles :('
     end
 

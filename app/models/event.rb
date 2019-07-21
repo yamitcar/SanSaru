@@ -13,10 +13,14 @@ class Event < ApplicationRecord
   validates :venue_location, presence: true
   validates :monkeys, presence: true
   validates :active, presence: true
+  validates :status, presence: true
+  validates :tickets_left, presence: true
 
   has_many :pages
   has_many :custom_emails
   has_many :profiles
+
+  STATUS = [:activo, :seleccion, :lleno, :finalizado]
 
   def aoc_dates
      "#{start_date.strftime('%d de %b')} al #{end_date.strftime('%d de %b')} de #{end_date.strftime('%Y')}"
@@ -44,5 +48,29 @@ class Event < ApplicationRecord
     content = File.read("#{Rails.root}/public/templates/san_saru_markdown_page")
     content.html_safe
   end
+
+  def has_invitations?
+    tickets_left > 0
+  end
+
+  def discount_invitation
+    if has_invitations?
+      tickets_left -= 1
+      close_invitation_period if tickets_left == 0
+      save!
+    else
+      raise "Lo sentimos, ya no tenemos cupos disponibles :'("
+    end
+  end
+
+  def close_invitation_period
+    status = :lleno
+  end
+
+  def is_invitation_period_open?
+    status == :seleccion
+  end
+
+
 
 end
