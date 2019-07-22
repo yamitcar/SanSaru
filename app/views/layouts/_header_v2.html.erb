@@ -16,7 +16,7 @@
     <% end %>
     </ul>
 
-    <% if current_user.actual_event.is_invitation_period_open? %>
+    <% if current_user&.actual_event&.is_invitation_period_open? %>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
           <div class='nav-link'>

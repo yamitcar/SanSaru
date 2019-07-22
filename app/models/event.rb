@@ -12,7 +12,6 @@ class Event < ApplicationRecord
   validates :venue, presence: true
   validates :venue_location, presence: true
   validates :monkeys, presence: true
-  validates :active, presence: true
   validates :status, presence: true
   validates :tickets_left, presence: true
 
@@ -64,11 +63,11 @@ class Event < ApplicationRecord
   end
 
   def close_invitation_period
-    status = :lleno
+    status = :lleno.to_s
   end
 
   def is_invitation_period_open?
-    status == :seleccion
+    status == :seleccion.to_s
   end
 
 
