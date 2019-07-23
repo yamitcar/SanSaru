@@ -15,7 +15,7 @@
 
 * Mejorar el home principal de la app
 * plantillas de mail configurables para el evento __Done__ // ver pagina de administracion del evento
-* tabla de configs por evento
+* tabla de configs por evento __Done__ incorporado a los datos del evento
 * tabla de invitaciones por evento
 * visualizacion del mapa por evento
 * Mejorar el editor de markdown y html
