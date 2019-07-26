@@ -5,9 +5,9 @@ default: &default
 
 development: &development
   <<: *default
-  database: sanSaru
-  username: postgres
-  password: k4m4l30n
+  database: sansaru_development
+  username: <%= ENV["POSTGRES_USER"] %>
+  password: <%= ENV["POSTGRES_PASSWORD"] %>
   host: localhost
 
 test: &test
