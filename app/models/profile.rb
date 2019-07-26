@@ -11,4 +11,5 @@ class Profile < ApplicationRecord
   validates :agile_description, presence: true
   validates :bio, presence: true
   validates :phonenumber, presence: true
+  validates :role, presence: true, inclusion: Role.all.map(&:name)
 end

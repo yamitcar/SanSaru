@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_24_232923) do
+ActiveRecord::Schema.define(version: 2019_07_26_031423) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 2018_07_24_232923) do
     t.string "city", default: "", null: false
     t.string "phonenumber", default: "", null: false
     t.string "telegram"
+    t.string "role", null: false
     t.index ["agileRelation_id"], name: "index_profiles_on_agileRelation_id"
     t.index ["agile_id"], name: "index_profiles_on_agile_id"
     t.index ["gender_id"], name: "index_profiles_on_gender_id"

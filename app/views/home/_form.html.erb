@@ -38,6 +38,29 @@
       </div>
     </div>
 
+    <div class="form-group row">
+      <label class="col-md-5 control-label" for="textinput">
+        <%= form.label :role, "¿Qué rol desempeñarías en la hackaton?" %>
+      </label>
+
+      <div class="col-md-7">
+        <% roles = Role.all.map { |role| [role.name, role.name] } %>
+        <%=
+          form.select(
+            :role,
+            roles,
+            {
+                prompt: 'Selecciona tu rol',
+            },
+            {
+                id: :roles,
+                class: 'custom-select',
+            },
+          )
+        %>
+      </div>
+    </div>
+
     <script>
         var country = null;
         $('#countries').change(function () {

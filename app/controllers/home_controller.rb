@@ -95,8 +95,10 @@ class HomeController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def profile_params
-    params.require(:profile).permit(:phonenumber, :telegram, :country, :city, :state, :first_time,
-                                    :expectancy, :agile_id, :agile_description, :hobbies, :bring, :proposal,
-                                    :bio, :agileRelation_id, :gender_id, :size_id)
+    params.require(:profile).permit(
+      :phonenumber, :telegram, :country, :city, :state, :first_time,
+      :expectancy, :agile_id, :agile_description, :hobbies, :bring, :proposal,
+      :bio, :agileRelation_id, :gender_id, :size_id, :role,
+    )
   end
 end
