@@ -467,8 +467,6 @@ footer ul li {
   }
 
   .why-sansaru {
-    display: flex;
-    align-content: space-around;
     font-family: 'Segoe Print', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     .why-sansaru-intro {
@@ -506,7 +504,9 @@ footer ul li {
 
         .card-img-top {
           border-radius: 100%;
-          width: auto;
+          width: 50%;
+          min-width: 90px;
+          margin: 0 auto;
         }
       }
     }
