@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<p>¡Hola, {{{ invited.name }}} !</p>
+
+<p>¡Felicitaciones! {{{ host.name }}} te ha seleccionado para participar en el {{{ event.fullname }}}.</p>
+
+<p>Esta es la secuencia de pasos a seguir a partir de ahora:</p>
+
+<ol>
+  <li>
+    <p>PAGO: Debes realizar el <b>pago de reserva de tu lugar</b>, para lo que tienes 2 opciones:</p>
+    <ul>
+      <li>Hacer el <b>pago solidario</b>, es decir el total del costo de tu participación en el evento, que es de {{{ event.price }}} COP. De esta forma, además de reservar tu lugar estás completando el pago, y sobre todo estás ayudando económicamente a este evento.</li>
+      <li>Hacer el <b>pago de la reserva</b>, que es de {{{ event.reserve_price }}} COP. El pago del resto de tu inscripción se deberá realizar a más tardar la última semana de marzo (te avisaremos más cerca de la fecha).</li>
+
+    </ul>
+    <p>Te damos más detalles en esta <a href="https://docs.google.com/document/d/1G4E_JenPRq2shhzOSYpMcGe3Rfv_FQvKkr_7k7ZhJ9M/edit?usp=sharing">explicación ampliada</a> ó en <a href="https://youtu.be/FnsXHhd89Kg">este video</a>.</p>
+
+    <p><b>¡Importante!</b> Tienes un plazo de 4 días hábiles para realizar este pago. Si no lo haces tu lugar será liberado para que otra persona pueda tomarlo.</p>
+
+    <p>Si decides no asistir, por favor ¡avísanos cuanto antes!</p>
+
+    <p><b>Formas de pago</b>:</p>
+    <ul>
+      <li>Si <b>no tienes</b> cuenta bancaria argentina: <i>avísanos a la brevedad y te llegará un email específico de la organización con el detalle de la forma de pago</i>.</li>
+
+      <li><p>Si tienes cuenta bancaria argentina: debés realizar una transferencia a esta cuenta: </p>
+        <ul>
+          <li>Titular: Hotel Tronador S.A. - CUIT 30-53760762-5</li>
+          <li>Santander Río:  Cuenta Corriente - $(Arg)</li>
+          <li>CBU 07202850-20000000199922</li>
+        </ul>
+      </li>
+    </ul>
+    <br>
+  </li>
+  <li>
+    <p>AVISO DE PAGO: Envía el comprobante de la transferencia respondiendo a este correo y con copia a <a href="mailto:hoteltronador@bariloche.com.ar?subject=AOC+Argentina+2019+Aviso+de+pago&cc=argentina@agileopen.camp">hoteltronador@bariloche.com.ar</a>, detallando en el texto del mail la siguiente información: </p></li>
+  <ul>
+    <li>Tu nombre completo</li>
+    <li>CUIL / CUIT</li>
+    <li>Domicilio</li>
+    <li>Fecha de la transferencia</li>
+    <li>Monto que transferiste</li>
+    <li>Avisarnos si tenés la intención de hacer <b>pago solidario</b> </li>
+    <li>Tipo de factura que vas a requerir por el pago. Si es A, indicar:
+      <ul>
+        <li>razón social </li>
+        <li>CUIT </li>
+        <li>dirección</li>
+      </ul>
+    </li>
+  </ul>
+</li>
+
+<li>
+  <p>SELECCIÓN: Una vez que hayamos comprobado tu pago, se habilitará en tu perfil San Saru la opción para que <a href="https://san-saru.herokuapp.com/profiles">selecciones a 2 participantes más</a> (¡serán tus 2 mon@s!).</p>
+
+  <p><b>¡Importante!</b> Te pedimos que en la medida de tus posibilidades, hagas tu selección dentro de los 2 días siguientes (una vez estés habilitad@ para seleccionar). </p>
+
+  <p><b>¡También muy importante!</b> La selección distribuida de participantes es uno de los procesos clave para hacer de éste un evento inolvidable. Por eso te pedimos que hagas tu elección lo más a conciencia que puedas e intentes basarla en características que consideres importantes para ese propósito, y no sólo en amistades y/o relaciones personales. Puedes ver <a href="https://youtu.be/trdETdNIl3Q">este video instructivo</a> sobre cómo seleccionar (gentileza del AOC Colombia 2018).</p>
+</li>
+</ol>
+
+<p><b>Notas:</b></p>
+<p>
+  <ul>
+    <li><b>Cupo:</b> Sólo {{{ event.participants }}} personas pueden ser seleccionadas. Una vez completado ese cupo no  podrás seleccionar a nadie más, si no lo hiciste antes.</li>
+    <li><b>Devoluciones:</b> Ten en cuenta que si pagas la reserva y luego decides no asistir al evento no podremos devolverte ese monto. Todo lo recaudado es utilizado para reducir el costo de las inscripciones (¡el tuyo también!) y es aplicado al momento de recibirlo. Si cancelas luego del pago solidario, comunicate con nosotros y vemos cómo resolverlo.</li>
+    <li><b>Sponsors:</b> Te invitamos a ayudarnos a conseguir sponsors. Puedes descargar esta <a href="https://drive.google.com/file/d/12CM5Wv353C8SK31COibREKDhRw7ti3Lk/view?usp=sharing">Carta de Presentación del Evento</a>, y enviarla a cualquier potencial sponsor.</li>
+    <li><b>Comunicarnos:</b> ya puedes unirte al grupo de <a href="https://t.me/joinchat/BNT3rEGBP8iE20CsTi7tYA">Telegram AOC</a>, donde estaremos tod@s l@s participantes de todos los AOC.</li>
+  </ul>
+</p>
+
+<p>¡Gracias por sumarte! ¡Nos vemos pronto!</p>
+
+
+<p>El equipo AOC Argentina 2019.</p>
+
+</body>
+        </html>

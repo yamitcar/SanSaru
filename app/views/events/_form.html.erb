@@ -3,7 +3,7 @@
 <%= form_with(model: event, local: true) do |form| %>
   <% if event.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+      <h2><%= pluralize(event.errors.count, "error") %> Este evento no se ha podido guardar:</h2>
 
       <ul>
         <% event.errors.full_messages.each do |message| %>
@@ -58,6 +58,15 @@
         </label>
         <div class="col-md-7">
           <%= form.text_field :participants, id: :event_participants, class: 'form-control input-md' %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-md-5 control-label" for="textinput">
+          <%= form.label :tickets_left, "Entradas disponibles" %>
+        </label>
+        <div class="col-md-7">
+          <%= form.text_field :tickets_left, id: :event_tickets_left, class: 'form-control input-md' %>
         </div>
       </div>
 
@@ -136,10 +145,10 @@
 
       <div class="form-group row">
         <label class="col-md-5 control-label" for="textinput">
-          <%= form.label :active, "¿Evento activo?" %>
+          <%= form.label :status, "Estado del evento:" %>
         </label>
         <div class="col-md-7">
-          <%= form.check_box :active, id: :event_active, class: 'form-control input-md' %>
+          <%= form.select(:status, Event::STATUS.map { |value| [ value.to_s, value.to_s ] },{},{id: :event_status, class: 'custom-select'}) -%>
         </div>
       </div>
 

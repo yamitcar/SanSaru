@@ -26,6 +26,8 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.add_homepage
+    @event.add_invitation_email
+    @event.tickets_left = @event.participants
 
     respond_to do |format|
       if @event.save
@@ -70,11 +72,10 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-
       params.require(:event).permit(:name,:fullname,:fullname, :site,
                                     :support_mail,:participants, :price,
                                     :reserve_price, :ideal_price,:start_date,
-                                    :end_date,  :venue, :venue_location, :monkeys,:active)
+                                    :end_date, :venue, :venue_location, :monkeys,:status,:tickets_left)
     end
 
 end

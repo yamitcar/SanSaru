@@ -27,11 +27,10 @@ Size.create(name: 'L')
 Size.create(name: 'XL')
 Size.create(name: 'XXL')
 
-Config.create(name: :invitaciones, value: 75)
-Config.create(name: :eleccion, value: 'false')
-
-Event.new(name: 'default',fullname:'default San Saru',
+event= Event.new(name: 'default',fullname:'default San Saru',
           site: 'https://some.com',support_mail:'aoc@sansaru.com',participants: 80,ideal_price:100, price: 80,
-          reserve_price: 0, start_date: Time.now,end_date: Time.now, venue: 'street 123', monkeys: 'ciego,sordo,mudo')
-Event.add_homepage
-Event.save!
+          reserve_price: 0, start_date: Time.now,end_date: Time.now, venue: 'street 123', monkeys: 'ciego,sordo,mudo',
+          status: :active, tickets_left: 80)
+event.add_homepage
+event.add_invitation_email
+event.save!

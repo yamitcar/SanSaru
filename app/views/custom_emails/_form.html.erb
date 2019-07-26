@@ -1,0 +1,74 @@
+<div class="col-md-10 offset-md-1">
+  <br>
+<%= form_with(model: custom_email, local: true) do |form| %>
+  <% if custom_email.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(custom_email.errors.count, "error") %> No sea ha podido guardar este email:</h2>
+
+      <ul>
+        <% custom_email.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <h3>Evento: <%= @custom_email.event.fullname %></h3>
+    <br>
+
+    <fieldset>
+      <div class="form-group row">
+        <label class="col-md-5 control-label" >
+          <%= form.label :name, "Nombre clave:"  %>
+        </label>
+        <label class="col-md-5 control-label" >
+          <%= form.label :name, "#{@custom_email.name}"  %>
+        </label>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-md-5 control-label" for="textinput">
+          <%= form.label :copy_to, "Copiar a ( separar con ',' a todos los copiados):" %>
+        </label>
+        <div class="col-md-7">
+          <%= form.text_field :copy_to, id: :copy_to_path, class: 'form-control input-md' %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <p>
+          <h5>Puedes usar html para editar el mail</h5>
+        </p>
+        <p>
+          <h5>Tambien puedes agregar los siguientes datos en el texto para que el sistema los ajuste:</h5>
+        </p>
+      </div>
+
+      <div class="form-group row">
+
+        <ul>
+          <% HtmlEmailParser::POSSIBILITIES.each do |posibility| %>
+            <li> {{{ <%=posibility%> }}}</li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="form-group row">
+        <div  class="col-md-12" >
+          <%= md_simple_editor  do %>
+            <%= form.text_area :template, id: :template_content, style: 'height: 600px; width: 100%;' %>
+          <% end %>
+        </div>
+      </div>
+
+      <%= form.hidden_field :event_id, :value => @custom_email.event.id %>
+
+      <div class="form-group row">
+        <div class="col-md-12 text-center">
+          <%= form.submit "Guardar Email", class: "btn btn-primary" %>
+          <%= form.submit "Guardar y enviar una prueba a los copiados", class: "btn btn-info" %>
+        </div>
+      </div>
+    </fieldset>
+  <% end %>
+</div>

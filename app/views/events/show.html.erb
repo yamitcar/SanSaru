@@ -2,9 +2,72 @@
   <h2><%= @event.fullname %> </h2>
 </div>
 <br>
-<div class="row align-items-center">
-  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-3">
+        <h5>Nombre:</h5> <%=@event.name %>
+      </div>
+      <div class="col-md-3">
+        <h5>Nombre completo:</h5> <%=@event.fullname %>
+      </div>
+      <div class="col-md-3">
+        <h5>Sitio:</h5> <%=@event.site %>
+      </div>
+      <div class="col-md-3">
+        <h5>Email:</h5> <%=@event.support_mail %>
+      </div>
+    </div>
+<br>
+<div class="row">
+  <div class="col-md-3">
+    <h5>Participantes:</h5> <%=@event.participants %>
+  </div>
+  <div class="col-md-3">
+    <h5>Precio:</h5> <%=@event.price %>
+  </div>
+  <div class="col-md-3">
+    <h5>Precio de reserva:</h5> <%=@event.reserve_price %>
+  </div>
+  <div class="col-md-3">
+    <h5>Precio ideal:</h5> <%=@event.ideal_price %>
+  </div>
+</div>
+<br>
+  <div class="row">
+    <div class="col-md-3">
+      <h5>Inicio:</h5> <%=@event.start_date %>
+    </div>
+    <div class="col-md-3">
+      <h5>Fin:</h5> <%=@event.end_date %>
+    </div>
+    <div class="col-md-3">
+      <h5>Lugar:</h5> <%=@event.venue %>
+    </div>
+    <div class="col-md-3">
+      <h5>Dirección:</h5> <%=@event.venue_location %>
+    </div>
+  </div>
+<br>
+<div class="row justify-content-md-center">
+  <div class="col-md-3">
+    <h5>Monos: </h5> <%=  @event.monkeys %>
+  </div>
+  <div class="col-md-3">
+    <h5>Estado: </h5> <%=  @event.status %>
+  </div>
+  <div class="col-md-3">
+    <h5>Entradas disponibles: </h5> <%=  @event.tickets_left %>
+  </div>
+</div>
+<br>
+<div class="row justify-content-md-end">
+  <div class="col-md-2">
+    <%= link_to 'Editar', edit_event_path(@event) %> |
+    <%= link_to 'Atras', events_path %>
+  </div>
+</div>
 
+<br>
+<br>
     <div class="row justify-content-md-center">
       <div class="col-md-24">
         <h3>Páginas</h3>
@@ -22,18 +85,47 @@
             <tr>
               <td><%=page.path %></td>
               <td><%=page.content.slice(0..497) + '...' %></td>
-              <td><%= link_to 'Edit', edit_page_path(page) %></td>
-              <td><%= link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to 'Editar', edit_page_path(page) %></td>
+              <td><%= link_to 'Borrar', page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>
           </tbody>
         </table>
-        <%= link_to 'Nueva página', {:controller => "pages", :action => "new", :event => @event } %> |
-        <%= link_to 'Back', events_path %>
+
 
       </div>
     </div>
 
+<div class="row justify-content-md-end">
+  <div class="col-md-2">
+    <%= link_to 'Nueva página', {:controller => "pages", :action => "new", :event => @event } %>
+  </div>
+</div>
+
+<br>
+<br>
+<div class="row justify-content-md-center">
+  <div class="col-md-24">
+    <h3>Emails</h3>
+
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Contenido</th>
+        <th scope="col" colspan="2"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @event.custom_emails.each do |email| %>
+        <tr>
+          <td><%=email.name %></td>
+          <td><%=email.template.slice(0..497) + '...' %></td>
+          <td><%= link_to 'Editar', edit_custom_email_path(email) %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
 
