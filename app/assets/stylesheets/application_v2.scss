@@ -420,6 +420,8 @@ footer ul li {
 }
 
 .san-saru-info {
+  background: #000;
+
   .title-element {
     background: #75AC0A;
   }
@@ -442,6 +444,71 @@ footer ul li {
 
     .san-saru-process-img {
       width: 90%;
+    }
+  }
+
+  .btn-sansaru {
+    font-family: 'Segoe Print', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-transform: initial;
+    font-style: italic;
+
+    .collapsed .collapse-icon {
+      background-position: top;
+    }
+
+    .collapse-icon {
+      width: 20px;
+      height: 10px;
+      display: inline-block;
+      background: url('drop-down.png') no-repeat;
+      background-size: cover;
+      background-position: bottom;
+    }
+  }
+
+  .why-sansaru {
+    display: flex;
+    align-content: space-around;
+    font-family: 'Segoe Print', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    .why-sansaru-intro {
+      background: #483E1C;
+      color: #FBFBFB;
+    }
+
+    .why-sansaru-content {
+      background: #FFEEB8;
+    }
+
+    .why-sansaru-after {
+      background: #483E1C;
+      color: #FBFBFB;
+    }
+  }
+
+  .sansaru-basic-desc {
+    height: min-content;
+    padding: 2em;
+  }
+
+  .sansaru-complete-desc {
+    background: transparent;
+    border: none;
+
+    .card-deck {
+      background: transparent;
+      border: none;
+
+      .card {
+        background: transparent;
+        border: none;
+        font-size: 0.8em;
+
+        .card-img-top {
+          border-radius: 100%;
+          width: auto;
+        }
+      }
     }
   }
 }
@@ -475,3 +542,4 @@ footer ul li {
     justify-content: center;
   }
 }
+
