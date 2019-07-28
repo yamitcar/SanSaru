@@ -5,32 +5,31 @@
   <title>AOC - Sansaru</title>
   <%= csrf_meta_tags %>
   <!-- Scrollbar Custom CSS -->
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag    'application_v2', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
 <body>
   <%= render 'layouts/header' %>
-    <div class="container">
-      <% if notice %>
-        <p class="alert alert-success">
-          <%= notice %>
-        </p>
-      <% end %>
-      <% if alert %>
-        <p class="alert alert-danger">
-          <%= alert %>
-        </p>
-      <% end %>
-      <%= yield %>
-      <%= debug(params) if Rails.env.development? %>
-      <%= ".................." if Rails.env.development? %>
-      <%= ENV['SMTP_ADDR'] if Rails.env.development? %>
-      <%= ENV['MAIL_DOMAIN'] if Rails.env.development? %>
-      <%= ENV['MAIL_PASSWORD'] if Rails.env.development? %>
-      <%= ENV['MAIL_USERNAME'] if Rails.env.development? %>
-      <%= ".................." if Rails.env.development? %>
-    </div>
+  <%= render 'layouts/welcome' %>
+  <% if notice %>
+    <p class="alert alert-success">
+      <%= notice %>
+    </p>
+  <% end %>
+  <% if alert %>
+    <p class="alert alert-danger">
+      <%= alert %>
+    </p>
+  <% end %>
+  <%= yield %>
+  <%= debug(params) if Rails.env.development? %>
+  <%= ".................." if Rails.env.development? %>
+  <%= ENV['SMTP_ADDR'] if Rails.env.development? %>
+  <%= ENV['MAIL_DOMAIN'] if Rails.env.development? %>
+  <%= ENV['MAIL_PASSWORD'] if Rails.env.development? %>
+  <%= ENV['MAIL_USERNAME'] if Rails.env.development? %>
+  <%= ".................." if Rails.env.development? %>
   <%= render 'layouts/footer' %>
 </body>
 

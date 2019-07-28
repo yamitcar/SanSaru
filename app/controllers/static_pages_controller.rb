@@ -11,14 +11,6 @@ class StaticPagesController < ApplicationController
     end
   end
 
-  def home_v2
-    if(current_user&.actual_event)
-      redirect_to("/#{current_user.actual_event.id}/#{current_user.actual_event.default_page_path}")
-    else
-      render
-    end
-  end
-
   def terms; end
 
   def privacidad; end

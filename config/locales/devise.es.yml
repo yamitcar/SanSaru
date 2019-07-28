@@ -55,10 +55,10 @@ es:
   errors:
     messages:
       already_confirmed: "Email ya confirmado, por favor inicia sesión"
-      confirmation_period_expired: "necesitas un nuevo email de confirmación %{period}, por favor solicita uno nuevo"
+      confirmation_period_expired: "Necesitas un nuevo email de confirmación %{period}, por favor solicita uno nuevo"
       expired: "ha exirado, por favor solicita uno nuevo"
       not_found: "no encontrado"
       not_locked: "no fue bloqueado"
       not_saved:
-        one: "Tienes un error, por favor verficarlos:"
+        one: "Tienes un error, por favor verficalo:"
         other: "Tienes %{count} errores, por favor verificalos:"

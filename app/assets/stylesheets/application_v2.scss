@@ -27,6 +27,11 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+/* variables */
+//$aoc-two-color: #1380CD
+//$aoc-two-color-hover: rgb(34, 111, 165);
+//$aoc-one-color: #75AC0A;
+
 #md-editor{
   #md-text{
     textarea{
@@ -325,6 +330,42 @@
     border: none; }
 }
 
+body {
+  font-family: Ubuntu, 'Segoe UI', Tahoma, Verdana, sans-serif;
+}
+
+a {
+  color: #1380CD;
+
+  &:hover {
+    color: rgb(34, 111, 165);
+  }
+}
+
+.btn {
+  border-radius: 0.7em;
+  border: none;
+  text-transform: initial;
+}
+
+.btn-primary {
+  background: #1380CD;
+
+  &:hover {
+    background: rgb(34, 111, 165);
+  }
+}
+
+label {
+  font-weight: lighter;
+  color: #6A6A6A;
+  margin: 0 0 0 0.2em;
+}
+
+input, select {
+  border-radius: 0.45rem;
+}
+
 footer {
   margin-top: 45px;
   padding-top: 5px;
@@ -377,27 +418,29 @@ footer ul li {
   stroke-width: 2px;
 }
 
-// Custom elements
-
 .welcome {
   background: #575757c4;
 }
 
-.title-element {
+.title-element, .inner-title-element {
   font-family: Ubuntu, 'Segoe UI', Tahoma, Verdana, sans-serif;
   color: #FFFFFF;
   text-align: center;
   padding: 0.6em;
 
   p {
-      font-size: 16px;
-      margin: 0;
+    font-size: 16px;
+    margin: 0;
   }
   
   h1 {
-      font-size: 25px;
-      font-weight: bold;
+    font-size: 25px;
+    font-weight: bold;
   }
+}
+
+.inner-title-element {
+  color: #787878; 
 }
 
 .basic-info {
@@ -513,6 +556,22 @@ footer ul li {
   }
 }
 
+.login-new {
+  .title-element {
+    background: #1380CD;
+  }
+}
+
+.registration-new {
+  .title-element {
+    background: #1380CD;
+  }
+  
+  .new_user {
+    width: 100%;
+  }
+}
+
 .navbar-light {
   .logo {
     height: 40px;
@@ -535,7 +594,6 @@ footer ul li {
   }
 
   .last-footer {
-    background: #555;
     width: 100%;
     display: flex;
     align-content: center;

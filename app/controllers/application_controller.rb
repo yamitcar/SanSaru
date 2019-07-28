@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  # layout "application_v2"
   before_action :set_paper_trail_whodunnit
   # protect_from_forgery with: :exception
   protect_from_forgery prepend: true
@@ -25,14 +24,14 @@ class ApplicationController < ActionController::Base
   def require_login
     unless user_signed_in?
       # TODO: flash doesnt work
-      flash[:notice] = 'debes estar logueado para ver esto'
+      flash[:notice] = 'Debes estar logueado para ver esto'
       redirect_to new_user_session_path
     end
   end
 
   def require_admin_login
     unless (user_signed_in? and current_user.admin)
-      flash[:error] = 'no tienes acceso a esta pagina'
+      flash[:error] = 'No tienes acceso a esta pagina'
       redirect_to(:home)
     end
   end
