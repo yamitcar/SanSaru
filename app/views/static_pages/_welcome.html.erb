@@ -1,0 +1,8 @@
+<div class="title-element welcome">
+    <p>Bienvenid@ 
+    <% if user_signed_in? %>
+      <strong><%= current_user.name %>  <%= current_user.lastname %></strong> 
+    <% end %>
+    al método de selección <% if user_signed_in? %> del <br /> "#{aoc_name}" <% end %></p>
+    <h1>San Saru</h1>
+</div>
