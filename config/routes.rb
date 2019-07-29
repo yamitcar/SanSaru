@@ -14,8 +14,8 @@ Rails.application.routes.draw do
   patch '/home', to: 'home#update'
   put '/home/:id', to: 'home#update'
   post '/home/invite/:invited', to: 'home#invite'
-  get 'graph/index'
-  get 'graph/data', defaults: { format: 'json' }
+  get 'graph/:event_home', to: 'graph#index'
+  get 'graph/data/:event_home', to: 'graph#data', defaults: { format: 'json' }
   post '/favorite/add', to: 'favorite#add_favorite'
   post '/favorite/remove', to: 'favorite#remove_favorite'
   get '/favorite', to: 'profiles#favorites'

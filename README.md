@@ -17,7 +17,7 @@
 * plantillas de mail configurables para el evento __Done__ // ver pagina de administracion del evento
 * tabla de configs por evento __Done__ incorporado a los datos del evento
 * tabla de invitaciones por evento
-* visualizacion del mapa por evento
+* visualizacion del arbol por evento __Done__
 * Mejorar el editor de markdown y html
 * Formulario de perfil configurable por evento
 * add admins por evento unicamente.

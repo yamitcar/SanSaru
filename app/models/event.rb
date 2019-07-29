@@ -18,6 +18,7 @@ class Event < ApplicationRecord
   has_many :pages
   has_many :custom_emails
   has_many :profiles
+  has_many :invitations
 
   STATUS = [:activo, :seleccion, :lleno, :finalizado]
 
@@ -68,6 +69,10 @@ class Event < ApplicationRecord
 
   def is_invitation_period_open?
     status == :seleccion.to_s
+  end
+
+  def self.find_by_home_path (home_path)
+    Event.all.select{|event| event.default_page_path == home_path}[0]
   end
 
 
