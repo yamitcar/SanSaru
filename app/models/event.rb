@@ -63,10 +63,6 @@ class Event < ApplicationRecord
     end
   end
 
-  def close_invitation_period
-    status = :lleno.to_s
-  end
-
   def is_invitation_period_open?
     status == :seleccion.to_s
   end
@@ -74,6 +70,13 @@ class Event < ApplicationRecord
   def self.find_by_home_path (home_path)
     Event.all.select{|event| event.default_page_path == home_path}[0]
   end
+
+private
+
+  def close_invitation_period
+    status = :lleno.to_s
+  end
+
 
 
 

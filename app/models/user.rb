@@ -57,7 +57,7 @@ class User < ApplicationRecord
   end
 
   def has_invitation?
-    invitation = Invitation.find_by(user_id: id)
+    invitation = Invitation.find_invitation_for(id,actual_event.id)
     if invitation
       return (invitation.invited_one.nil? || invitation.invited_two.nil?)
     end
@@ -66,14 +66,14 @@ class User < ApplicationRecord
 
   def was_pay?
     if has_invitation?
-      Invitation.find_by(user_id: id).payed
+      Invitation.find_invitation_for(id, actual_event.id).payed
     else
       false
     end
   end
 
   def was_invite?
-    Invitation.all.map(&:user_id).index id
+    Invitation.all_invitations_for(actual_event.id).map(&:user_id).index id
   end
 
   def is_favorite?(user)
@@ -93,7 +93,7 @@ class User < ApplicationRecord
       raise 'Ya invitaste a dos personas'
     end
     invitation.save!
-    Invitation.create!(user_id: invited.id)
+    Invitation.create!(user_id: invited.id, event_id: actual_event.id)
   end
 end
 # TODO no permitir borrar cuenta

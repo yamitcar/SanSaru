@@ -16,11 +16,13 @@
 * Mejorar el home principal de la app
 * plantillas de mail configurables para el evento __Done__ // ver pagina de administracion del evento
 * tabla de configs por evento __Done__ incorporado a los datos del evento
-* tabla de invitaciones por evento
+* tabla de invitaciones por evento __Done__
 * visualizacion del arbol por evento __Done__
+* Favoritos por evento
 * Mejorar el editor de markdown y html
 * Formulario de perfil configurable por evento
 * add admins por evento unicamente.
+* Cambiar payed por can_invite o algo similar
 - Rename and reorder home_controller
 
 
@@ -113,7 +115,7 @@ Para borrar la base de datos de heroku:
 
 Las invitaciones solo se podran activar si desde la interfaz administrativa se crean:
 + Las 3 invitaciones iniciales
-+ Se activa el período de invitaciones en las configuraciones
++ Se activa el período de invitaciones en el evento
 
 Query para obtener todos los invitados:
 

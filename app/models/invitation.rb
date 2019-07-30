@@ -48,4 +48,8 @@ class Invitation < ApplicationRecord
   def self.find_invitation_for (user_id,event_id)
     Invitation.where(user_id: user_id).where(event_id: event_id).first
   end
+
+  def self.all_invitations_for (event_id)
+    Invitation.where(event_id: event_id)
+  end
 end

@@ -86,11 +86,6 @@ class HomeController < ApplicationController
     end
   end
 
-  #  def has_invitation? user_id
-  # end
-
-  # helper_method :has_invitation?
-
   private
 
   # Never trust parameters from the scary internet, only allow the white list through.
