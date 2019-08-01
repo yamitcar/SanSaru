@@ -1,14 +1,10 @@
-<div id="candidates" class="participants-section">
-  <div class="title-element">
-    <p>Aquí no aparecerá TU PERFIL, que puedes ver y editar en MI CUENTA. Aquí puedes ver los</p> 
-    <h1>Postulados</h1>
-  </div>
-  <div class="inner-title-element">
+<div class="row align-items-center">
+  <div class="col-md-12">
+    <h1 class="text-center">Tus perfiles favoritos</h1>
     <p id="notice"><%= notice %></p>
   </div>
 </div>
 
-<div class="container">
 <div class="row align-items-center">
   <div class="col-md-12">
     <table class="table table-hover">
@@ -24,28 +20,28 @@
       </thead>
 
       <tbody>
-      <% @profiles.each do |profile| %>
+      <% @postulados.each do |postulado| %>
         <%  invitados = Invitation.all.map(&:user_id) %>
         <tr style="
-        background-color: <%= invitados.index(profile.user.id) ? 'lightcyan;' : 'white;' %>">
+        background-color: <%= invitados.index(postulado.id) ? 'lightcyan;' : 'white;' %>">
           <td>
-            <% if profile.organizer %>
+            <% if postulado.organizer %>
               &#9889;
             <% end %>
           </td>
-          <td><%= profile.user.name %> <%= profile.user.lastname %> </td>
-          <td><%= CS.get[profile.country.to_sym ]%>,
-            <%= CS.get(profile.country)[profile.state.to_sym]%>,
-            <%= CS.get(profile.country,profile.state)[profile.city.to_i] %></td>
-          <td> <% if profile.first_time %>
+          <td><%= postulado.name %> <%= postulado.lastname %> </td>
+          <td><%= CS.get[postulado.profile.country.to_sym ]%>,
+            <%= CS.get(postulado.profile.country)[postulado.profile.state.to_sym]%>,
+            <%= CS.get(postulado.profile.country,postulado.profile.state)[postulado.profile.city.to_i] %></td>
+          <td> <% if postulado.profile.first_time %>
               Si
             <% else %>
               No
             <% end %>
           </td>
-          <td><%= profile.bio %></td>
+          <td><%= postulado.profile.bio %></td>
           <td>
-            <%= link_to "Ver perfil completo", { :controller => "home", :action => "show", :postulado => profile.user }, target: "_blank" %>
+            <%= link_to "Ver perfil completo", {:controller => "home", :action => "show", :postulado => postulado }%>
           </td>
         </tr>
       <% end %>
@@ -53,12 +49,11 @@
     </table>
     <div class="row align-items-center">
       <div class="col-md-4 offset-md-4 text-center">
-        <%= will_paginate @profiles %>
+        <%= will_paginate @postulados %>
       </div>
     </div>
 
   </div>
-</div>
 </div>
 
 <style type="text/css">

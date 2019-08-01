@@ -563,6 +563,12 @@ footer ul li {
   }
 }
 
+.participants-section {
+  .title-element {
+    background: #75AC0A;
+  }
+}
+
 .registration-new {
   .new_user {
     width: 100%;
@@ -592,9 +598,6 @@ footer ul li {
 
   .last-footer {
     width: 100%;
-    display: flex;
-    align-content: center;
-    justify-content: center;
   }
 }
 
