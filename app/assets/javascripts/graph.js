@@ -1,16 +1,17 @@
 function populate_trees(){
+
     $.ajax({
         type: "GET",
         contentType: "application/json; charset=utf-8",
-        url: 'data',
+        url: 'data/' + window.location.pathname.split('/')[2],
         dataType: 'json',
         success: function (data) {
-            console.log(treeOne);
             draw(data[0],'.treeOne',treeOne);
             draw(data[1],'.treeTwo',treeTwo);
             draw(data[2],'.treeThree',treeThree);
         },
         error: function (result) {
+          console.log('error')
             error(result);
         }
     });

@@ -14,11 +14,7 @@ class User < ApplicationRecord
 
   has_many :profiles
   has_one :invitation
-  has_and_belongs_to_many :favorites,
-                          class_name: 'User',
-                          join_table:  :favorites,
-                          foreign_key: :user_id,
-                          association_foreign_key: :favorite_user_id
+  has_many :favorites
 
   validates :terms_of_service, :acceptance => true
   attr_accessor :user_ids
@@ -57,7 +53,7 @@ class User < ApplicationRecord
   end
 
   def has_invitation?
-    invitation = Invitation.find_by(user_id: id)
+    invitation = Invitation.find_invitation_for(id,actual_event.id)
     if invitation
       return (invitation.invited_one.nil? || invitation.invited_two.nil?)
     end
@@ -66,18 +62,27 @@ class User < ApplicationRecord
 
   def was_pay?
     if has_invitation?
-      Invitation.find_by(user_id: id).payed
+      Invitation.find_invitation_for(id, actual_event.id).payed
     else
       false
     end
   end
 
   def was_invite?
-    Invitation.all.map(&:user_id).index id
+    Invitation.all_invitations_for(actual_event.id).map(&:user_id).index id
   end
 
   def is_favorite?(user)
     favorites.include?(user)
+  end
+
+  def user_favorites
+    ids = favorites.map do |favorite|
+      if (favorite.event_id == actual_event.id)
+        favorite.favorite_user_id
+      end
+    end
+    User.find(ids)
   end
 
   private
@@ -93,7 +98,7 @@ class User < ApplicationRecord
       raise 'Ya invitaste a dos personas'
     end
     invitation.save!
-    Invitation.create!(user_id: invited.id)
+    Invitation.create!(user_id: invited.id, event_id: actual_event.id)
   end
 end
 # TODO no permitir borrar cuenta

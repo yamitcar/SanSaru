@@ -5,7 +5,8 @@ class GraphController < ApplicationController
   def index; end
 
   def data
-    trees = Invitation.build_invitation_trees
+    event = Event.find_by_home_path(params['event_home'])
+    trees = Invitation.build_invitation_trees(event)
 
     respond_to do |format|
       format.json do

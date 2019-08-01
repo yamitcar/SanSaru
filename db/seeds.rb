@@ -30,7 +30,7 @@ Size.create(name: 'XXL')
 event= Event.new(name: 'default',fullname:'default San Saru',
           site: 'https://some.com',support_mail:'aoc@sansaru.com',participants: 80,ideal_price:100, price: 80,
           reserve_price: 0, start_date: Time.now,end_date: Time.now, venue: 'street 123', monkeys: 'ciego,sordo,mudo',
-          status: :active, tickets_left: 80)
+          status: :active, tickets_left: 80,venue_location: 'la direccion')
 event.add_homepage
 event.add_invitation_email
 event.save!

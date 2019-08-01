@@ -12,7 +12,7 @@ class ProfilesController < ApplicationController
   end
 
   def favorites
-    @postulados = current_user.favorites.paginate(page: params[:page], per_page: 10)
+    @postulados = current_user.user_favorites.paginate(page: params[:page], per_page: 10)
   end
 
   # DELETE /profiles/1

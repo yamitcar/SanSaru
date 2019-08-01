@@ -18,6 +18,7 @@ class Event < ApplicationRecord
   has_many :pages
   has_many :custom_emails
   has_many :profiles
+  has_many :invitations
 
   STATUS = [:activo, :seleccion, :lleno, :finalizado]
 
@@ -49,26 +50,33 @@ class Event < ApplicationRecord
   end
 
   def has_invitations?
-    tickets_left > 0
+    self.tickets_left > 0
   end
 
   def discount_invitation
     if has_invitations?
-      tickets_left -= 1
-      close_invitation_period if tickets_left == 0
+      self.tickets_left -= 1
+      close_invitation_period if self.tickets_left == 0
       save!
     else
       raise "Lo sentimos, ya no tenemos cupos disponibles :'("
     end
   end
 
+  def is_invitation_period_open?
+    status == :seleccion.to_s
+  end
+
+  def self.find_by_home_path (home_path)
+    Event.all.select{|event| event.default_page_path == home_path}[0]
+  end
+
+private
+
   def close_invitation_period
     status = :lleno.to_s
   end
 
-  def is_invitation_period_open?
-    status == :seleccion.to_s
-  end
 
 
 
