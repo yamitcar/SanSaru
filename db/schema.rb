@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_29_005845) do
+ActiveRecord::Schema.define(version: 2019_08_01_105845) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,9 +78,10 @@ ActiveRecord::Schema.define(version: 2019_07_29_005845) do
     t.integer "tickets_left"
   end
 
-  create_table "favorites", id: false, force: :cascade do |t|
+  create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
     t.integer "favorite_user_id"
+    t.integer "event_id"
     t.index ["favorite_user_id", "user_id"], name: "index_favorites_on_favorite_user_id_and_user_id", unique: true
     t.index ["user_id", "favorite_user_id"], name: "index_favorites_on_user_id_and_favorite_user_id", unique: true
   end
@@ -188,6 +189,7 @@ ActiveRecord::Schema.define(version: 2019_07_29_005845) do
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
+  add_foreign_key "favorites", "events"
   add_foreign_key "invitations", "events"
   add_foreign_key "invitations", "users"
   add_foreign_key "profiles", "events"

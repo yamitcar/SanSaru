@@ -9,6 +9,10 @@ module ApplicationHelper
     current_user&.actual_event&.fullname || 'AOC - San Saru'
   end
 
+  def aoc_path
+    current_user&.actual_event&.default_page_path
+  end
+
   def aoc_site
     current_user&.actual_event&.site || 'http://agileopen.camp/'
   end

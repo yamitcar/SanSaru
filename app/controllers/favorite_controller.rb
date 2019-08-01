@@ -2,11 +2,16 @@ class FavoriteController < ApplicationController
   before_action :require_login
 
   def add_favorite
-    current_user.favorites.append(User.find(params[:favorite_id]))
+    favorite = Favorite.new(user_id: current_user.id,
+                          favorite_user_id: params[:favorite_id],
+                          event_id: current_user.actual_event.id)
+    current_user.favorites.append(favorite)
   end
 
   def remove_favorite
-    current_user.favorites.delete(User.find(params[:favorite_id]))
+    Favorite.where(favorite_user_id: params[:favorite_id])
+                   .where(event_id: current_user.actual_event.id)
+                   .where(user_id: current_user.id).first.delete
   end
 
   private

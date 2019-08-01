@@ -18,8 +18,9 @@
 * tabla de configs por evento __Done__ incorporado a los datos del evento
 * tabla de invitaciones por evento __Done__
 * visualizacion del arbol por evento __Done__
-* Favoritos por evento
+* Favoritos por evento 
 * Mejorar el editor de markdown y html
+* Mejoras graficas
 * Formulario de perfil configurable por evento
 * add admins por evento unicamente.
 * Cambiar payed por can_invite o algo similar

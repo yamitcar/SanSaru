@@ -14,11 +14,7 @@ class User < ApplicationRecord
 
   has_many :profiles
   has_one :invitation
-  has_and_belongs_to_many :favorites,
-                          class_name: 'User',
-                          join_table:  :favorites,
-                          foreign_key: :user_id,
-                          association_foreign_key: :favorite_user_id
+  has_many :favorites
 
   validates :terms_of_service, :acceptance => true
   attr_accessor :user_ids
@@ -78,6 +74,15 @@ class User < ApplicationRecord
 
   def is_favorite?(user)
     favorites.include?(user)
+  end
+
+  def user_favorites
+    ids = favorites.map do |favorite|
+      if (favorite.event_id == actual_event.id)
+        favorite.favorite_user_id
+      end
+    end
+    User.find(ids)
   end
 
   private

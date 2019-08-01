@@ -50,13 +50,13 @@ class Event < ApplicationRecord
   end
 
   def has_invitations?
-    tickets_left > 0
+    self.tickets_left > 0
   end
 
   def discount_invitation
     if has_invitations?
-      tickets_left -= 1
-      close_invitation_period if tickets_left == 0
+      self.tickets_left -= 1
+      close_invitation_period if self.tickets_left == 0
       save!
     else
       raise "Lo sentimos, ya no tenemos cupos disponibles :'("

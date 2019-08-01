@@ -1,4 +1,5 @@
 function populate_trees(){
+
     $.ajax({
         type: "GET",
         contentType: "application/json; charset=utf-8",
