@@ -11,16 +11,15 @@
     - agregar el user_id al perfil - __Done__
     - agregar el event_id al perfil - __Done__
     - arreglar todas las views y consultas con el perfil por evento del usuario __Done__
-    
-
-* Mejorar el home principal de la app
+  
 * plantillas de mail configurables para el evento __Done__ // ver pagina de administracion del evento
 * tabla de configs por evento __Done__ incorporado a los datos del evento
 * tabla de invitaciones por evento __Done__
 * visualizacion del arbol por evento __Done__
-* Favoritos por evento 
+* Favoritos por evento __Done__
 * Mejorar el editor de markdown y html
-* Mejoras graficas
+* Mejorar el home principal de la app __Done__
+* Mejoras gráficas __Done__
 * Formulario de perfil configurable por evento
 * add admins por evento unicamente.
 * Cambiar payed por can_invite o algo similar
