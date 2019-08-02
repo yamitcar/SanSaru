@@ -1,0 +1,94 @@
+<% if params[:postulado] %>
+
+  <div>
+    <% if current_user.is_favorite? @user %>
+      <button type="button" class="btn btn-success btn-block" id="favorite">
+        En tus favoritos
+      </button>
+    <% else %>
+      <button type="button" class="btn btn-info btn-block" id="favorite">
+        Agregar a favoritos
+      </button>
+    <% end %>
+  </div>
+
+  <script>
+      var id = <%= @user.id %>
+      var isFavorite = <%= current_user.is_favorite? @user %>
+      $("#favorite").click(function(e) {
+          $('#favorite').prop('disabled', true);
+          $('#favorite').html('...');
+
+          if(isFavorite){
+              removeFavorite();
+          }else{
+              addFavorite();
+          }
+      });
+      function addFavorite(){
+          $.ajax({
+              type: "POST",
+              url: "/favorite/add",
+              data: {
+                  favorite_id: id
+              },
+              success: function(result) {
+                  $('#favorite').removeClass().addClass('btn btn-success btn-block');
+                  $("#favorite").html("En tus favoritos");
+                  $('#favorite').prop('disabled', false);
+                  isFavorite = !isFavorite
+              },
+              error: function(result) {
+
+                  $('#favorite').removeClass().addClass('btn btn-info btn-block');
+                  $("#favorite").html("Agregar a favoritos");
+                  $('#favorite').prop('disabled', false);
+              }
+          });
+      };
+      function removeFavorite() {
+          $.ajax({
+              type: "POST",
+              url: "/favorite/remove",
+              data: {
+                  favorite_id: id
+              },
+              success: function(result) {
+                  $('#favorite').removeClass().addClass('btn btn-info btn-block');
+                  $("#favorite").html("Agregar a favoritos");
+                  $('#favorite').prop('disabled', false);
+                  isFavorite = !isFavorite
+              },
+              error: function(result) {
+
+                  $('#favorite').removeClass().addClass('btn btn-success btn-block');
+                  $("#favorite").html("En tus favoritos");
+                  $('#favorite').prop('disabled', false);
+              }
+          });
+      };
+  </script>
+  <br>
+
+  <% result,message = can_invite? current_user %>
+  <% if result %>
+    <div class="row justify-content-md-center">
+      <%= form_tag("/home/invite/#{params[:postulado]}", method: "post") do %>
+      <%= submit_tag("Seleccionar", class: "btn btn-primary") %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="row justify-content-md-center">
+      <p class="alert alert-warning"><%= message %></p>
+    </div>
+  <br>
+  <div class="row justify-content-md-center">
+      <%= link_to 'Atrás', profiles_path %>
+    </div>
+  <% end %>
+
+<% else %>
+  <div class="row justify-content-md-center">
+    <%= link_to 'Editar postulación', home_edit_path, class: "btn btn-primary mt-2" %>
+  </div>
+<% end %>

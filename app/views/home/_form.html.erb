@@ -1,10 +1,8 @@
-<div class="col-md-10 offset-md-1">
-  <br>
+<div class="col-md-12">
 <%= form_with(url: home_path, model: profile, local: true) do |form| %>
   <% if profile.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
-
+      <h2><%= pluralize(profile.errors.count, "error(es)") %> No se puede guardar hasta que los corrijas:</h2>
       <ul>
       <% profile.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -14,197 +12,205 @@
   <% end %>
 
   <fieldset>
-    <div class="form-group row">
-      <label class="col-md-5 control-label" for="textinput">
-        <%= form.label :country, "¿Dónde resides actualmente?" %>
-        <small>(Ciudad, Provincia o Región, País.)</small>
-      </label>
-      <div class="col-md-7">
-        <% countries = CS.get.collect {|a| [a[1], a[0]]} %>
-        <% countries.unshift ['Selecciona tu País',''] %>
-        <%= form.select(:country, countries,{},{id: :countries, class: 'custom-select'}) -%>
-        <br>
-        <% states = CS.get(profile.country).collect {|a| [a[1], a[0]]} %>
-        <% states.unshift ['Selecciona tu Región',''] %>
-        <%= form.select(:state, states,{},{id: :states, class: 'custom-select'}) -%>
-        <br>
-        <% cities = [] %>
-        <%  CS.get(profile.country,profile.state).each_with_index do |val,index| %>
-          <% cities.push [val,index] %>
-        <% end %>
-        <br>
-        <% cities.unshift ['Selecciona tu ciudad',''] %>
-        <%= form.select(:city, cities,{},{id: :cities, class: 'custom-select'}) -%>
-
+    <div class="row">
+      <div class="form-group col-md-12">
+        <label class="col-md-12 control-label" for="textinput">
+          <%= form.label :country, "¿Dónde resides actualmente?" %>
+          <small>(Ciudad, Provincia o Región, País.)</small>
+        </label>
+        <div class="col-md-12">
+          <% countries = CS.get.collect {|a| [a[1], a[0]]} %>
+          <% countries.unshift ['Selecciona tu País',''] %>
+          <%= form.select(:country, countries,{},{id: :countries, class: 'custom-select col-xs-12 col-md-3'}) -%>
+          <% states = CS.get(profile.country).collect {|a| [a[1], a[0]]} %>
+          <% states.unshift ['Selecciona tu Región',''] %>
+          <%= form.select(:state, states,{},{id: :states, class: 'custom-select col-xs-12 offset-md-1 col-md-3'}) -%>
+          <% cities = [] %>
+          <%  CS.get(profile.country,profile.state).each_with_index do |val,index| %>
+            <% cities.push [val,index] %>
+          <% end %>
+          <% cities.unshift ['Selecciona tu ciudad',''] %>
+          <%= form.select(:city, cities,{},{id: :cities, class: 'custom-select col-xs-12 offset-md-1 col-md-3'}) -%>
+        </div>
       </div>
-    </div>
 
-    <script>
+      <script>
         var country = null;
         $('#countries').change(function () {
-            country = $(this).val();
-            var states = $("#states");
-            if($(this).val() == "") {
-                states.append("");
-            } else {
-                $.getJSON('/cities/' + country, function (data) {
-                    var opt = '<option value="" selected="">Selecciona tu región</option>';
-                    if(data.length == 0){
-                      console.log('ups... consultando region...' + data);
-                    } else {
-                        $.each(data, function(i) {
-                            opt += '<option value='+ i +'>' + data[i] + '</option>';
-                            states.html(opt);
-                        });
-                    }
+          country = $(this).val();
+          var states = $("#states");
+          if($(this).val() == "") {
+            states.append("");
+          } else {
+            $.getJSON('/cities/' + country, function (data) {
+              var opt = '<option value="" selected="">Selecciona tu región</option>';
+              if(data.length == 0){
+                console.log('ups... consultando region...' + data);
+              } else {
+                $.each(data, function(i) {
+                  opt += '<option value='+ i +'>' + data[i] + '</option>';
+                  states.html(opt);
                 });
-            }
+              }
+            });
+          }
         });
 
         $('#states').change(function () {
-            var cities = $("#cities");
-            if($(this).val() == "") {
-                cities.html("");
-            } else {
-                $.getJSON('/cities/' + country + '/' + $(this).val(), function (data) {
-                    var opt = '<option value="" selected="">Selecciona tu ciudad</option>';
-                    if(data.length == 0){
-                        console.log('ups... consultando ciudad...')
-                    } else {
-                        $.each(data, function(i) {
-                            opt += '<option value='+ i +'>' + data[i] + '</option>';
-                            cities.html(opt);
-                        });
-                    }
+          var cities = $("#cities");
+          if($(this).val() == "") {
+            cities.html("");
+          } else {
+            $.getJSON('/cities/' + country + '/' + $(this).val(), function (data) {
+              var opt = '<option value="" selected="">Selecciona tu ciudad</option>';
+              if(data.length == 0){
+                console.log('ups... consultando ciudad...')
+              } else {
+                $.each(data, function(i) {
+                  opt += '<option value='+ i +'>' + data[i] + '</option>';
+                  cities.html(opt);
                 });
-            }
+              }
+            });
+          }
         });
-    </script>
-
-    <div class="form-group row">
-      <label class="col-md-5 control-label" for="textinput">
-        <%= form.label :first_time, "¿Es la primera vez que participas en un AOC?" %>
-      </label>
-      <div class="col-md-7">
-        <%= form.select :first_time, [['Si', true], ['No', false]],{},{id: :profile_first_time, class: 'custom-select'}  %>
-      </div>
+      </script>
     </div>
 
-    <div class="form-group row">
-      <label class="col-md-5 control-label" for="textinput">
-        <%= form.label :expectancy, "¿Qué esperas del evento? ¿En qué consideras que te puede ayudar?" %>
-      </label>
-      <div class="col-md-7">
-        <%= form.text_area :expectancy, id: :profile_expectancy, class: 'form-control input-md',style: 'height:100%;' %>
+    <div class="row">
+      <div class="form-group col-md-12">
+        <label class="col-md-12 control-label" for="textinput">
+          <%= form.label :first_time, "¿Es la primera vez que participas en un AOC?" %>
+        </label>
+        <div class="col-md-12">
+          <%= form.select :first_time, [['Si', true], ['No', false]],{},{id: :profile_first_time, class: 'custom-select'}  %>
+        </div>
       </div>
-    </div>
-    <div class="form-group row">
-      <label class="col-md-5 control-label" for="textinput">
-        <%= form.label :agileRelation_id, "Si tu relación con la agilidad fuera de una amistad dirías que son:" %>
-      </label>
-      <div class="col-md-7">
-        <%= form.select(:agileRelation_id, AgileRelation.all.collect {|a| [a.name, a.id]},{},{id: :profile_agileRelation_id, class: 'custom-select'}) -%>
-      </div>
-    </div>
 
-    <div class="form-group row">
-      <label class="col-md-5 control-label" for="textinput">
-        <%= form.label :agile_id, "Entendiendo que los cuatro valores del manifiesto son importantes, valiosos
-         y ninguno lo es más que el otro, ¿Cual tomarías si tuvieses que elegir sólo uno?" %>
-      </label>
-      <div class="col-md-7">
-        <%= form.select(:agile_id, Agile.all.collect {|a| [a.name, a.id]},{},{id: :profile_agile_id, class: 'custom-select'}) -%>
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label class="col-md-5 control-label" for="textinput">
-        <%= form.label :agile_description, "¿Por qué elegiste este valor?" %><br>
-        <small>Cuéntanos qué más hay en tu cabeza</small>
-      </label>
-      <div class="col-md-7">
-        <%= form.text_area :agile_description, id: :profile_agile_description, class: 'form-control input-md',style: 'height:100%;' %>
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label class="col-md-5 control-label" for="textinput">
-        <%= form.label :hobbies, "¿Cuáles son tus intereses? ¿Tocas instrumentos?
-         ¿Haces deporte? ¿Tienes algún hobby?" %><br>
-        <small>Menciona aquello que te interesa. No necesariamente tiene que
-          estar relacionado al AOC. Queremos saber cuáles son las cosas que te encantan, además de la agilidad.</small>
-      </label>
-      <div class="col-md-7">
-        <%= form.text_area :hobbies, id: :profile_hobbies, class: 'form-control input-md',style: 'height:100%;' %>
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label class="col-md-5 control-label" for="textinput">
-        <%= form.label :bring, 'Cuéntanos qué "cosas" podrías traer al evento:' %><br>
-        <small>Instrumentos, parlantes, juegos, pelotas... ¡lo que sea!</small>
-      </label>
-      <div class="col-md-7">
-        <%= form.text_area :bring, id: :profile_bring, class: 'form-control input-md',style: 'height:100%;' %>
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label class="col-md-5 control-label" for="textinput">
-        <%= form.label :proposal, '¿Te gustaría hacer alguna propuesta que
-        quieras llevar adelante para que éste sea un gran evento?' %><br>
-        <small>Te invitamos a escribir una propuesta para hacer del evento 
-          un momento inolvidable.
-          También podés escribir una idea inicial para que pienses en ello
-          y elabores algo para realizar durante el evento. No es obligación y no hay límites. </small>
-      </label>
-      <div class="col-md-7">
-        <%= form.text_area :proposal, id: :profile_proposal, class: 'form-control input-md',style: 'height:100%;' %>
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label class="col-md-5 control-label form-check-label" for="profile_need_mentor">
-        <%= form.label :need_mentor, '¿Necesitas de la ayuda de un mentor para preparar tu charla?' %><br>
-        <small> Buscamos elevar la vara de calidad de las charlas del evento,
-          por lo que si estas interesado en obtener ayuda de nuestra parte para la preparación de tu charla, cuentanolo! </small>
-      </label>
-      <div class="col-md-7">
-        <div class="form-group form-check">
-          <%= form.check_box :need_mentor, id: :profile_need_mentor, class: 'form-check-input' %>
-          <label class="form-check-label" for="profile_need_mentor">Sí necesito ayuda</label>
+      <div class="form-group col-md-12">
+        <label class="col-md-12 control-label" for="textinput">
+          <%= form.label :expectancy, "¿Qué esperas del evento? ¿En qué consideras que te puede ayudar?" %>
+        </label>
+        <div class="col-md-12">
+          <%= form.text_area :expectancy, id: :profile_expectancy, class: 'form-control input-md',style: 'height:100%;' %>
         </div>
       </div>
     </div>
 
-    <div class="form-group row">
-      <label class="col-md-5 control-label" for="textinput">
-        <%= form.label :bio, 'Cuéntanos más sobre ti:' %><br>
-        <small>Cualquier cosa que ayude a que te conozcamos mejor y
-          que sientas que no pudiste contar con las respuestas anteriores.
-          Formación, qué objetivo persigues diariamente con tu trabajo, familia,
-          algo que creas que puedes brindar al evento, etc.</small>
-      </label>
-      <div class="col-md-7">
-        <%= form.text_area :bio, id: :profile_bio, class: 'form-control input-md',style: 'height:100%;' %>
+    <div class="row">
+      <div class="form-group col-md-12">
+        <label class="col-md-12 control-label" for="textinput">
+          <%= form.label :agileRelation_id, "Si tu relación con la agilidad fuera de una amistad dirías que son:" %>
+        </label>
+        <div class="col-md-12">
+          <%= form.select(:agileRelation_id, AgileRelation.all.collect {|a| [a.name, a.id]},{},{id: :profile_agileRelation_id, class: 'custom-select'}) -%>
+        </div>
+      </div>
+
+      <div class="form-group col-md-12">
+        <label class="col-md-12 control-label" for="textinput">
+          <%= form.label :agile_id, "Entendiendo que los cuatro valores del manifiesto son importantes, valiosos
+          y ninguno lo es más que el otro, ¿Cual tomarías si tuvieses que elegir sólo uno?" %>
+        </label>
+        <div class="col-md-12">
+          <%= form.select(:agile_id, Agile.all.collect {|a| [a.name, a.id]},{},{id: :profile_agile_id, class: 'custom-select'}) -%>
+        </div>
+      </div>
+
+      <div class="form-group col-md-12">
+        <label class="col-md-12 control-label" for="textinput">
+          <%= form.label :agile_description, "¿Por qué elegiste este valor?" %><br>
+          <small>Cuéntanos qué más hay en tu cabeza</small>
+        </label>
+        <div class="col-md-12">
+          <%= form.text_area :agile_description, id: :profile_agile_description, class: 'form-control input-md',style: 'height:100%;' %>
+        </div>
+      </div>
+
+      <div class="form-group col-md-12">
+        <label class="col-md-12 control-label" for="textinput">
+          <%= form.label :hobbies, "¿Cuáles son tus intereses? ¿Tocas instrumentos?
+          ¿Haces deporte? ¿Tienes algún hobby?" %><br>
+          <small>Menciona aquello que te interesa. No necesariamente tiene que
+            estar relacionado al AOC. Queremos saber cuáles son las cosas que te encantan, además de la agilidad.</small>
+        </label>
+        <div class="col-md-12">
+          <%= form.text_area :hobbies, id: :profile_hobbies, class: 'form-control input-md',style: 'height:100%;' %>
+        </div>
+      </div>
+
+      <div class="form-group col-md-12">
+        <label class="col-md-12 control-label" for="textinput">
+          <%= form.label :bring, 'Cuéntanos qué "cosas" podrías traer al evento:' %><br>
+          <small>Instrumentos, parlantes, juegos, pelotas... ¡lo que sea!</small>
+        </label>
+        <div class="col-md-12">
+          <%= form.text_area :bring, id: :profile_bring, class: 'form-control input-md',style: 'height:100%;' %>
+        </div>
+      </div>
+
+      <div class="form-group col-md-12">
+        <label class="col-md-12 control-label" for="textinput">
+          <%= form.label :proposal, '¿Te gustaría hacer alguna propuesta que
+          quieras llevar adelante para que éste sea un gran evento?' %><br>
+          <small>Te invitamos a escribir una propuesta para hacer del evento 
+            un momento inolvidable.
+            También podés escribir una idea inicial para que pienses en ello
+            y elabores algo para realizar durante el evento. No es obligación y no hay límites. </small>
+        </label>
+        <div class="col-md-12">
+          <%= form.text_area :proposal, id: :profile_proposal, class: 'form-control input-md',style: 'height:100%;' %>
+        </div>
+      </div>
+
+      <div class="form-group col-md-12">
+        <label class="col-md-12 control-label form-check-label" for="profile_need_mentor">
+          <%= form.label :need_mentor, '¿Necesitas de la ayuda de un mentor para preparar tu charla?' %><br>
+          <small> Buscamos elevar la vara de calidad de las charlas del evento,
+            por lo que si estas interesado en obtener ayuda de nuestra parte para la preparación de tu charla, cuentanolo! </small>
+        </label>
+        <div class="col-md-12">
+          <div class="form-group form-check">
+            <%= form.check_box :need_mentor, id: :profile_need_mentor, class: 'form-check-input' %>
+            <label class="form-check-label" for="profile_need_mentor">Sí necesito ayuda</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group col-md-12">
+        <label class="col-md-12 control-label" for="textinput">
+          <%= form.label :bio, 'Cuéntanos más sobre ti:' %><br>
+          <small>Cualquier cosa que ayude a que te conozcamos mejor y
+            que sientas que no pudiste contar con las respuestas anteriores.
+            Formación, qué objetivo persigues diariamente con tu trabajo, familia,
+            algo que creas que puedes brindar al evento, etc.</small>
+        </label>
+        <div class="col-md-12">
+          <%= form.text_area :bio, id: :profile_bio, class: 'form-control input-md',style: 'height:100%;' %>
+        </div>
       </div>
     </div>
 
-    <div class="form-group row">
-      <label class="col-md-5 control-label" for="textinput">
-        <%= form.label :gender_id, "¿Qué corte de camiseta prefieres?" %>
-      </label>
-      <div class="col-md-7">
-        <%= form.select(:gender_id, Gender.all.collect {|a| [a.name, a.id]},{},{id: :profile_gender_id, class: 'custom-select'}) -%>
+    <div class="row">
+      <div class="form-group col-xs-12 col-md-6">
+        <label class="col-md-12 control-label" for="textinput">
+          <%= form.label :gender_id, "¿Qué corte de camiseta prefieres?" %>
+        </label>
+        <div class="col-md-12">
+          <%= form.select(:gender_id, Gender.all.collect {|a| [a.name, a.id]},{},{id: :profile_gender_id, class: 'custom-select'}) -%>
+        </div>
       </div>
-    </div>
 
-    <div class="form-group row">
-      <label class="col-md-5 control-label" for="textinput">
-        <%= form.label :size_id, "¿Qué talla de camiseta prefieres?" %>
-      </label>
-      <div class="col-md-7">
-        <%= form.select(:size_id, Size.all.collect {|a| [a.name, a.id]},{},{id: :profile_size_id, class: 'custom-select'}) -%>
+      <div class="form-group col-xs-12 col-md-6">
+        <label class="col-md-12 control-label" for="textinput">
+          <%= form.label :size_id, "¿Qué talla de camiseta prefieres?" %>
+        </label>
+        <div class="col-md-12">
+          <%= form.select(:size_id, Size.all.collect {|a| [a.name, a.id]},{},{id: :profile_size_id, class: 'custom-select'}) -%>
+        </div>
+      </div>
+
+      <div class="col-md-12">
         <table class="table table-hover">
           <thead>
             <tr><th scope="col"colspan="2">Recto</th><th> </th><th colspan="2" scope="col">Entallado</th></tr>
@@ -221,22 +227,24 @@
       </div>
     </div>
 
-    <div class="form-group row">
-      <label class="col-md-5 control-label" for="textinput">
-        <%= form.label :phonenumber, 'Dejános tu numero de telefono' %><br>
-        </label>
-        <div class="col-md-7">
-          <%= form.text_field :phonenumber, id: :profile_phonenumber, class: 'form-control input-md' %>
-        </div>
-    </div>
+    <div class="row">
+      <div class="form-group col-md-12">
+        <label class="col-md-12 control-label" for="textinput">
+          <%= form.label :phonenumber, 'Dejános tu numero de telefono' %><br>
+          </label>
+          <div class="col-md-12">
+            <%= form.text_field :phonenumber, id: :profile_phonenumber, class: 'form-control input-md' %>
+          </div>
+      </div>
 
-    <div class="form-group row">
-      <label class="col-md-5 control-label" for="textinput">
-        <%= form.label :telegram, 'id de telegram:' %><br>
-        <small>Solemos usar Telegram para comunicarnos, si no lo tienes, es una buena idea instalarlo en tu movil.</small>
-      </label>
-      <div class="col-md-7">
-        <%= form.text_field :telegram, id: :profile_telegram, class: 'form-control input-md' %>
+      <div class="form-group col-md-12">
+        <label class="col-md-12 control-label" for="textinput">
+          <%= form.label :telegram, 'Id de telegram:' %><br>
+          <small>Solemos usar Telegram para comunicarnos, si no lo tienes, es una buena idea instalarlo en tu movil.</small>
+        </label>
+        <div class="col-md-12">
+          <%= form.text_field :telegram, id: :profile_telegram, class: 'form-control input-md' %>
+        </div>
       </div>
     </div>
 

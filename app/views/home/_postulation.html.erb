@@ -1,0 +1,65 @@
+<div id="postulation" class="postulation-info">
+  <div class="title-element">
+    <p>¿Quieres mejorar tu postulación?</p> 
+    <h1>Tu postulación</h1>
+  </div>
+  <div class="inner-title-element">
+    <p>Recuerda que debes completar tu postulación para tener la posibilidad de asistir al <%= aoc_name %></p> 
+  </div>
+  <div class="content-element container">
+    <% if @user.profile %>
+      <% @profile = @user.profile %>
+      <div class="row">
+        <div class="col-sm-3">    
+          <div class="list-group">
+            <a href="#bio" class="list-group-item list-group-item-action">Biografía</a>
+            <a href="#agile" class="list-group-item list-group-item-action">Relación con la agilidad</a>
+            <a href="#expectativas" class="list-group-item list-group-item-action">Expectativas</a>
+            <a href="#traes" class="list-group-item list-group-item-action">Trae al evento</a>
+
+            <%= render 'home/postulation_actions' %>
+          </div>
+        </div>
+
+        <div class="col-sm-9 mx-auto">
+          <h3 id="bio">Biografía <%= render 'home/edit_button' %></h3>
+          <p><%= @user.profile.bio %></p>
+  
+          <h4>Intereses y Hobbies <%= render 'home/edit_button' %></h4>
+          <p><%= @profile.hobbies %></p>
+
+          <h3 id="agile">Relación con la agilidad <%= render 'home/edit_button' %></h3>
+          <p><%= AgileRelation.find(@profile.agileRelation_id).name %></p>
+  
+          <h4>Valor elegido <%= render 'home/edit_button' %></h4>
+          <p><%= Agile.find(@profile.agile_id).name %></p>
+          <p><%= @profile.agile_description %></p>
+  
+          <h3 id="expectativas">Expectativas del evento <%= render 'home/edit_button' %></h3>
+          <h4>¿Primera vez en un AOC?</h4> 
+          <p>
+            <% if @profile.first_time %>
+              Si
+            <% else %>
+              No
+            <% end %>
+          </p>
+          <p><%= @profile.expectancy %></p>
+
+          <h3 id="traes">Trae al evento <%= render 'home/edit_button' %></h3>
+          <p><%= @profile.bring %></p>
+
+          <h4>¿Tienes una idea o una propuesta? <%= render 'home/edit_button' %></h4>
+          <p><%= @profile.proposal %></p>
+        </div>
+      </div>
+    
+    <% else %>
+      <%= form_tag(home_new_path, method: "get") do %>
+        <div class="text-center">
+          <%= submit_tag("Completar postulación", class: "btn btn-primary") %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

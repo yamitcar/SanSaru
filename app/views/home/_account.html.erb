@@ -1,0 +1,117 @@
+<div id="account" class="account-info">
+  <div class="title-element">
+    <p>¿Quieres verificar tus datos personales?</p> 
+    <h1>Tus datos</h1>
+  </div>
+  <div class="content-element container">
+    <div class="row align-items-center">
+      <div class="form-group col-xs-12 col-sm-3 col-md-2 text-center">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn" data-toggle="modal" data-target="#addAvatarModal">
+          <%= gravatar_for @user %>
+        </button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addAvatarModal">
+          Añadir mi foto
+        </button>
+      </div>
+
+      <div class="row col-xs-12 col-sm-9 col-md-10">
+        <div class="form-group col-xs-12 col-sm-12 col-md-4">
+          <label class="col-md-12 control-label" for="textinput">
+            <label>E-mail</label>
+          </label>
+          <div class="col-md-12">    
+            <%= @user.email %>
+          </div>
+        </div>
+
+        <div class="form-group col-xs-12 col-sm-6 col-md-4">
+          <label class="col-md-12 control-label" for="textinput">
+            <label>Nombres</label>
+          </label>
+          <div class="col-md-12">
+            <%= @user.name %>
+          </div>
+        </div>
+
+        <div class="form-group col-xs-12 col-sm-6 col-md-4">
+          <label class="col-md-12 control-label" for="textinput">
+            <label>Apellidos</label>
+          </label>
+          <div class="col-md-12">
+            <%= @user.lastname %>
+          </div>
+        </div>
+
+        <% if @user.profile %>
+          <% @profile = @user.profile %>
+
+          <div class="form-group col-xs-12 col-sm-6 col-md-4">
+            <label class="col-md-12 control-label" for="textinput">
+              <label>Lugar de residencia</label>
+            </label>
+            <div class="col-md-12">
+              <%= CS.get[@profile.country.to_sym ]%>,
+              <%= CS.get(@profile.country)[@profile.state.to_sym]%>,
+              <%= CS.get(@profile.country,@profile.state)[@profile.city.to_i] %>
+              <%= render 'home/edit_button' %>
+            </div>
+          </div>
+
+          <% unless params[:postulado] %>
+            <div class="form-group col-xs-12 col-sm-6 col-md-4">
+              <label class="col-md-12 control-label" for="textinput">
+                <label>Camiseta de</label>
+              </label>
+              <div class="col-md-12">
+                <%= Gender.find(@profile.gender_id).name %>
+                <%= render 'home/edit_button' %>
+              </div>
+            </div>
+
+            <div class="form-group col-xs-12 col-sm-6 col-md-4">
+              <label class="col-md-12 control-label" for="textinput">
+                <label>Talla</label>
+              </label>
+              <div class="col-md-12">
+                <%= Size.find(@profile.size_id).name %>
+                <%= render 'home/edit_button' %>
+              </div>
+            </div>
+
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="addAvatarModal" tabindex="-1" role="dialog" aria-labelledby="addAvatarModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addAvatarModalLabel">¿Cómo agrego mi foto?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h6>Para conocernos mejor, te invitamos a que completes tu postulación con tu foto</h6>
+        <p>Pasos:</p>
+        <ol>
+          <li>Ingresa a <a href="https://es.gravatar.com" target="_blank">es.gravatar.com</a></li>
+          <li>Presiona el botón "Regístrate" (junto al logo de WordPress.com arriba a la derecha)</li>
+          <li>Completa el formulario de registro o continúa con tu cuenta de Google (recomendado). ¡Tienes que usar el mismo correo electrónico con el que te postulaste!</li>
+          <li>Si ingresaste con Google, ¡Ya está cargada tu foto de perfil! Si no ingresaste con Google o quieres cambiar la foto, presiona Add a new image > Upload new y elige un archivo.</li>
+          <li>Recorta y centra la imagen (asegurate que se vean bien las miniaturas) elige la clasificación de tu imagen (sugerimos G) </li>
+        </ol>
+        <p>¡Y listo! Tu postulación ya posee foto.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <a class="btn btn-primary" target="_blank" href="https://es.gravatar.com">Ir a gravatar</a>
+      </div>
+    </div>
+  </div>
+</div>

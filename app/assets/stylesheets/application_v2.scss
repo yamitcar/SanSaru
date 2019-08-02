@@ -575,6 +575,27 @@ footer ul li {
   }
 }
 
+.postulation-info {
+  h3 {
+    color: #1380CD;
+  }
+  h4 {
+    font-size: 1em;
+    font-weight: bold;
+  }
+}
+
+.edit-icon {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  background: url("edit.png") no-repeat;
+  background-size: contain;
+  background-position: center;
+  opacity: 0.6;
+}
+
+
 .navbar-light {
   .logo {
     height: 40px;

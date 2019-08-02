@@ -1,16 +1,7 @@
-<div class="container">
-<div class="row align-items-center">
-  <div class="col-md-8 offset-md-2">
-    <h2>Actualizar postulación</h2>
+<div id="postulation-edition" class="access-section">
+  <div class="title-element">
+    <p>¿Quieres mejorar tu postulación al <%= aoc_name %> y aumentar tus posibilidades?</p> 
+    <h1>Actualizar postulación</h1>
   </div>
-</div>
-<div class="row align-items-center">
-
-
-  <%= render 'form', profile: @profile %>
-</div>
-
-<div class="row align-items-center">
-<%= link_to 'Atrás', home_path %>
-</div>
+  <%= render 'home/edit' %>
 </div>

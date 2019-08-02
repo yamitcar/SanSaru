@@ -66,7 +66,7 @@ class HomeController < ApplicationController
     @profile.event = current_user.actual_event
     respond_to do |format|
       if @profile.save
-        format.html { redirect_to '/home', notice: 'Profile was successfully created.' }
+        format.html { redirect_to '/home', notice: 'El perfil fue creado correctamente.' }
       else
         format.html { render :new }
       end
@@ -79,7 +79,7 @@ class HomeController < ApplicationController
     respond_to do |format|
       @profile = current_user.profile
       if @profile.update(profile_params)
-        format.html { redirect_to '/home', notice: 'Profile was successfully updated.' }
+        format.html { redirect_to '/home', notice: 'El perfil fue actualizado correctamente.' }
       else
         format.html { render :edit }
       end
