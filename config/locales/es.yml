@@ -30,6 +30,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 es:
+  will_paginate:
+    previous_label: "Atras"
+    next_label: "Siguiente"
+    page_gap: "…"
   defaults: &defaults
     month_names:
       [~, Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Augusto, Septiembre, Octubre, Noviembre, Deciembre]
