@@ -17,7 +17,10 @@
 !/log/.keep
 !/tmp/.keep
 
+# Ignore built files
 /node_modules
+/public/assets/*
+
 /yarn-error.log
 
 .byebug_history
