@@ -16,7 +16,6 @@
       </div>
 
       <div class="row col-xs-12 col-sm-9 col-md-10">
-
         <div class="form-group col-xs-12 col-sm-6 col-md-4">
           <label class="col-md-12 control-label" for="textinput">
             <label>Nombres</label>
@@ -38,7 +37,7 @@
         <% if @user.profile %>
           <% @profile = @user.profile %>
 
-          <div class="form-group col-xs-12 col-sm-6 col-md-4">
+          <div class="form-group col-xs-12 col-sm-12 col-md-4">
             <label class="col-md-12 control-label" for="textinput">
               <label>Lugar de residencia</label>
             </label>
@@ -51,6 +50,15 @@
           </div>
 
           <% unless params[:postulado] %>
+            <div class="form-group col-xs-12 col-sm-12 col-md-4">
+              <label class="col-md-12 control-label" for="textinput">
+                <label>E-mail</label>
+              </label>
+              <div class="col-md-12">    
+                <%= @user.email %>
+              </div>
+            </div>
+
             <div class="form-group col-xs-12 col-sm-6 col-md-4">
               <label class="col-md-12 control-label" for="textinput">
                 <label>Camiseta de</label>

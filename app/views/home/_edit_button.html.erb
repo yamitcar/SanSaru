@@ -1,1 +1,3 @@
-<%= link_to '', home_edit_path, class: "btn edit-icon" %>
+<% unless params[:postulado] %>
+    <%= link_to '', home_edit_path, class: "btn edit-icon" %>
+<% end %>
