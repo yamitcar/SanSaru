@@ -1,7 +1,12 @@
-<div id="account" class="account-info">
+<div id="account" class="<% if params[:postulado] %>participants-section<% else %>account-info<% end %>">
   <div class="title-element">
-    <p>¿Quieres verificar tus datos personales?</p> 
-    <h1>Tus datos</h1>
+    <% if params[:postulado] %>
+      <p>¿Quieres conocer más sobre el postulante?</p> 
+      <h1>Sus datos</h1>
+    <% else %>
+      <p>¿Quieres verificar tus datos personales?</p> 
+      <h1>Tus datos</h1>
+    <% end %>
   </div>
   <div class="content-element container">
     <div class="row align-items-center">

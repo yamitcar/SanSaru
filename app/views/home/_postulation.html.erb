@@ -1,7 +1,12 @@
-<div id="postulation" class="postulation-info">
+<div id="postulation" class="<% if params[:postulado] %>participants-section<% else %>postulation-info<% end %>">
   <div class="title-element">
-    <p>¿Quieres mejorar tu postulación?</p> 
-    <h1>Tu postulación</h1>
+    <% if params[:postulado] %>
+      <p>¿Y que te parece...?</p> 
+      <h1>Su postulación</h1>
+    <% else %>
+      <p>¿Quieres mejorar tu postulación?</p> 
+      <h1>Tu postulación</h1>
+    <% end %>
   </div>
   <div class="inner-title-element">
     <p>Recuerda que debes completar tu postulación para tener la posibilidad de asistir al <%= aoc_name %></p> 
