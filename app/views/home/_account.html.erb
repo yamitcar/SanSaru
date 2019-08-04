@@ -10,9 +10,11 @@
         <button type="button" class="btn" data-toggle="modal" data-target="#addAvatarModal">
           <%= gravatar_for @user %>
         </button>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addAvatarModal">
-          Añadir mi foto
-        </button>
+        <% unless params[:postulado] %>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addAvatarModal">
+            Añadir mi foto
+          </button>
+        <% end %>
       </div>
 
       <div class="row col-xs-12 col-sm-9 col-md-10">
