@@ -11,7 +11,6 @@ class AocMailer < ApplicationMailer
     mails = email_data[:copy_to]
     mails << @invited.email
     subject =  "#{TEST_HEADER[test]} ¡Bienvenid@ #{@invited.name} al AOC!"
-    puts subject #TODO revisar que arme bien el subject al enviar el test.
     mail(to: mails, subject: subject)
   end
 
