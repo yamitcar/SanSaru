@@ -64,7 +64,7 @@ class Event < ApplicationRecord
   end
 
   def is_invitation_period_open?
-    status == :seleccion.to_s
+    status == :seleccion.to_s or status == :lleno
   end
 
   def self.find_by_home_path (home_path)

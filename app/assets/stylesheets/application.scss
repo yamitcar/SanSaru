@@ -27,6 +27,11 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+/* variables */
+//$aoc-two-color: #1380CD
+//$aoc-two-color-hover: rgb(34, 111, 165);
+//$aoc-one-color: #75AC0A;
+
 #md-editor{
   #md-text{
     textarea{
@@ -325,6 +330,42 @@
     border: none; }
 }
 
+body {
+  font-family: Ubuntu, 'Segoe UI', Tahoma, Verdana, sans-serif;
+}
+
+a {
+  color: #1380CD;
+
+  &:hover {
+    color: rgb(34, 111, 165);
+  }
+}
+
+.btn {
+  border-radius: 0.7em;
+  border: none;
+  text-transform: initial;
+}
+
+.btn-primary {
+  background: #1380CD;
+
+  &:hover {
+    background: rgb(34, 111, 165);
+  }
+}
+
+label {
+  font-weight: lighter;
+  color: #6A6A6A;
+  margin: 0 0 0 0.2em;
+}
+
+input, select {
+  border-radius: 0.45rem;
+}
+
 footer {
   margin-top: 45px;
   padding-top: 5px;
@@ -376,3 +417,214 @@ footer ul li {
   stroke: #ccc;
   stroke-width: 2px;
 }
+
+.welcome {
+  background: #575757c4;
+}
+
+.title-element, .inner-title-element {
+  font-family: Ubuntu, 'Segoe UI', Tahoma, Verdana, sans-serif;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 0.6em;
+
+  p {
+    font-size: 14px;
+    margin: 0;
+  }
+  
+  h1 {
+    font-size: 23px;
+    font-weight: bold;
+  }
+}
+
+.inner-title-element {
+  color: #787878; 
+  padding: 1em 0;
+}
+
+.basic-info {
+  height: 80vh;
+  width: 100%;
+  background: url('https://images.pexels.com/photos/699558/pexels-photo-699558.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260') no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  position: relative;
+
+  .link-to-san-saru {
+    position: absolute;
+    bottom: 1em;
+    left: 49%;
+    padding: 1em;
+    font-size: 1em;
+    color: #888;
+    font-weight: lighter;
+  }
+}
+
+.san-saru-info {
+  background: #000;
+
+  .title-element {
+    background: #75AC0A;
+  }
+  .content-element {
+    height: 80vh;
+    width: 100%;
+    background: image-url('simios-sabios2.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    .content-element-opacity {
+      background: rgba(0, 0, 0, 0.561);
+      height: 80vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .san-saru-process-img {
+      width: 90%;
+    }
+  }
+
+  .btn-sansaru {
+    font-family: 'Segoe Print', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-transform: initial;
+    font-style: italic;
+
+    .collapsed .collapse-icon {
+      background-position: top;
+    }
+
+    .collapse-icon {
+      width: 20px;
+      height: 10px;
+      display: inline-block;
+      background: url('drop-down.png') no-repeat;
+      background-size: cover;
+      background-position: bottom;
+    }
+  }
+
+  .why-sansaru {
+    font-family: 'Segoe Print', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    .why-sansaru-intro {
+      background: #483E1C;
+      color: #FBFBFB;
+    }
+
+    .why-sansaru-content {
+      background: #FFEEB8;
+    }
+
+    .why-sansaru-after {
+      background: #483E1C;
+      color: #FBFBFB;
+    }
+  }
+
+  .sansaru-basic-desc {
+    height: min-content;
+    padding: 2em;
+  }
+
+  .sansaru-complete-desc {
+    background: transparent;
+    border: none;
+
+    .card-deck {
+      background: transparent;
+      border: none;
+
+      .card {
+        background: transparent;
+        border: none;
+        font-size: 0.8em;
+
+        .card-img-top {
+          border-radius: 100%;
+          width: 50%;
+          min-width: 90px;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+}
+
+.access-section {
+  .title-element {
+    background: #1380CD;
+  }
+}
+
+.participants-section {
+  .title-element {
+    background: #75AC0A;
+  }
+  h3 {
+    color: #75AC0A;
+  }
+  h4 {
+    font-size: 1em;
+    font-weight: bold;
+  }
+}
+
+.registration-new {
+  .new_user {
+    width: 100%;
+  }
+}
+
+.postulation-info {
+  h3 {
+    color: #1380CD;
+  }
+  h4 {
+    font-size: 1em;
+    font-weight: bold;
+  }
+}
+
+.edit-icon {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  background: url("edit.png") no-repeat;
+  background-size: contain;
+  background-position: center;
+  opacity: 0.6;
+}
+
+
+.navbar-light {
+  .logo {
+    height: 40px;
+    min-width: 80px;
+    background: url('logo-aoc-header-black.png') no-repeat;
+    background-size: contain;
+  }
+}
+
+.navbar-light .navbar-brand, .navbar-light .navbar-brand:hover {
+  color: transparent;
+}
+
+.orange-footer {  
+  width: 100%;
+
+  .title-element {
+    background: #E25E00;
+  }
+
+  .last-footer {
+    width: 100%;
+  }
+}
+
