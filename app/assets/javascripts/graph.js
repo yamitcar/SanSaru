@@ -7,8 +7,6 @@ function populate_trees(){
         dataType: 'json',
         success: function (data) {
             draw(data[0],'.treeOne',treeOne);
-            draw(data[1],'.treeTwo',treeTwo);
-            draw(data[2],'.treeThree',treeThree);
         },
         error: function (result) {
           console.log('error')
@@ -21,9 +19,9 @@ function error(result) {
     console.log(result)
 }
 
-var margin = {top: 20, right: 150, bottom: 20, left: 200},
-    width = 2000 - margin.right - margin.left,
-    height = 800 - margin.top - margin.bottom;
+var margin = {top: 20, right: 100, bottom: 20, left: 100},
+    width = 1400 - margin.right - margin.left,
+    height = 2000 - margin.top - margin.bottom;
 var i = 0,
     duration = 750;
 
