@@ -78,11 +78,11 @@ class User < ApplicationRecord
 
   def user_favorites
     ids = favorites.map do |favorite|
-      if (favorite.event_id == actual_event.id)
+      if (favorite.event_id == actual_event.id and favorite.favorite_user_id != nil)
         favorite.favorite_user_id
       end
     end
-    User.find(ids)
+    User.find(ids.compact)
   end
 
   private
