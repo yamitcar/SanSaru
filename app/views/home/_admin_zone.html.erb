@@ -1,0 +1,29 @@
+<% if current_user.admin %>
+  <br>
+  <br>
+<div class="alert alert-danger">
+  <div class="row align-items-center">
+    Admin Zone
+  </div>
+  <br>
+  <% if @user.was_invite? %>
+    <div class="row align-items-center">
+      Ten cuidado, esta operación no se puede deshacer!
+      <br>
+      <br>
+      <div class="col-md-2 offset-md-2">
+        <%= form_tag("/home/uninvite/#{@user.id}", method: "post") do %>
+          <%= submit_tag("Deshacer invitación", class: "btn btn-danger") %>
+        <% end %>
+      </div>
+    </div>
+    <%else %>
+    <div class="row align-items-center">
+      No hay ninguna acción disponible.
+      <br>
+      <br>
+    </div>
+    <% end %>
+</div>
+
+<% end %>

@@ -25,6 +25,10 @@ class User < ApplicationRecord
     "#{name} #{lastname}"
   end
 
+  #def admin
+  #  @admin
+  #end
+
   def profile
     profiles.where(event_id: actual_event_id).first
   end
@@ -52,12 +56,39 @@ class User < ApplicationRecord
     error
   end
 
+  def uninvite(current_user, invited)
+    begin
+      if(current_user.admin)
+        if(invited.has_sons?)
+          invitation = Invitation.find_invitation_for(invited.id,current_user.actual_event.id)
+          invitation.payed = false
+          invitation.save!
+        else
+          Invitation.clean_invitation(invited, current_user.actual_event.id)
+        end
+        # bloquear perfil para que no lo vuelvan a invitar
+        # notificar la baja
+        # aumentar el cupo en 1
+      end
+    rescue ActiveRecord::RecordInvalid => exception
+      error = exception.message
+    end
+    error
+  end
+
   def has_invitation?
     invitation = Invitation.find_invitation_for(id,actual_event.id)
     if invitation
       return (invitation.invited_one.nil? || invitation.invited_two.nil?)
     end
     false
+  end
+
+  def has_sons?
+    invitation = Invitation.find_invitation_for(id,actual_event.id)
+    if invitation
+      return (invitation.invited_one or invitation.invited_two)
+    end
   end
 
   def was_pay?

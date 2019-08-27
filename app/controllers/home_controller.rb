@@ -46,8 +46,20 @@ class HomeController < ApplicationController
       else
         # Tell the AocMailer to send a welcome email after save
         AocMailer.notify_invitation(invited, current_user).deliver_later
-        name = "#{invited.name} #{invited.lastname}"
-        format.html { redirect_to '/profiles', notice: "Has invitado correctamente a #{name}." }
+        format.html { redirect_to '/profiles', notice: "Has invitado correctamente a #{invited.full_name}." }
+      end
+    end
+  end
+
+  def uninvite
+    invited = User.find(params[:invited])
+    error = current_user.uninvite(current_user,invited)
+    respond_to do |format|
+      if error
+        format.html { redirect_to "/home?postulado=#{invited.id}", notice: "No fue posible deshacer la invitacion: #{error}" }
+      else
+        #AocMailer.notify_invitation(invited, current_user).deliver_later
+        format.html { redirect_to "/home?postulado=#{invited.id}", notice: "Has removido satisfactoriamente la invitacion de #{invited.full_name}" }
       end
     end
   end

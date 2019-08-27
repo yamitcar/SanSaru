@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   post '/home', to: 'home#create'
   patch '/home', to: 'home#update'
   put '/home/:id', to: 'home#update'
+  post '/home/uninvite/:invited', to: 'home#uninvite'
   post '/home/invite/:invited', to: 'home#invite'
   get 'graph/:event_home', to: 'graph#index'
   get 'graph/data/:event_home', to: 'graph#data', defaults: { format: 'json' }

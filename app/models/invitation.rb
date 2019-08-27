@@ -27,6 +27,25 @@ class Invitation < ApplicationRecord
     final_tree
   end
 
+  def self.clean_invitation(invited, event_id)
+    begin
+      ActiveRecord::Base.transaction do
+        find_invitation_for(invited.id,event_id).delete
+        invitation_parent = where(invited_one_id: invited.id).or(where(invited_two_id: invited.id)).first
+        if(invitation_parent)
+          if(invitation_parent&.invited_one&.id == invited.id)
+            invitation_parent&.invited_one = nil
+            invitation_parent&.one_on = nil
+          else
+            invitation_parent&.invited_two = nil
+            invitation_parent&.two_on = nil
+          end
+          invitation_parent.save!
+        end
+      end
+    end
+  end
+
   private
 
   def self.build_node(event,invitation, parent = nil)
