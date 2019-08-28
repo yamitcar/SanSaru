@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_01_105845) do
+ActiveRecord::Schema.define(version: 2019_08_28_105845) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -140,6 +140,7 @@ ActiveRecord::Schema.define(version: 2019_08_01_105845) do
     t.integer "event_id"
     t.boolean "organizer", default: false, null: false
     t.boolean "need_mentor", default: false
+    t.boolean "locked", default: false
     t.index ["agileRelation_id"], name: "index_profiles_on_agileRelation_id"
     t.index ["agile_id"], name: "index_profiles_on_agile_id"
     t.index ["gender_id"], name: "index_profiles_on_gender_id"

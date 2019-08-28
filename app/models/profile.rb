@@ -15,4 +15,10 @@ class Profile < ApplicationRecord
   validates :agile_description, presence: true
   validates :bio, presence: true
   validates :phonenumber, presence: true
+
+  def locked_profile
+    self.locked = true
+    save!
+  end
+
 end

@@ -59,7 +59,7 @@ class HomeController < ApplicationController
         format.html { redirect_to "/home?postulado=#{invited.id}", notice: "No fue posible deshacer la invitacion: #{error}" }
       else
         #AocMailer.notify_invitation(invited, current_user).deliver_later
-        format.html { redirect_to "/home?postulado=#{invited.id}", notice: "Has removido satisfactoriamente la invitacion de #{invited.full_name}" }
+        format.html { redirect_to "/profiles", notice: "Has removido satisfactoriamente la invitación de #{invited.full_name}" }
       end
     end
   end

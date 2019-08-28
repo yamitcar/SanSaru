@@ -63,6 +63,11 @@ class Event < ApplicationRecord
     end
   end
 
+  def add_one_invitation
+    self.tickets_left += 1
+    save!
+  end
+
   def is_invitation_period_open?
     status == :seleccion.to_s or status == :lleno
   end

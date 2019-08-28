@@ -60,15 +60,15 @@ class User < ApplicationRecord
     begin
       if(current_user.admin)
         if(invited.has_sons?)
-          invitation = Invitation.find_invitation_for(invited.id,current_user.actual_event.id)
-          invitation.payed = false
-          invitation.save!
+          Invitation.clean_invitation_parent(invited,current_user.actual_event.id)
         else
-          Invitation.clean_invitation(invited, current_user.actual_event.id)
+          Invitation.clean_invitation_son(invited, current_user.actual_event.id)
         end
-        # bloquear perfil para que no lo vuelvan a invitar
-        # notificar la baja
-        # aumentar el cupo en 1
+        current_user.actual_event.add_one_invitation
+        invited.profile.locked_profile
+
+        # TODO notificar la baja
+
       end
     rescue ActiveRecord::RecordInvalid => exception
       error = exception.message

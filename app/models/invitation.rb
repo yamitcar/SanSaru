@@ -27,7 +27,7 @@ class Invitation < ApplicationRecord
     final_tree
   end
 
-  def self.clean_invitation(invited, event_id)
+  def self.clean_invitation_son(invited, event_id)
     begin
       ActiveRecord::Base.transaction do
         find_invitation_for(invited.id,event_id).delete
@@ -44,6 +44,12 @@ class Invitation < ApplicationRecord
         end
       end
     end
+  end
+
+  def self.clean_invitation_parent(invited, event_id)
+    invitation = find_invitation_for(invited.id,event_id)
+    invitation.payed = false
+    invitation.save!
   end
 
   private
