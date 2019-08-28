@@ -7,6 +7,15 @@ class EventsController < ApplicationController
     @events = Event.all.paginate(page: params[:page], per_page: 10)
   end
 
+  def change_event
+    event = Event.find(params[:event_id])
+    if(event&.id != current_user.actual_event.id)
+      current_user.actual_event = event
+      current_user.save!
+    end
+    redirect_to root_path
+  end
+
   # GET /events/1
   # GET /events/1.json
   def show

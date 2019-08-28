@@ -20,7 +20,7 @@
 * Mejorar el editor de markdown y html
 * Mejorar el home principal de la app __Done__
 * Mejoras gráficas __Done__
-* Boton para deshacer invitaciones __WIP__
+* Boton para deshacer invitaciones __Done__
 * Formulario de perfil configurable por evento
 * add admins por evento unicamente.
 - Rename and reorder home_controller
