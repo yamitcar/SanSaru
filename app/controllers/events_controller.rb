@@ -1,3 +1,5 @@
+require 'csv'
+
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :require_admin_login
@@ -14,6 +16,13 @@ class EventsController < ApplicationController
       current_user.save!
     end
     redirect_to root_path
+  end
+
+  def get_participants
+    respond_to do |format|
+      format.html
+      format.csv { send_data Event.get_participants_in_csv(params[:event_id]), filename: "participants-#{Date.today}.csv" }
+    end
   end
 
   # GET /events/1

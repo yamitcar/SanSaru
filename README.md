@@ -21,8 +21,10 @@
 * Mejorar el home principal de la app __Done__
 * Mejoras gráficas __Done__
 * Boton para deshacer invitaciones __Done__
-* Formulario de perfil configurable por evento
+* Download participant list __Done__
 * add admins por evento unicamente.
+* Formulario de perfil configurable por evento
+
 - Rename and reorder home_controller
 
 

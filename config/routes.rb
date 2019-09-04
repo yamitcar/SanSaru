@@ -30,5 +30,6 @@ Rails.application.routes.draw do
 
   get '/:event_id/:page_path', to: 'static_pages#prepare_render'
   get '/event/select/:event_id', to: 'events#change_event'
+  get '/event/download/:event_id', to: 'events#get_participants'
 
 end

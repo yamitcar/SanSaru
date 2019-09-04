@@ -22,6 +22,8 @@ class Event < ApplicationRecord
 
   STATUS = [:activo, :seleccion, :lleno, :finalizado]
 
+  PARTICIPANTS_QUERY='SELECT users.id, users.name, lastname, email, country, state, city, phonenumber, genders.name as gender, sizes.name as size, payed FROM public.users, public.invitations, public.profiles, public.genders, public.sizes WHERE users.id = invitations.user_id and users.id = profiles.user_id and profiles.gender_id = genders.id and profiles.size_id = sizes.id and profiles.event_id = '
+
   def aoc_dates
      "#{start_date.strftime('%d de %b')} al #{end_date.strftime('%d de %b')} de #{end_date.strftime('%Y')}"
   end
@@ -76,13 +78,21 @@ class Event < ApplicationRecord
     Event.all.select{|event| event.default_page_path == home_path}[0]
   end
 
+  def self.get_participants_in_csv(id)
+    attributes = %w{id name lastname email country state city phonenumber gender size payed}
+    data = ActiveRecord::Base.connection.execute(PARTICIPANTS_QUERY + "#{id}")
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+      data.each do |participant|
+        csv << attributes.map{ |attr| participant[attr] }
+      end
+    end
+  end
+
 private
 
   def close_invitation_period
     status = :lleno.to_s
   end
-
-
-
 
 end
