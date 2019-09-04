@@ -26,6 +26,7 @@
       <tbody>
       <% @postulados.each do |postulado| %>
         <%  invitados = Invitation.all.map(&:user_id) %>
+        <% if postulado.profile %>
         <tr style="
         background-color: <%= invitados.index(postulado.id) ? 'lightcyan;' : 'white;' %>">
           <td>
@@ -48,6 +49,7 @@
             <%= link_to "Ver perfil completo", {:controller => "home", :action => "show", :postulado => postulado }%>
           </td>
         </tr>
+        <% end %>
       <% end %>
       </tbody>
     </table>

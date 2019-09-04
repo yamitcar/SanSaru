@@ -84,6 +84,12 @@ Para iniciar la app, ejecuta:
 
     rails s
 
+### Restart backup db
+
+pg_restore --verbose --clean --no-acl --no-owner -h localhost -d sanSaru sanSaru.backup
+
+# DEPRECATED
+
 Para personalizar la aplicación según las condiciones específicas de cada edición del AOC:
 + Revisar _app/helpers/application_helper.rb_
 
