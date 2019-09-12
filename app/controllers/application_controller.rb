@@ -23,22 +23,21 @@ class ApplicationController < ActionController::Base
 
   def require_login
     unless user_signed_in?
-      # TODO: flash doesnt work
-      flash[:notice] = 'Debes estar logueado para ver esto'
+      flash[:error] = 'Debes estar logueado para ver esto'
       redirect_to new_user_session_path
     end
   end
 
   def require_admin_login
     unless (user_signed_in? and current_user.admin?)
-      flash[:error] = 'No tienes acceso a esta pagina'
+      flash[:error] = 'No tienes acceso a esa página'
       redirect_to(:home)
     end
   end
 
   def require_admin_for_event
     unless (user_signed_in? and current_user.is_admin_for_event?(params[:id]))
-      flash[:error] = 'No tienes acceso a esta pagina'
+      flash[:error] = 'No tienes acceso a esa página'
       redirect_to(:root)
     end
   end

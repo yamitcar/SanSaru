@@ -22,6 +22,12 @@
       <%= alert %>
     </p>
   <% end %>
+  <% if flash[:error] %>
+    <p class="alert text-center alert-danger">
+      <%= flash[:error] %>
+    </p>
+  <% end %>
+
   <%= yield %>
   <%= debug(params) if Rails.env.development? %>
   <%= ".................." if Rails.env.development? %>
