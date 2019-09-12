@@ -30,9 +30,16 @@ class ApplicationController < ActionController::Base
   end
 
   def require_admin_login
-    unless (user_signed_in? and current_user.admin)
+    unless (user_signed_in? and current_user.admin?)
       flash[:error] = 'No tienes acceso a esta pagina'
       redirect_to(:home)
+    end
+  end
+
+  def require_admin_for_event
+    unless (user_signed_in? and current_user.is_admin_for_event?(params[:id]))
+      flash[:error] = 'No tienes acceso a esta pagina'
+      redirect_to(:root)
     end
   end
 end

@@ -29,7 +29,12 @@
             <% end %>
           </div>
         </li>
-
+        <% if current_user&.actual_event&.is_invitation_period_open? %>
+          <li class="nav-item">
+            <%= link_to "¡Asi va la selección!",
+                        '/graph/'+aoc_path , :class => 'nav-link', method: :get %>
+          </li>
+        <% end %>
 
     <% end %>
     </ul>
@@ -37,13 +42,14 @@
 
     <ul class="navbar-nav navbar-right">
 
-      <% if current_user&.actual_event&.is_invitation_period_open? %>
-          <li class="nav-item">
-              <%= link_to "¡Asi va la selección!",
-                          '/graph/'+aoc_path , :class => 'nav-link', method: :get %>
-          </li>
-      <% end %>
+
       <% if user_signed_in? %>
+        <% if current_user&.is_event_admin? %>
+          <li class="nav-item">
+            <%= link_to "Administración de eventos",
+                        '/events' , :class => 'nav-link', method: :get %>
+          </li>
+        <% end %>
         <li class="nav-item">
           <%= link_to 'Postulados', profiles_path, :class => 'nav-link' %>
         </li>

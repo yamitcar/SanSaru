@@ -22,8 +22,10 @@
 * Mejoras gráficas __Done__
 * Boton para deshacer invitaciones __Done__
 * Download participant list __Done__
-* add admins por evento unicamente.
+* add admins por evento unicamente.  __Done__
+* add email config for event
 * Formulario de perfil configurable por evento
+* boton para agregar invitaciones de los monos.
 
 - Rename and reorder home_controller
 
@@ -90,9 +92,9 @@ Para iniciar la app, ejecuta:
 
 pg_restore --verbose --clean --no-acl --no-owner -h localhost -d sanSaru sanSaru.backup
 
-# DEPRECATED
+# DEPRECATED!!
 
-Para personalizar la aplicación según las condiciones específicas de cada edición del AOC:
+~~ Para personalizar la aplicación según las condiciones específicas de cada edición del AOC:
 + Revisar _app/helpers/application_helper.rb_
 
 ### Heroku
@@ -131,3 +133,4 @@ Query para obtener todos los invitados:
       FROM public.users, public.invitations, public.profiles, public.genders,public.sizes
       WHERE users.id = invitations.user_id and users.profile_id = profiles.id 
       and profiles.gender_id = genders.id and profiles.size_id = sizes.id;
+~~

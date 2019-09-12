@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_many :profiles
   has_one :invitation
   has_many :favorites
+  has_many :admin_for_events
 
   validates :terms_of_service, :acceptance => true
   attr_accessor :user_ids
@@ -25,9 +26,21 @@ class User < ApplicationRecord
     "#{name} #{lastname}"
   end
 
-  #def admin
-  #  @admin
-  #end
+  def admin?
+    user_type == :admin.to_s
+  end
+
+  def is_event_admin?
+    !admin_for_events.empty?
+  end
+
+  def is_admin_for_event?(event_id)
+    if(event_id)
+      !admin_for_events.select {|afe| afe.event.id.to_s == event_id }.empty?
+    else
+      is_event_admin?
+    end
+  end
 
   def profile
     profiles.where(event_id: actual_event_id).first
@@ -58,7 +71,7 @@ class User < ApplicationRecord
 
   def uninvite(current_user, invited)
     begin
-      if(current_user.admin)
+      if(current_user.admin?)
         if(invited.has_sons?)
           Invitation.clean_invitation_parent(invited,current_user.actual_event.id)
         else

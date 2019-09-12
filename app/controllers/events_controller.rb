@@ -2,11 +2,11 @@ require 'csv'
 
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :require_admin_login
+  before_action :require_admin_for_event, except: :change_event
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all.paginate(page: params[:page], per_page: 10)
+    @events = current_user.admin_for_events.map{ |afe| afe.event }
   end
 
   def change_event

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_28_105845) do
+ActiveRecord::Schema.define(version: 2019_09_11_105845) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,13 @@ ActiveRecord::Schema.define(version: 2019_08_28_105845) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "admin_for_events", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.integer "event_id"
   end
 
   create_table "agile_relations", force: :cascade do |t|
@@ -168,12 +175,12 @@ ActiveRecord::Schema.define(version: 2019_08_28_105845) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.boolean "admin", default: false
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.boolean "terms_of_service", default: false
     t.integer "actual_event_id"
+    t.string "user_type", default: "participant"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -190,6 +197,8 @@ ActiveRecord::Schema.define(version: 2019_08_28_105845) do
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
+  add_foreign_key "admin_for_events", "events"
+  add_foreign_key "admin_for_events", "users"
   add_foreign_key "favorites", "events"
   add_foreign_key "invitations", "events"
   add_foreign_key "invitations", "users"
