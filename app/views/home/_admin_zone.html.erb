@@ -6,7 +6,7 @@
     Admin Zone
   </div>
   <br>
-  <% if @user.was_invite? %>
+  <% if @user.was_invite?(current_user.actual_event.id) %>
     <div class="row align-items-center">
       Ten cuidado, esta operación no se puede deshacer!
       <br>

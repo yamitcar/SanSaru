@@ -17,7 +17,6 @@
 * tabla de invitaciones por evento __Done__
 * visualizacion del arbol por evento __Done__
 * Favoritos por evento __Done__
-* Mejorar el editor de markdown y html
 * Mejorar el home principal de la app __Done__
 * Mejoras gráficas __Done__
 * Boton para deshacer invitaciones __Done__
@@ -26,6 +25,7 @@
 * add email config for event
 * Formulario de perfil configurable por evento
 * boton para agregar invitaciones de los monos.
+* Mejorar el editor de markdown y html
 
 - Rename and reorder home_controller
 
@@ -134,3 +134,5 @@ Query para obtener todos los invitados:
       WHERE users.id = invitations.user_id and users.profile_id = profiles.id 
       and profiles.gender_id = genders.id and profiles.size_id = sizes.id;
 ~~
+
+        pg_restore --verbose --clean --no-acl --no-owner -h localhost -d sanSaru production.dump

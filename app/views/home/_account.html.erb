@@ -41,8 +41,8 @@
           </div>
         </div>
 
-        <% if @user.profile %>
-          <% @profile = @user.profile %>
+        <% if @user.profile(current_user.actual_event.id) %>
+          <% @profile = @user.profile(current_user.actual_event.id) %>
 
           <div class="form-group col-xs-12 col-sm-12 col-md-4">
             <label class="col-md-12 control-label" for="textinput">

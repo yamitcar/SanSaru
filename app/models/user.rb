@@ -42,12 +42,12 @@ class User < ApplicationRecord
     end
   end
 
-  def profile
-    profiles.where(event_id: actual_event_id).first
+  def profile(event_id = actual_event_id)
+    profiles.where(event_id: event_id).first
   end
 
-  def organizer
-    profile&.organizer || false
+  def organizer(event_id = actual_event_id)
+    profile(event_id)&.organizer || false
   end
 
   def invite(invited)
@@ -72,13 +72,13 @@ class User < ApplicationRecord
   def uninvite(current_user, invited)
     begin
       if(current_user.admin?)
-        if(invited.has_sons?)
+        if(invited.has_sons?(current_user.actual_event.id))
           Invitation.clean_invitation_parent(invited,current_user.actual_event.id)
         else
           Invitation.clean_invitation_son(invited, current_user.actual_event.id)
         end
         current_user.actual_event.add_one_invitation
-        invited.profile.locked_profile
+        invited.profile(current_user.actual_event.id).locked_profile
 
         # TODO notificar la baja
 
@@ -89,31 +89,31 @@ class User < ApplicationRecord
     error
   end
 
-  def has_invitation?
-    invitation = Invitation.find_invitation_for(id,actual_event.id)
+  def has_invitation?(event_id = actual_event_id)
+    invitation = Invitation.find_invitation_for(id,event_id)
     if invitation
       return (invitation.invited_one.nil? || invitation.invited_two.nil?)
     end
     false
   end
 
-  def has_sons?
-    invitation = Invitation.find_invitation_for(id,actual_event.id)
+  def has_sons?(event_id = actual_event_id)
+    invitation = Invitation.find_invitation_for(id,event_id)
     if invitation
       return (invitation.invited_one or invitation.invited_two)
     end
   end
 
-  def was_pay?
-    if has_invitation?
-      Invitation.find_invitation_for(id, actual_event.id).payed
+  def was_pay?(event_id = actual_event_id)
+    if has_invitation?(event_id)
+      Invitation.find_invitation_for(id, event_id).payed
     else
       false
     end
   end
 
-  def was_invite?
-    Invitation.all_invitations_for(actual_event.id).map(&:user_id).index id
+  def was_invite?(event_id = actual_event_id)
+    Invitation.all_invitations_for(event_id).map(&:user_id).index id
   end
 
   def is_favorite?(user)

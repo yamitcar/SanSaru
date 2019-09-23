@@ -26,25 +26,25 @@
       <tbody>
       <% @postulados.each do |postulado| %>
         <%  invitados = Invitation.all.map(&:user_id) %>
-        <% if postulado.profile %>
+        <% if postulado.profile(current_user.actual_event.id) %>
         <tr style="
         background-color: <%= invitados.index(postulado.id) ? 'lightcyan;' : 'white;' %>">
           <td>
-            <% if postulado.organizer %>
+            <% if postulado.organizer(current_user.actual_event.id) %>
               &#9889;
             <% end %>
           </td>
           <td><%= postulado.name %> <%= postulado.lastname %> </td>
-          <td><%= CS.get[postulado.profile.country.to_sym ]%>,
-            <%= CS.get(postulado.profile.country)[postulado.profile.state.to_sym]%>,
-            <%= CS.get(postulado.profile.country,postulado.profile.state)[postulado.profile.city.to_i] %></td>
-          <td> <% if postulado.profile.first_time %>
+          <td><%= CS.get[postulado.profile(current_user.actual_event.id).country.to_sym ]%>,
+            <%= CS.get(postulado.profile(current_user.actual_event.id).country)[postulado.profile.state.to_sym]%>,
+            <%= CS.get(postulado.profile(current_user.actual_event.id).country,postulado.profile.state)[postulado.profile.city.to_i] %></td>
+          <td> <% if postulado.profile(current_user.actual_event.id).first_time %>
               Si
             <% else %>
               No
             <% end %>
           </td>
-          <td><%= postulado.profile.bio %></td>
+          <td><%= postulado.profile(current_user.actual_event.id).bio %></td>
           <td>
             <%= link_to "Ver perfil completo", {:controller => "home", :action => "show", :postulado => postulado }%>
           </td>

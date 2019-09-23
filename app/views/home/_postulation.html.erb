@@ -12,8 +12,8 @@
     <p>Recuerda que debes completar tu postulación para tener la posibilidad de asistir al <%= aoc_name %></p> 
   </div>
   <div class="content-element container">
-    <% if @user.profile %>
-      <% @profile = @user.profile %>
+    <% if @user.profile(current_user.actual_event.id) %>
+      <% @profile = @user.profile(current_user.actual_event.id) %>
       <div class="row">
         <div class="col-sm-3">    
           <div class="list-group">
@@ -28,7 +28,7 @@
 
         <div class="col-sm-9 mx-auto">
           <h3 id="bio">Biografía <%= render 'home/edit_button' %></h3>
-          <p><%= @user.profile.bio %></p>
+          <p><%= @user.profile(current_user.actual_event.id).bio %></p>
   
           <h4>Intereses y Hobbies <%= render 'home/edit_button' %></h4>
           <p><%= @profile.hobbies %></p>
