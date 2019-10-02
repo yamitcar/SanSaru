@@ -36,7 +36,7 @@ class User < ApplicationRecord
 
   def is_admin_for_event?(event_id)
     if(event_id)
-      !admin_for_events.select {|afe| afe.event.id.to_s == event_id }.empty?
+      !admin_for_events.select {|afe| afe.event.id.to_s == event_id.to_s }.empty?
     else
       is_event_admin?
     end
@@ -50,8 +50,8 @@ class User < ApplicationRecord
     profile(event_id)&.organizer || false
   end
 
-  def invite(invited)
-    invitation = Invitation.find_by(user_id: id)
+  def invite(invited,event_id = actual_event_id)
+    invitation = Invitation.where(user_id: id).where(event_id:event_id)[0]
     if invitation
       begin
         ActiveRecord::Base.transaction do
@@ -71,7 +71,7 @@ class User < ApplicationRecord
 
   def uninvite(current_user, invited)
     begin
-      if(current_user.admin?)
+      if(current_user.is_admin_for_event?(current_user.actual_event.id))
         if(invited.has_sons?(current_user.actual_event.id))
           Invitation.clean_invitation_parent(invited,current_user.actual_event.id)
         else

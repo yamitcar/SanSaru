@@ -25,7 +25,7 @@
 
       <tbody>
       <% @postulados.each do |postulado| %>
-        <%  invitados = Invitation.all.map(&:user_id) %>
+        <%  invitados = Invitation.find_ids_by_event(current_user.actual_event.id) %>
         <% if postulado.profile(current_user.actual_event.id) %>
         <tr style="
         background-color: <%= invitados.index(postulado.id) ? 'lightcyan;' : 'white;' %>">

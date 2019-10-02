@@ -52,6 +52,10 @@ class Invitation < ApplicationRecord
     invitation.save!
   end
 
+  def self.find_ids_by_event(event_id)
+    Invitation.where(event_id: event_id).map(&:user_id)
+  end
+
   private
 
   def self.build_node(event,invitation, parent = nil)

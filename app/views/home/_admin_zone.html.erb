@@ -1,4 +1,4 @@
-<% if current_user.admin? %>
+<% if current_user.is_admin_for_event?(current_user.actual_event.id) %>
   <br>
   <br>
 <div class="alert alert-danger">
