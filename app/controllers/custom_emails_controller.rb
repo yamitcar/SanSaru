@@ -33,7 +33,7 @@ class CustomEmailsController < ApplicationController
         if(params[:commit] == "Guardar y enviar una prueba a los copiados")
           if(@custom_email.name == :notify_invitation.to_s)
               message = 'Email actualizado y enviado, fijate en tu buzón'
-            AocMailer.notify_invitation(current_user, current_user, true).deliver_later
+            AocMailer.notify_invitation(current_user, current_user,@custom_email.event_id, true).deliver_later
           end
         end
         format.html { redirect_to @custom_email.event, notice: message }

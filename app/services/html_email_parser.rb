@@ -8,8 +8,9 @@ class HtmlEmailParser
 
 
 
-  def self.get_email_template(email_name, invited, host)
-    custom_email = host.actual_event.custom_emails.select{|custom_email| custom_email.name === email_name.to_s}[0]
+  def self.get_email_template(email_name, invited, host,event_id)
+
+    custom_email = Event.find(event_id).custom_emails.select{|custom_email| custom_email.name === email_name.to_s}[0]
     actors = {'invited' => invited,'host' => host, 'event' => host.actual_event }
     template = custom_email.template
     POSSIBILITIES.each do |method_name|
